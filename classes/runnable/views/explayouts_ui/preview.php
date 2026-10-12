@@ -226,7 +226,8 @@ class Preview extends \Exponential\Runnable\ModuleView
         $Result['content'] = $tpl->fetch( 'design:explayouts/layout.tpl' );
         if ( $previewNode )
             $Result['node_id'] = (int)$previewNode->attribute( 'node_id' );
-        $Result['path'] = array( array( 'url' => false,
+        $Result['path'] = array( array( 'url' => 'explayouts_ui/dashboard', 'text' => \ezpI18n::tr( 'explayouts_ui/layout', 'Layouts' ) ),
+                                 array( 'url' => false,
                                         'text' => \ezpI18n::tr( 'explayouts_ui/preview', 'Preview layout' ) ) );
         return $this->viewResult( isset( $Result ) ? $Result : null,  $Result );
 

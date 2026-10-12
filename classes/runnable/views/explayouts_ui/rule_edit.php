@@ -109,7 +109,8 @@ class RuleEdit extends \Exponential\Runnable\ModuleView
         $Result = array();
         $Result['content'] = $tpl->fetch( 'design:explayouts_ui/rule_edit.tpl' );
         $Result['left_menu'] = 'design:parts/explayouts_ui/menu.tpl';
-        $Result['path'] = array( array( 'url' => false,
+        $Result['path'] = array( array( 'url' => 'explayouts_ui/dashboard', 'text' => \ezpI18n::tr( 'explayouts_ui/layout', 'Layouts' ) ),
+                                 array( 'url' => false,
                                         'text' => ( $ruleId > 0 ? \ezpI18n::tr( 'explayouts_ui/rule', 'Edit Rule' ) : \ezpI18n::tr( 'explayouts_ui/rule', 'New Rule' ) ) ) );
         return $this->viewResult( isset( $Result ) ? $Result : null,  $Result );
 

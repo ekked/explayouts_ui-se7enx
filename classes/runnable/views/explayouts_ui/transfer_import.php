@@ -70,7 +70,8 @@ class TransferImport extends \Exponential\Runnable\ModuleView
         $Result = array();
         $Result['content'] = $tpl->fetch( 'design:explayouts_ui/transfer_import.tpl' );
         $Result['left_menu'] = 'design:parts/explayouts_ui/menu.tpl';
-        $Result['path'] = array( array( 'url' => false, 'text' => 'Import' ) );
+        $Result['path'] = array( array( 'url' => 'explayouts_ui/dashboard', 'text' => \ezpI18n::tr( 'explayouts_ui/layout', 'Layouts' ) ),
+                                 array( 'url' => false, 'text' => \ezpI18n::tr( 'design/admin/parts/explayouts_ui/menu', 'Import' ) ) );
         return $this->viewResult( isset( $Result ) ? $Result : null,  $Result );
 
         return $this->viewResult( isset( $Result ) ? $Result : null, null );

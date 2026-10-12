@@ -176,7 +176,8 @@ class SharedLayoutsList extends \Exponential\Runnable\ModuleView
         $Result = array();
         $Result['content'] = $tpl->fetch( 'design:explayouts_ui/shared_layouts_list.tpl' );
         $Result['left_menu'] = 'design:parts/explayouts_ui/menu.tpl';
-        $Result['path'] = array( array( 'url' => false,
+        $Result['path'] = array( array( 'url' => 'explayouts_ui/dashboard', 'text' => \ezpI18n::tr( 'explayouts_ui/layout', 'Layouts' ) ),
+                                 array( 'url' => false,
                                         'text' => \ezpI18n::tr( 'explayouts_ui/shared_layouts', 'Shared layouts' ) ) );
         return $this->viewResult( isset( $Result ) ? $Result : null,  $Result );
 
