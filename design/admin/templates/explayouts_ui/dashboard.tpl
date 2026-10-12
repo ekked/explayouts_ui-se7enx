@@ -87,7 +87,7 @@
                                     <span class="nl-status-label">{'Draft'|i18n( 'design/admin/explayouts_ui/dashboard' )}</span>
                                 {/if}
                             </td>
-                            <td>{$layout.modified|datetime( 'custom', '%Y-%m-%d %H:%M' )}</td>
+                            <td>{$layout.modified|datetime( 'custom', '%Y-%m-%d %H:%i' )}</td>
                             <td>
                                 <a href={concat('explayouts_ui_api/app#layout/',$layout.id)|ezurl} class="nl-btn nl-btn-small">
                                     <i class="material-icons" style="font-size:18px;">open_in_new</i> {'Open'|i18n( 'design/admin/explayouts_ui/dashboard' )}

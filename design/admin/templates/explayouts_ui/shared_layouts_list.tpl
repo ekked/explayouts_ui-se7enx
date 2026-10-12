@@ -45,7 +45,7 @@
                                 <div class="nl-layout-text">
                                     <div class="nl-layout-name"><a href={concat('explayouts_ui_api/app#layout/',$layout.id)|ezurl}>{$layout.name|wash}</a></div>
                                     <div class="nl-layout-description">{$layout.identifier|wash}</div>
-                                    <div class="nl-layout-modified"><p>{$layout.modified|datetime( 'custom', '%Y-%m-%d %H:%M' )}</p></div>
+                                    <div class="nl-layout-modified"><p>{$layout.modified|datetime( 'custom', '%Y-%m-%d %H:%i' )}</p></div>
                                     {if ne($layout.status,2)}<span class="unpublished-label">{'Draft'|i18n( 'design/admin/explayouts_ui/shared_layouts_list' )}</span>{/if}
                                 </div>
                             </div>
