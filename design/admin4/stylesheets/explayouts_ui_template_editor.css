@@ -1,63 +1,51 @@
 /* The template editor (explayouts_ui/template_editor) in admin4: design/admin's editor layout with admin4's
-   tokens for its colours and fonts, light and dark (html[data-a4-theme]), under a header with the way back to the
-   Layouts pages. Loaded by design/admin4's template_editor.tpl after admin4's components.css. */
-:root {
-    --bg: var(--a4-surface, #f6f8fa);
-    --panel: var(--a4-card, #ffffff);
-    --panel-2: var(--a4-line, #d0d7de);
-    --fg: var(--a4-ink, #1f2328);
-    --muted: var(--a4-muted, #59636e);
-    --accent: var(--a4-accent-strong, #c2410c);
-    --accent-2: var(--a4-accent-soft, #fff1e8);
-    --ok: var(--a4-ok, #1a7f37);
-    --warn: var(--a4-warn, #9a6700);
-    --danger: var(--a4-bad, #cf222e);
-    --font: var(--a4-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace);
-}
+   tokens for its colours, spacing and fonts, light and dark (html[data-a4-theme]), under a header with the way back
+   to the Layouts pages. Loaded by design/admin4's template_editor.tpl after admin4's components.css, which defines
+   every --a4-* token used here (doc/bc/6.0/admin4-styling.md: tokens only, no local aliases). */
 * { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; display: flex; flex-direction: column; background: var(--bg); color: var(--fg); font-family: var(--font); font-size: 14px; }
+html, body { height: 100%; margin: 0; display: flex; flex-direction: column; background: var(--a4-surface); color: var(--a4-ink); font-family: var(--a4-mono); font-size: var(--a4-text-m); }
 .app { display: flex; flex: 1 1 auto; min-height: 0; overflow: hidden; }
-.sidebar { width: 420px; min-width: 260px; max-width: 80vw; background: var(--panel); border-right: 1px solid var(--panel-2); display: flex; flex-direction: column; position: relative; }
-.resizer { width: 6px; cursor: col-resize; background: var(--panel-2); position: absolute; right: 0; top: 0; bottom: 0; z-index: 10; }
-.sidebar-header { padding: 1rem; border-bottom: 1px solid var(--panel-2); }
-.sidebar-header h1 { margin: 0 0 .5rem; font-size: 1.1rem; color: var(--a4-accent-text, var(--accent)); font-family: var(--a4-font, system-ui, sans-serif); }
-.sidebar-header h1 small { color: var(--muted); font-weight: 400; }
-.sidebar input[type="text"] { width: 100%; padding: .5rem; background: var(--bg); color: var(--fg); border: 1px solid var(--panel-2); border-radius: .25rem; }
-.flat-list { flex: 1; overflow: auto; padding: .5rem; }
-.flat-list .empty { color: var(--muted); padding: 1rem .5rem; text-align: center; }
-.flat-list button { display: block; width: 100%; text-align: left; background: transparent; color: var(--fg); border: none; border-radius: .25rem; padding: .3rem .5rem; cursor: pointer; font-family: inherit; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.flat-list button:hover { background: var(--panel-2); }
-.flat-list button.active { background: var(--accent-2); color: var(--a4-accent-text, var(--accent)); font-weight: 600; }
+.sidebar { width: 420px; min-width: 260px; max-width: 80vw; background: var(--a4-card); border-right: 1px solid var(--a4-line); display: flex; flex-direction: column; position: relative; }
+.resizer { width: var(--a4-space-1); cursor: col-resize; background: var(--a4-line); position: absolute; right: 0; top: 0; bottom: 0; z-index: var(--a4-z-raised); }
+.sidebar-header { padding: var(--a4-space-4); border-bottom: 1px solid var(--a4-line); }
+.sidebar-header h1 { margin: 0 0 var(--a4-space-2); font-size: var(--a4-text-l); color: var(--a4-accent-text); font-family: var(--a4-font); }
+.sidebar-header h1 small { color: var(--a4-muted); font-weight: 400; }
+.sidebar input[type="text"] { width: 100%; padding: var(--a4-space-2); background: var(--a4-field); color: var(--a4-ink); border: 1px solid var(--a4-field-line); border-radius: var(--a4-radius-s); }
+.flat-list { flex: 1; overflow: auto; padding: var(--a4-space-2); }
+.flat-list .empty { color: var(--a4-muted); padding: var(--a4-space-4) var(--a4-space-2); text-align: center; }
+.flat-list button { display: block; width: 100%; text-align: left; background: transparent; color: var(--a4-ink); border: none; border-radius: var(--a4-radius-s); padding: var(--a4-space-1) var(--a4-space-2); cursor: pointer; font-family: inherit; font-size: var(--a4-text-s); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.flat-list button:hover { background: var(--a4-soft); }
+.flat-list button.active { background: var(--a4-accent-soft); color: var(--a4-accent-text); font-weight: 600; }
 .main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
-.toolbar { display: flex; align-items: center; gap: .5rem; padding: .75rem 1rem; background: var(--panel); border-bottom: 1px solid var(--panel-2); }
+.toolbar { display: flex; align-items: center; gap: var(--a4-space-2); padding: var(--a4-space-3) var(--a4-space-4); background: var(--a4-card); border-bottom: 1px solid var(--a4-line); }
 .exit-btn { margin-left: auto; }
-.toolbar .path { flex: 1; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.toolbar .status { padding: .25rem .75rem; border-radius: .25rem; font-size: .85rem; opacity: 0; transition: opacity .2s; }
+.toolbar .path { flex: 1; color: var(--a4-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.toolbar .status { padding: var(--a4-space-1) var(--a4-space-3); border-radius: var(--a4-radius-s); font-size: var(--a4-text-s); opacity: 0; transition: opacity .2s; }
 .toolbar .status.show { opacity: 1; }
-.toolbar .status.ok { background: var(--a4-ok-bg, #dafbe1); color: var(--ok); }
-.toolbar .status.err { background: var(--a4-bad-bg, #ffebe9); color: var(--danger); }
-.btn { padding: .45rem .9rem; border: none; border-radius: .25rem; background: var(--accent); color: var(--a4-on-accent, #fff); cursor: pointer; font-weight: 600; font-family: inherit; }
-.btn:hover { filter: brightness(1.1); }
-.btn.secondary { background: var(--panel-2); color: var(--fg); }
+.toolbar .status.ok { background: var(--a4-ok-bg); color: var(--a4-ok); }
+.toolbar .status.err { background: var(--a4-bad-bg); color: var(--a4-bad); }
+.btn { min-height: var(--a4-control-h); padding: var(--a4-space-2) var(--a4-space-4); border: none; border-radius: var(--a4-radius-s); background: var(--a4-accent-strong); color: var(--a4-on-accent); cursor: pointer; font-weight: 600; font-family: inherit; }
+.btn:hover { background: var(--a4-accent-press); color: var(--a4-on-accent-hover); }
+.btn.secondary { background: var(--a4-soft); color: var(--a4-ink); border: 1px solid var(--a4-line-strong); }
 .editor-wrap { flex: 1; display: flex; overflow: hidden; position: relative; }
-.line-numbers { width: 3.5rem; padding: 1rem .5rem; background: var(--panel); color: var(--muted); text-align: right; overflow: hidden; white-space: pre; line-height: 1.5; }
-textarea#tpl-editor { flex: 1; padding: 1rem; background: var(--bg); color: var(--fg); border: none; outline: none; resize: none; line-height: 1.5; font-family: var(--font); font-size: 14px; tab-size: 2; white-space: pre; overflow: auto; }
-.empty { flex: 1; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 1.2rem; }
-.error-box { flex: 1; display: flex; align-items: center; justify-content: center; color: var(--danger); padding: 1rem; text-align: center; }
+.line-numbers { width: 3.5rem; padding: var(--a4-space-4) var(--a4-space-2); background: var(--a4-card); color: var(--a4-muted); text-align: right; overflow: hidden; white-space: pre; line-height: var(--a4-leading); }
+textarea#tpl-editor { flex: 1; padding: var(--a4-space-4); background: var(--a4-field); color: var(--a4-ink); border: none; outline: none; resize: none; line-height: var(--a4-leading); font-family: var(--a4-mono); font-size: var(--a4-text-m); tab-size: 2; white-space: pre; overflow: auto; }
+.empty { flex: 1; display: flex; align-items: center; justify-content: center; color: var(--a4-muted); font-size: var(--a4-text-l); }
+.error-box { flex: 1; display: flex; align-items: center; justify-content: center; color: var(--a4-bad); padding: var(--a4-space-4); text-align: center; }
 
 .explayouts-te-header {
     display: flex;
     align-items: center;
-    gap: var(--a4-space-3, 12px);
-    padding: var(--a4-space-2, 8px) var(--a4-space-4, 16px);
-    background: var(--a4-card, #fff);
-    border-bottom: 1px solid var(--a4-line, #d0d7de);
-    font-family: var(--a4-font, system-ui, sans-serif);
-    font-size: var(--a4-text-m, 14px);
+    gap: var(--a4-space-3);
+    padding: var(--a4-space-2) var(--a4-space-4);
+    background: var(--a4-card);
+    border-bottom: 1px solid var(--a4-line);
+    font-family: var(--a4-font);
+    font-size: var(--a4-text-m);
 }
-.explayouts-te-header a { color: var(--a4-accent-text, #c2410c); }
-.explayouts-te-header .explayouts-te-title { font-weight: 600; color: var(--a4-ink, #1f2328); }
-.btn:focus-visible, .flat-list button:focus-visible, .explayouts-te-header a:focus-visible, input:focus-visible {
-    outline: 2px solid var(--a4-ring, #c2410c);
+.explayouts-te-header a { color: var(--a4-accent-text); }
+.explayouts-te-header .explayouts-te-title { font-weight: 600; color: var(--a4-ink); }
+.btn:focus-visible, .flat-list button:focus-visible, .explayouts-te-header a:focus-visible, input:focus-visible, textarea#tpl-editor:focus-visible {
+    outline: 2px solid var(--a4-ring);
     outline-offset: 2px;
 }
