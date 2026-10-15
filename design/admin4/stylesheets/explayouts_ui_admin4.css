@@ -22,6 +22,7 @@
 .explayouts-a4 .explayouts-a4-type-icon svg rect,
 .explayouts-a4 .explayouts-a4-type-icon svg path {
     stroke: currentColor;
+    fill: var(--a4-soft);
 }
 .explayouts-a4 .explayouts-a4-inline-form,
 .explayouts-a4 .explayouts-a4-more form {
@@ -229,4 +230,12 @@
 #page.ezexplayoutsuinavigationpart #leftmenu-design {
     background-color: var(--a4-card-bg);
     box-shadow: 0 0 0 1px var(--a4-card-edge), var(--a4-card-shadow);
+}
+
+/* A location target names its location, or "Choose a location" until one is chosen: a link-like control that
+   opens the content browser (rule_list_script.tpl). */
+.explayouts-a4 .nl-rule-body .target-value-display {
+    color: var(--a4-accent-text);
+    text-decoration: underline;
+    cursor: pointer;
 }

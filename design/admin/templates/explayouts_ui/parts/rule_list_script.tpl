@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var html = '';
         if (isTargetLocation(type)) {
             html = '<input type="hidden" name="TargetValue[]" value="' + (value || '') + '" />' +
-                '<span class="target-value-display">' + (display || '') + '</span>';
+                '<span class="target-value-display">' + (display || nglI18n.content_browser) + '</span>';
         } else {
             html = '<input type="text" name="TargetValue[]" value="' + (value || '') + '" size="40" />';
         }
