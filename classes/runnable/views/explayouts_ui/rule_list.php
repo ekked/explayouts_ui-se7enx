@@ -18,6 +18,7 @@ class RuleList extends \Exponential\Runnable\ModuleView
         unset( $__name );
 
         require_once( 'extension/explayouts_core/classes/explayoutscoreruleservice.php' );
+        require_once( 'extension/explayouts_ui/classes/explayoutsuiruleinput.php' );
         \eZDebug::updateSettings( array( 'debug-enabled' => false ) );
         $http = \eZHTTPTool::instance();
         $module = $Params['Module'];
@@ -50,29 +51,15 @@ class RuleList extends \Exponential\Runnable\ModuleView
             {
                 $ruleId = (int)$rule->attribute( 'id' );
 
-                $targetTypes = $http->hasPostVariable( 'TargetType' ) ? $http->postVariable( 'TargetType' ) : array();
-                $targetValues = $http->hasPostVariable( 'TargetValue' ) ? $http->postVariable( 'TargetValue' ) : array();
-                $targets = array();
-                for ( $i = 0; $i < count( $targetTypes ); $i++ )
-                {
-                    $type = trim( $targetTypes[$i] );
-                    $value = isset( $targetValues[$i] ) ? trim( $targetValues[$i] ) : '';
-                    if ( $type === '' ) continue;
-                    $targets[] = array( 'type' => $type, 'value' => $value );
-                }
+                // only the types the resolver knows are saved; the rest is reported
+                $rejected = array();
+                $targets = \expLayoutsUiRuleInput::targets( $http->hasPostVariable( 'TargetType' ) ? $http->postVariable( 'TargetType' ) : array(),
+                                                             $http->hasPostVariable( 'TargetValue' ) ? $http->postVariable( 'TargetValue' ) : array(), $rejected );
                 $ruleService->setTargets( $ruleId, $targets );
-
-                $conditionTypes = $http->hasPostVariable( 'ConditionType' ) ? $http->postVariable( 'ConditionType' ) : array();
-                $conditionValues = $http->hasPostVariable( 'ConditionValue' ) ? $http->postVariable( 'ConditionValue' ) : array();
-                $conditions = array();
-                for ( $i = 0; $i < count( $conditionTypes ); $i++ )
-                {
-                    $type = trim( $conditionTypes[$i] );
-                    $value = isset( $conditionValues[$i] ) ? trim( $conditionValues[$i] ) : '';
-                    if ( $type === '' ) continue;
-                    $conditions[] = array( 'type' => $type, 'value' => $value );
-                }
+                $conditions = \expLayoutsUiRuleInput::conditions( $http->hasPostVariable( 'ConditionType' ) ? $http->postVariable( 'ConditionType' ) : array(),
+                                                                   $http->hasPostVariable( 'ConditionValue' ) ? $http->postVariable( 'ConditionValue' ) : array(), $rejected );
                 $ruleService->setConditions( $ruleId, $conditions );
+                $error = \expLayoutsUiRuleInput::rejectedMessage( $rejected );
 
                 $message = \ezpI18n::tr( 'design/admin/explayouts_ui/rule_list', 'Mapping added.' );
             }
@@ -100,29 +87,15 @@ class RuleList extends \Exponential\Runnable\ModuleView
                     'enabled' => $enabled,
                 ) );
 
-                $targetTypes = $http->hasPostVariable( 'TargetType' ) ? $http->postVariable( 'TargetType' ) : array();
-                $targetValues = $http->hasPostVariable( 'TargetValue' ) ? $http->postVariable( 'TargetValue' ) : array();
-                $targets = array();
-                for ( $i = 0; $i < count( $targetTypes ); $i++ )
-                {
-                    $type = trim( $targetTypes[$i] );
-                    $value = isset( $targetValues[$i] ) ? trim( $targetValues[$i] ) : '';
-                    if ( $type === '' ) continue;
-                    $targets[] = array( 'type' => $type, 'value' => $value );
-                }
+                // only the types the resolver knows are saved; the rest is reported
+                $rejected = array();
+                $targets = \expLayoutsUiRuleInput::targets( $http->hasPostVariable( 'TargetType' ) ? $http->postVariable( 'TargetType' ) : array(),
+                                                             $http->hasPostVariable( 'TargetValue' ) ? $http->postVariable( 'TargetValue' ) : array(), $rejected );
                 $ruleService->setTargets( $ruleId, $targets );
-
-                $conditionTypes = $http->hasPostVariable( 'ConditionType' ) ? $http->postVariable( 'ConditionType' ) : array();
-                $conditionValues = $http->hasPostVariable( 'ConditionValue' ) ? $http->postVariable( 'ConditionValue' ) : array();
-                $conditions = array();
-                for ( $i = 0; $i < count( $conditionTypes ); $i++ )
-                {
-                    $type = trim( $conditionTypes[$i] );
-                    $value = isset( $conditionValues[$i] ) ? trim( $conditionValues[$i] ) : '';
-                    if ( $type === '' ) continue;
-                    $conditions[] = array( 'type' => $type, 'value' => $value );
-                }
+                $conditions = \expLayoutsUiRuleInput::conditions( $http->hasPostVariable( 'ConditionType' ) ? $http->postVariable( 'ConditionType' ) : array(),
+                                                                   $http->hasPostVariable( 'ConditionValue' ) ? $http->postVariable( 'ConditionValue' ) : array(), $rejected );
                 $ruleService->setConditions( $ruleId, $conditions );
+                $error = \expLayoutsUiRuleInput::rejectedMessage( $rejected );
 
                 $message = \ezpI18n::tr( 'design/admin/explayouts_ui/rule_list', 'Mapping saved.' );
             }
@@ -256,14 +229,8 @@ class RuleList extends \Exponential\Runnable\ModuleView
             $autoOpenRuleId = (int)$http->getVariable( 'RuleID' );
         }
 
-        $targetTypes = array( 'path', 'path_prefix', 'path_regex', 'node', 'subtree', 'route' );
-        $conditionTypes = array(
-            'siteaccess',
-            'class',
-            'query_parameter',
-            'route_parameter',
-            'time',
-        );
+        $targetTypes = \expLayoutsUiRuleInput::TARGET_TYPES;
+        $conditionTypes = \expLayoutsUiRuleInput::CONDITION_TYPES;
 
         $ruleData = array();
         foreach ( $rules as $rule )

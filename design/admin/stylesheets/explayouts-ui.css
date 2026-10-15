@@ -224,3 +224,13 @@ html:has(#page.ezexplayoutsuinavigationpart)::-webkit-scrollbar, html:has(#page.
     cursor: pointer;
 }
 .ngl-content-browser-dialog-close:focus-visible { outline: 2px solid var(--a4-ring, #c2410c); outline-offset: 2px; }
+
+/* the rule panel's buttons that look like links (Delete, Close) */
+.nl-rule button.remove-setting,
+.nl-rule button.js-toggle-body {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: inherit;
+    cursor: pointer;
+}

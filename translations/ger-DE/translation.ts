@@ -684,6 +684,14 @@
         <source>Add condition</source>
         <translation>Bedingung hinzufügen</translation>
     </message>
+    <message>
+        <source>Target type</source>
+        <translation>Zieltyp</translation>
+    </message>
+    <message>
+        <source>Condition type</source>
+        <translation>Bedingungstyp</translation>
+    </message>
 </context>
 <context>
     <name>design/admin/explayouts_ui/rule_edit</name>
@@ -945,6 +953,10 @@
     <message>
         <source>More actions</source>
         <translation>Weitere Aktionen</translation>
+    </message>
+    <message>
+        <source>Unknown target or condition types were not saved: %types</source>
+        <translation>Unbekannte Ziel- oder Bedingungstypen wurden nicht gespeichert: %types</translation>
     </message>
 </context>
 <context>

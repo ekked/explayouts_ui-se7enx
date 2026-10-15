@@ -91,6 +91,10 @@
     margin-left: auto;
 }
 .explayouts-a4 .explayouts-a4-close {
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
     text-decoration: none;
     color: var(--a4-muted);
     font-size: var(--a4-text-xl);

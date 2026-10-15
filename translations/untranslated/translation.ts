@@ -684,6 +684,14 @@
         <source>Add condition</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Target type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Condition type</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>design/admin/explayouts_ui/rule_edit</name>
@@ -944,6 +952,10 @@
     </message>
     <message>
         <source>More actions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown target or condition types were not saved: %types</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

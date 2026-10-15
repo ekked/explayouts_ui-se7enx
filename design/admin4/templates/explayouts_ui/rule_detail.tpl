@@ -9,11 +9,11 @@
                     <h2 class="a4-h2">{if eq($ruleId,'new')}{'New mapping'|i18n( 'design/admin/explayouts_ui/rule_detail' )}{else}{'Mapping details'|i18n( 'design/admin/explayouts_ui/rule_detail' )}{/if}</h2>
                     {if $canEdit}
                         <div class="nl-rule-actions a4-actions">
-                            <a href="#" class="a4-btn js-rule-edit" data-action="discard">{'Cancel'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</a>
+                            <button type="button" class="a4-btn js-rule-edit" data-action="discard">{'Cancel'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</button>
                             <button type="submit" name="{if eq($ruleId,'new')}AddRule{else}SaveRule{/if}" class="a4-btn a4-btn-primary js-rule-edit" data-action="publish">{if eq($ruleId,'new')}{'Add mapping'|i18n( 'design/admin/explayouts_ui/rule_detail' )}{else}{'Save changes'|i18n( 'design/admin/explayouts_ui/rule_detail' )}{/if}</button>
                         </div>
                     {/if}
-                    <a href="#" class="js-toggle-body explayouts-a4-close" title="{'Close'|i18n( 'design/admin/explayouts_ui/rule_list' )}"><span aria-hidden="true">&times;</span><span class="a4-sr-only">{'Close'|i18n( 'design/admin/explayouts_ui/rule_list' )}</span></a>
+                    <button type="button" class="js-toggle-body explayouts-a4-close" title="{'Close'|i18n( 'design/admin/explayouts_ui/rule_list' )}"><span aria-hidden="true">&times;</span><span class="a4-sr-only">{'Close'|i18n( 'design/admin/explayouts_ui/rule_list' )}</span></button>
                 </div>
 
                 <div class="col-xs12 layout-body">
@@ -94,7 +94,7 @@
                             {if count($targets)|gt(0)}
                                 {if ne($targetType,'null')}
                                     <div class="sidemenu-subtitle">
-                                        <h3 class="a4-h3">{'Applied to %targettypelabel:'|i18n( 'design/admin/explayouts_ui/rule_detail',, hash( '%targettypelabel', $targetTypeLabel ) )}</h3>
+                                        <h3 class="a4-h3">{'Applied to %targettypelabel:'|i18n( 'design/admin/explayouts_ui/rule_detail',, hash( '%targettypelabel', $targetTypeLabel|wash ) )}</h3>
                                         <p class="note a4-help">{'NOTE: <strong>Any</strong> target can be met.'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</p>
                                     </div>
                                 {else}
@@ -117,7 +117,7 @@
                                     <li class="nl-rule-setting-item">
                                         <input type="hidden" name="TargetType[]" value="{$t.target_type|wash}" />
                                         {if or(eq($t.target_type,'node'),eq($t.target_type,'subtree'))}
-                                            <span class="settings-value editable-value js-setting-edit" data-setting-type="target" data-setting-id=""><strong>{$targetItemLabel}:</strong>
+                                            <span class="settings-value editable-value js-setting-edit" data-setting-type="target" data-setting-id=""><strong>{$targetItemLabel|wash}:</strong>
                                                 <input type="hidden" name="TargetValue[]" value="{$t.target_value|wash}" />
                                                 <span class="target-value-display">{$targetDisplayValue|wash}</span>
                                             </span>
@@ -125,9 +125,9 @@
                                                 <a href={concat('/content/view/full/',$t.target_value)|ezurl} target="_blank" class="a4-btn a4-btn-small a4-btn-ghost js-view-target">{'View in CMS'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</a>
                                             {/if}
                                         {else}
-                                            <span class="settings-value editable-value js-setting-edit" data-setting-type="target" data-setting-id=""><strong>{$targetItemLabel}:</strong> <input class="a4-input" type="text" name="TargetValue[]" value="{$t.target_value|wash}" size="40" title="{$targetDisplayValue|wash}" /></span>
+                                            <span class="settings-value editable-value js-setting-edit" data-setting-type="target" data-setting-id=""><strong>{$targetItemLabel|wash}:</strong> <input class="a4-input" type="text" name="TargetValue[]" value="{$t.target_value|wash}" size="40" title="{$targetDisplayValue|wash}" aria-label="{$targetItemLabel|wash}" /></span>
                                         {/if}
-                                        <a href="#" class="remove-setting js-remove-row a4-btn a4-btn-small a4-btn-outline-danger">{'Delete'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</a>
+                                        <button type="button" class="remove-setting js-remove-row a4-btn a4-btn-small a4-btn-outline-danger">{'Delete'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</button>
                                     </li>
                                     {undef $targetItemLabel}
                                     {undef $targetDisplayValue}
@@ -138,6 +138,7 @@
                                 <div class="settings-action">
                                     <div class="settings-action-add a4-row">
                                         {if or(eq($targetType,'null'),count($targets)|eq(0))}
+                                            <label class="a4-sr-only" for="target-type-{$ruleId|wash}">{'Target type'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</label>
                                             <select class="nl-select a4-input is-auto js-target-type" id="target-type-{$ruleId|wash}">
                                                 {foreach $targetTypes as $tt}
                                                     {def $targetOptionLabel = cond(eq($tt,'node'),'Location'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($tt,'subtree'),'Subtree'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($tt,'path'),'Path'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($tt,'path_prefix'),'Path prefix'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($tt,'path_regex'),'Path regex'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($tt,'route'),'Route'|i18n( 'design/admin/explayouts_ui/rule_detail' ),$tt))))))}
@@ -146,9 +147,9 @@
                                                 {/foreach}
                                             </select>
                                         {/if}
-                                        <a href="#" class="a4-btn a4-btn-small js-add-target" data-rule-id="{$ruleId|wash}" {if and(ne($targetType,'null'),count($targets)|gt(0))}data-target-type="{$targetType|wash}"{/if}>
+                                        <button type="button" class="a4-btn a4-btn-small js-add-target" data-rule-id="{$ruleId|wash}" {if and(ne($targetType,'null'),count($targets)|gt(0))}data-target-type="{$targetType|wash}"{/if}>
                                             {'Add target'|i18n( 'design/admin/explayouts_ui/rule_detail' )}
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             {/if}
@@ -171,7 +172,7 @@
                                     {def $conditionDisplayValue = $c.displayValue}
                                     <li class="nl-rule-setting-item">
                                         <input type="hidden" name="ConditionType[]" value="{$conditionDisplayType|wash}" />
-                                        <span class="settings-value editable-value js-setting-edit" data-setting-type="condition" data-setting-id=""><strong>{$conditionItemLabel}:</strong>
+                                        <span class="settings-value editable-value js-setting-edit" data-setting-type="condition" data-setting-id=""><strong>{$conditionItemLabel|wash}:</strong>
                                             {if or(eq($conditionDisplayType,'class'),eq($conditionDisplayType,'siteaccess'))}
                                                 {def $conditionItems = $c.displayItems}
                                                 <input type="hidden" name="ConditionValue[]" value="{$c.condition_value|wash}" />
@@ -182,10 +183,10 @@
                                                 </ul>
                                                 {undef $conditionItems}
                                             {else}
-                                                <input class="a4-input" type="text" name="ConditionValue[]" value="{$c.condition_value|wash}" size="50" title="{$conditionDisplayValue|wash}" />
+                                                <input class="a4-input" type="text" name="ConditionValue[]" value="{$c.condition_value|wash}" size="50" title="{$conditionDisplayValue|wash}" aria-label="{$conditionItemLabel|wash}" />
                                             {/if}
                                         </span>
-                                        <a href="#" class="remove-setting js-remove-row a4-btn a4-btn-small a4-btn-outline-danger">{'Delete'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</a>
+                                        <button type="button" class="remove-setting js-remove-row a4-btn a4-btn-small a4-btn-outline-danger">{'Delete'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</button>
                                     </li>
                                     {undef $conditionDisplayType}
                                     {undef $conditionItemLabel}
@@ -196,6 +197,7 @@
                             {if $canEdit}
                                 <div class="settings-action">
                                     <div class="settings-action-add a4-row">
+                                        <label class="a4-sr-only" for="condition-type-{$ruleId|wash}">{'Condition type'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</label>
                                         <select class="nl-select a4-input is-auto js-condition-type" id="condition-type-{$ruleId|wash}">
                                             {foreach $conditionTypes as $ct}
                                                 {def $conditionOptionType = cond(eq($ct,'content_type'),'class',cond(eq($ct,'siteaccess'),'siteaccess',$ct))}
@@ -205,9 +207,9 @@
                                                 {undef $conditionOptionLabel}
                                             {/foreach}
                                         </select>
-                                        <a href="#" class="a4-btn a4-btn-small js-add-condition" data-rule-id="{$ruleId|wash}">
+                                        <button type="button" class="a4-btn a4-btn-small js-add-condition" data-rule-id="{$ruleId|wash}">
                                             {'Add condition'|i18n( 'design/admin/explayouts_ui/rule_detail' )}
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             {/if}

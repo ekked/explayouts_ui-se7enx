@@ -62,8 +62,8 @@
                 <dt>{'Targets'|i18n( 'design/admin/explayouts_ui/rule_list' )}</dt>
                 <dd>
                 {if eq( $targetType, 'null' )}{'All'|i18n( 'design/admin/explayouts_ui/rule_list' )}
-                {elseif count( $targets )|eq( 1 )}{$targetLabel}: <code class="a4-code">{$targets[0].displayValue|wash}</code>
-                {else}{$targetLabel} ({count( $targets )}){/if}
+                {elseif count( $targets )|eq( 1 )}{$targetLabel|wash}: <code class="a4-code">{$targets[0].displayValue|wash}</code>
+                {else}{$targetLabel|wash} ({count( $targets )}){/if}
                 </dd>
                 <dt>{'Conditions'|i18n( 'design/admin/explayouts_ui/rule_list' )}</dt>
                 <dd>
@@ -73,10 +73,10 @@
                 </dd>
             </dl>
             <div class="a4-actions">
-                <a href="#" class="a4-btn a4-btn-small js-toggle-body">{'Details'|i18n( 'design/admin/explayouts_ui/rule_list' )}</a>
+                <button type="button" class="a4-btn a4-btn-small js-toggle-body">{'Details'|i18n( 'design/admin/explayouts_ui/rule_list' )}</button>
                 {if $layout}<a class="a4-btn a4-btn-small" href={concat( 'explayouts_ui_api/app#layout/', $rule.layout_id )|ezurl}>{'Edit layout'|i18n( 'design/admin/explayouts_ui/rule_list' )}</a>{/if}
                 {if $canEdit}
-                <a href="#" class="a4-btn a4-btn-small a4-btn-ghost js-link-layout">{if $layout}{'Link other layout'|i18n( 'design/admin/explayouts_ui/rule_list' )}{else}{'Link layout'|i18n( 'design/admin/explayouts_ui/rule_list' )}{/if}</a>
+                <button type="button" class="a4-btn a4-btn-small a4-btn-ghost js-link-layout">{if $layout}{'Link other layout'|i18n( 'design/admin/explayouts_ui/rule_list' )}{else}{'Link layout'|i18n( 'design/admin/explayouts_ui/rule_list' )}{/if}</button>
                 <details class="a4-fold explayouts-a4-more">
                     <summary>{'More actions'|i18n( 'design/admin/explayouts_ui/rule_list' )}</summary>
                     <div class="a4-fold-body a4-actions">

@@ -1,6 +1,7 @@
 {* The script of the mappings page (explayouts_ui/rule_list): its settings and texts, then the behaviour of the
    rule list and of the rule panels (rule_detail.tpl). One file for every admin design: design/admin's and
-   design/admin4's rule_list.tpl include it. Markup it writes carries no inline style. *}
+   design/admin4's rule_list.tpl include it. Markup it writes carries no inline style, and it is built with DOM
+   methods (textContent, setAttribute), never from strings: values and names come from the rules and the classes. *}
 <script>
 var nglTargetTypes = [{foreach $targetTypes as $tt}'{$tt|wash}'{delimiter},{/delimiter}{/foreach}];
 var nglConditionTypes = [{foreach $conditionTypes as $ct}'{$ct|wash}'{delimiter},{/delimiter}{/foreach}];
@@ -27,12 +28,32 @@ var nglI18n = {ldelim}
     select_siteaccesses: '{'Select siteaccesses'|i18n( 'design/admin/explayouts_ui/rule_list' )|wash( javascript )}',
     content_browser: '{'Choose a location'|i18n( 'design/admin/explayouts_ui/rule_list' )|wash( javascript )}',
     close: '{'Close'|i18n( 'design/admin/explayouts_ui/rule_list' )|wash( javascript )}',
-    remove: '{'Delete'|i18n( 'design/admin/explayouts_ui/rule_detail' )|wash( javascript )}'
+    remove: '{'Delete'|i18n( 'design/admin/explayouts_ui/rule_detail' )|wash( javascript )}',
+    target_type: '{'Target type'|i18n( 'design/admin/explayouts_ui/rule_detail' )|wash( javascript )}',
+    condition_type: '{'Condition type'|i18n( 'design/admin/explayouts_ui/rule_detail' )|wash( javascript )}'
 {rdelim};
 </script>
 
 {literal}<script>
 document.addEventListener('DOMContentLoaded', function() {
+    // el('input', { type: 'hidden', name: 'x' }, [ 'text', node ]): attributes through setAttribute, text as text nodes
+    function el(tag, attrs, children) {
+        var node = document.createElement(tag);
+        for (var key in (attrs || {})) {
+            if (!attrs.hasOwnProperty(key) || attrs[key] === null || attrs[key] === undefined || attrs[key] === false) continue;
+            node.setAttribute(key, attrs[key] === true ? '' : String(attrs[key]));
+        }
+        (children || []).forEach(function(child) {
+            if (child === null || child === undefined) return;
+            node.appendChild(typeof child === 'string' ? document.createTextNode(child) : child);
+        });
+        return node;
+    }
+
+    function removeButton() {
+        return el('button', { type: 'button', 'class': 'remove-setting js-remove-row a4-btn a4-btn-small a4-btn-outline-danger' }, [nglI18n.remove]);
+    }
+
     function toggleRule(id) {
         var rule = document.getElementById('rule-' + id);
         if (!rule) return;
@@ -107,15 +128,16 @@ document.addEventListener('DOMContentLoaded', function() {
         return ['node', 'subtree'].indexOf(type) !== -1;
     }
 
+    /** The value field of a target: a location (hidden, chosen in the content browser) or a text field */
     function buildTargetValueControl(type, value, display) {
-        var html = '';
         if (isTargetLocation(type)) {
-            html = '<input type="hidden" name="TargetValue[]" value="' + (value || '') + '" />' +
-                '<span class="target-value-display">' + (display || nglI18n.content_browser) + '</span>';
-        } else {
-            html = '<input type="text" name="TargetValue[]" value="' + (value || '') + '" size="40" />';
+            return [
+                el('input', { type: 'hidden', name: 'TargetValue[]', value: value || '' }),
+                el('span', { 'class': 'target-value-display' }, [display || nglI18n.content_browser])
+            ];
         }
-        return html;
+        return [el('input', { type: 'text', name: 'TargetValue[]', value: value || '', size: 40, 'class': 'a4-input',
+                              'aria-label': targetTypeLabels[type] || type })];
     }
 
     function getTargetViewLink(nodeId) {
@@ -133,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (typeControl && typeControl.nextSibling) li.insertBefore(holder, typeControl.nextSibling);
             else li.appendChild(holder);
         }
-        holder.innerHTML = buildTargetValueControl(type, value, display);
+        holder.replaceChildren.apply(holder, buildTargetValueControl(type, value, display));
 
         var viewLink = li.querySelector('.js-view-target');
         if (!viewLink) {
@@ -155,6 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    /** The value field of a condition: a list (classes, siteaccesses, edited as a multiple select) or a text field */
     function buildConditionValueControl(type, value) {
         var isClass = (type === 'class' || type === 'content_type');
         var isSiteaccess = (type === 'siteaccess');
@@ -164,10 +187,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 var parsed = JSON.parse(value || '');
                 if (Array.isArray(parsed)) items = parsed;
             } catch (err) {}
-            return '<input type="hidden" name="ConditionValue[]" value="' + (value || '') + '" />' +
-                '<ul class="condition-items">' + items.map(function(it) { return '<li>' + it + '</li>'; }).join('') + '</ul>';
+            return [
+                el('input', { type: 'hidden', name: 'ConditionValue[]', value: value || '' }),
+                el('ul', { 'class': 'condition-items' }, items.map(function(it) { return el('li', {}, [String(it)]); }))
+            ];
         }
-        return '<input type="text" name="ConditionValue[]" value="' + (value || '') + '" size="50" />';
+        return [el('input', { type: 'text', name: 'ConditionValue[]', value: value || '', size: 50, 'class': 'a4-input',
+                              'aria-label': buildConditionLabel(type) })];
+    }
+
+    /** A type select of a new row: the known types, the given one selected */
+    function buildTypeSelect(name, className, types, labels, selectedType, ariaLabel) {
+        return el('select', { name: name, 'class': 'nl-select a4-input is-auto ' + className, 'aria-label': ariaLabel },
+                  types.map(function(t) {
+                      return el('option', { value: t, selected: t === selectedType }, [labels[t] || t]);
+                  }));
     }
 
     function buildConditionLabel(type) {
@@ -183,25 +217,24 @@ document.addEventListener('DOMContentLoaded', function() {
             var fixedType = this.getAttribute('data-target-type');
             var type = fixedType || (select ? select.value : '');
             if (!list || !type) return;
-            var typeControl = '';
-            var nglTargetTypes = window.nglTargetTypes || [];
+            var typeControl;
             if (fixedType) {
-                typeControl = '<input type="hidden" name="TargetType[]" value="' + fixedType + '" />' +
-                    '<span class="target-type-label"><strong>' + (targetTypeLabels[fixedType] || fixedType) + ':</strong></span>';
+                typeControl = [
+                    el('input', { type: 'hidden', name: 'TargetType[]', value: fixedType }),
+                    el('span', { 'class': 'target-type-label' }, [el('strong', {}, [(targetTypeLabels[fixedType] || fixedType) + ':'])])
+                ];
             } else {
-                var options = '';
-                for (var i = 0; i < nglTargetTypes.length; i++) {
-                    var selected = (nglTargetTypes[i] === type) ? ' selected="selected"' : '';
-                    options += '<option value="' + nglTargetTypes[i] + '"' + selected + '>' + (targetTypeLabels[nglTargetTypes[i]] || nglTargetTypes[i]) + '</option>';
-                }
-                typeControl = '<select name="TargetType[]" class="nl-select js-target-type-select">' + options + '</select>';
+                typeControl = [buildTypeSelect('TargetType[]', 'js-target-type-select', window.nglTargetTypes || [], targetTypeLabels, type, nglI18n.target_type)];
             }
-            var li = document.createElement('li');
-            li.className = 'nl-rule-setting-item';
-            li.innerHTML = typeControl + ' ' +
-                '<span class="target-value-holder settings-value editable-value js-setting-edit" data-setting-type="target">' + buildTargetValueControl(type, '', '') + '</span>' +
-                ' <a href="#" target="_blank" class="nl-btn js-view-target" hidden>' + nglI18n.view_in_cms + '</a>' +
-                ' <a href="#" class="remove-setting js-remove-row">' + nglI18n.remove + '</a>';
+            var li = el('li', { 'class': 'nl-rule-setting-item' }, typeControl.concat([
+                ' ',
+                el('span', { 'class': 'target-value-holder settings-value editable-value js-setting-edit', 'data-setting-type': 'target' },
+                   buildTargetValueControl(type, '', '')),
+                ' ',
+                el('a', { href: '#', target: '_blank', 'class': 'nl-btn js-view-target', hidden: true }, [nglI18n.view_in_cms]),
+                ' ',
+                removeButton()
+            ]));
             list.appendChild(li);
 
             if (!fixedType) {
@@ -223,19 +256,15 @@ document.addEventListener('DOMContentLoaded', function() {
             var select = document.getElementById('condition-type-' + id);
             var type = select ? select.value : '';
             if (!list || !type) return;
-            var nglConditionTypes = window.nglConditionTypes || [];
-            var options = '';
-            for (var i = 0; i < nglConditionTypes.length; i++) {
-                var selected = (nglConditionTypes[i] === type) ? ' selected="selected"' : '';
-                options += '<option value="' + nglConditionTypes[i] + '"' + selected + '>' + (conditionTypeLabels[nglConditionTypes[i]] || nglConditionTypes[i]) + '</option>';
-            }
             var isMulti = (type === 'class' || type === 'content_type' || type === 'siteaccess');
-            var li = document.createElement('li');
-            li.className = 'nl-rule-setting-item';
-            li.innerHTML = '<select name="ConditionType[]" class="nl-select js-condition-type-select">' + options + '</select> ' +
-                '<span class="settings-value editable-value js-setting-edit" data-setting-type="condition" data-setting-id=""><strong>' + buildConditionLabel(type) + ':</strong>' +
-                buildConditionValueControl(type, (type === 'class' || type === 'content_type' || type === 'siteaccess') ? '[]' : '') + '</span>' +
-                ' <a href="#" class="remove-setting js-remove-row">' + nglI18n.remove + '</a>';
+            var li = el('li', { 'class': 'nl-rule-setting-item' }, [
+                buildTypeSelect('ConditionType[]', 'js-condition-type-select', window.nglConditionTypes || [], conditionTypeLabels, type, nglI18n.condition_type),
+                ' ',
+                el('span', { 'class': 'settings-value editable-value js-setting-edit', 'data-setting-type': 'condition', 'data-setting-id': '' },
+                   [el('strong', {}, [buildConditionLabel(type) + ':'])].concat(buildConditionValueControl(type, isMulti ? '[]' : ''))),
+                ' ',
+                removeButton()
+            ]);
             list.appendChild(li);
 
             var typeSelect = li.querySelector('.js-condition-type-select');
@@ -243,8 +272,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 typeSelect.addEventListener('change', function() {
                     var valueSpan = li.querySelector('.settings-value');
                     if (valueSpan) {
-                        valueSpan.innerHTML = '<strong>' + buildConditionLabel(this.value) + ':</strong>' +
-                            buildConditionValueControl(this.value, (this.value === 'class' || this.value === 'content_type' || this.value === 'siteaccess') ? '[]' : '');
+                        var multi = (this.value === 'class' || this.value === 'content_type' || this.value === 'siteaccess');
+                        valueSpan.replaceChildren.apply(valueSpan, [el('strong', {}, [buildConditionLabel(this.value) + ':'])].concat(buildConditionValueControl(this.value, multi ? '[]' : '')));
                     }
                 });
             }
@@ -252,13 +281,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.addEventListener('click', function(e) {
-        if (e.target && e.target.classList.contains('js-remove-row')) {
+        var remove = e.target && e.target.closest ? e.target.closest('.js-remove-row') : null;
+        if (remove) {
             e.preventDefault();
-            var item = e.target.closest ? e.target.closest('li') : null;
-            if (!item) {
-                item = e.target;
-                while (item && item.tagName !== 'LI') item = item.parentNode;
-            }
+            var item = remove.closest('li');
             if (item && item.parentNode) item.parentNode.removeChild(item);
         }
     });
@@ -363,16 +389,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function buildMultiSelect(name, options, selected, placeholder) {
-        var html = '<select multiple class="nl-select condition-edit-select" data-hidden-name="' + name + '"';
-        if (placeholder) html += ' title="' + placeholder + '"';
-        html += '>';
+        var opts = [];
         for (var key in options) {
             if (!options.hasOwnProperty(key)) continue;
-            var isSelected = selected.indexOf(key) !== -1;
-            html += '<option value="' + key + '"' + (isSelected ? ' selected="selected"' : '') + '>' + options[key] + '</option>';
+            opts.push(el('option', { value: key, selected: selected.indexOf(key) !== -1 }, [String(options[key])]));
         }
-        html += '</select>';
-        return html;
+        return el('select', { multiple: true, 'class': 'nl-select condition-edit-select', 'data-hidden-name': name,
+                              title: placeholder || null, 'aria-label': placeholder || null }, opts);
     }
 
     function updateConditionHiddenFromSelect(select) {
@@ -438,7 +461,7 @@ document.addEventListener('DOMContentLoaded', function() {
         function renderConditionChips(items) {
             var list = li.querySelector('.condition-items');
             if (!list) return;
-            list.innerHTML = '';
+            list.replaceChildren();
             for (var i = 0; i < items.length; i++) {
                 var name = items[i];
                 if (isClass && window.nglContentClasses && window.nglContentClasses[items[i]]) {
@@ -461,12 +484,12 @@ document.addEventListener('DOMContentLoaded', function() {
             var wrapper = document.createElement('span');
             wrapper.className = 'condition-edit-controls';
             if (isClass) {
-                wrapper.innerHTML = buildMultiSelect('ConditionValue[]', window.nglContentClasses || {}, current, nglI18n.select_classes);
+                wrapper.appendChild(buildMultiSelect('ConditionValue[]', window.nglContentClasses || {}, current, nglI18n.select_classes));
             } else if (isSiteaccess) {
                 var options = {};
                 var saList = window.nglSiteAccessList || [];
                 for (var k = 0; k < saList.length; k++) options[saList[k]] = saList[k];
-                wrapper.innerHTML = buildMultiSelect('ConditionValue[]', options, current, nglI18n.select_siteaccesses);
+                wrapper.appendChild(buildMultiSelect('ConditionValue[]', options, current, nglI18n.select_siteaccesses));
             }
             if (hidden) hidden.parentNode.insertBefore(wrapper, hidden.nextSibling);
             else span.appendChild(wrapper);
