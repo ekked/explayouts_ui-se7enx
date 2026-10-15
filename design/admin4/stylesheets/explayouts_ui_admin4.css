@@ -58,7 +58,8 @@
     display: block;
     position: fixed;
     inset: 0;
-    z-index: 1000;
+    /* above admin4's sticky header */
+    z-index: 100000;
     background: var(--a4-overlay);
 }
 .explayouts-a4 .nl-rule-body {
@@ -220,4 +221,12 @@
 .ngl-content-browser-dialog-close:focus-visible {
     outline: 2px solid var(--a4-ring);
     outline-offset: 2px;
+}
+
+/* The left column is admin4's left menu now (parts/explayouts_ui/menu.tpl). admin4.css still paints it navy on
+   these pages for design/admin's dark menu ("Compatibility: extensions that paint a column themselves"); this
+   gives it back admin4's card. Loaded after admin4.css, same selector. */
+#page.ezexplayoutsuinavigationpart #leftmenu-design {
+    background-color: var(--a4-card-bg);
+    box-shadow: 0 0 0 1px var(--a4-card-edge), var(--a4-card-shadow);
 }
