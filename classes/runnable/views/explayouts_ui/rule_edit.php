@@ -27,6 +27,7 @@ class RuleEdit extends \Exponential\Runnable\ModuleView
             return $this->viewResult( isset( $Result ) ? $Result : null,  $module->handleError( \eZError::KERNEL_ACCESS_DENIED, 'kernel' ) );
         }
 
+        require_once( 'extension/explayouts_ui/classes/explayoutsuiruleinput.php' );
         $ruleService = new \expLayoutsCoreRuleService();
 
         $ruleId = isset( $Params['RuleID'] ) ? (int)$Params['RuleID'] : 0;
@@ -67,29 +68,15 @@ class RuleEdit extends \Exponential\Runnable\ModuleView
                 'enabled' => $enabled,
             ) );
 
-            $targetTypes = $http->hasPostVariable( 'TargetType' ) ? $http->postVariable( 'TargetType' ) : array();
-            $targetValues = $http->hasPostVariable( 'TargetValue' ) ? $http->postVariable( 'TargetValue' ) : array();
-            $targets = array();
-            for ( $i = 0; $i < count( $targetTypes ); $i++ )
-            {
-                $type = trim( $targetTypes[$i] );
-                $value = trim( $targetValues[$i] );
-                if ( $type === '' ) continue;
-                $targets[] = array( 'type' => $type, 'value' => $value );
-            }
+            // only the types the resolver knows are saved; the rest is reported
+            $rejected = array();
+            $targets = \expLayoutsUiRuleInput::targets( $http->hasPostVariable( 'TargetType' ) ? $http->postVariable( 'TargetType' ) : array(),
+                                                         $http->hasPostVariable( 'TargetValue' ) ? $http->postVariable( 'TargetValue' ) : array(), $rejected );
             $ruleService->setTargets( (int)$rule->attribute( 'id' ), $targets );
-
-            $conditionTypes = $http->hasPostVariable( 'ConditionType' ) ? $http->postVariable( 'ConditionType' ) : array();
-            $conditionValues = $http->hasPostVariable( 'ConditionValue' ) ? $http->postVariable( 'ConditionValue' ) : array();
-            $conditions = array();
-            for ( $i = 0; $i < count( $conditionTypes ); $i++ )
-            {
-                $type = trim( $conditionTypes[$i] );
-                $value = trim( $conditionValues[$i] );
-                if ( $type === '' ) continue;
-                $conditions[] = array( 'type' => $type, 'value' => $value );
-            }
+            $conditions = \expLayoutsUiRuleInput::conditions( $http->hasPostVariable( 'ConditionType' ) ? $http->postVariable( 'ConditionType' ) : array(),
+                                                               $http->hasPostVariable( 'ConditionValue' ) ? $http->postVariable( 'ConditionValue' ) : array(), $rejected );
             $ruleService->setConditions( (int)$rule->attribute( 'id' ), $conditions );
+            $error = \expLayoutsUiRuleInput::rejectedMessage( $rejected );
 
             $message = \ezpI18n::tr( 'design/admin/explayouts_ui/rule_edit', 'Rule saved.' );
         }

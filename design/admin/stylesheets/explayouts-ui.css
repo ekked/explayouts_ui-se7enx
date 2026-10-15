@@ -192,3 +192,45 @@ html:has(#page.ezexplayoutsuinavigationpart)::-webkit-scrollbar, html:has(#page.
     color: #404040;
     word-break: break-word;
 }
+
+/* A link the rule panel script hides with the hidden attribute (nl-btn sets a display of its own). */
+.js-view-target[hidden] { display: none !important; }
+
+/* The content browser of the rule panels, in a dialog on the page (rule_list script, openContentBrowser()). */
+.ngl-content-browser-dialog {
+    width: min(960px, 92vw);
+    height: min(720px, 86vh);
+    padding: 0;
+    border: 1px solid var(--a4-line, #d0d7de);
+    border-radius: var(--a4-radius-s, 9px);
+    background: var(--a4-card, #fff);
+    box-shadow: var(--a4-shadow-m, 0 8px 24px rgba(0, 0, 0, .2));
+    overflow: hidden;
+}
+.ngl-content-browser-dialog::backdrop { background: var(--a4-overlay, rgba(0, 0, 0, .45)); }
+.ngl-content-browser-dialog-frame { width: 100%; height: 100%; border: 0; display: block; }
+.ngl-content-browser-dialog-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--a4-line, #d0d7de);
+    border-radius: 50%;
+    background: var(--a4-card, #fff);
+    color: var(--a4-ink, #1f2328);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+.ngl-content-browser-dialog-close:focus-visible { outline: 2px solid var(--a4-ring, #c2410c); outline-offset: 2px; }
+
+/* the rule panel's buttons that look like links (Delete, Close) */
+.nl-rule button.remove-setting,
+.nl-rule button.js-toggle-body {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: inherit;
+    cursor: pointer;
+}

@@ -253,6 +253,14 @@
         <source>There are no layouts yet</source>
         <translation>Es gibt noch keine Layouts</translation>
     </message>
+    <message>
+        <source>Layouts arrange zones and blocks on a page; mappings decide on which pages a layout is used.</source>
+        <translation>Layouts ordnen Zonen und Blöcke auf einer Seite an; Zuordnungen bestimmen, auf welchen Seiten ein Layout verwendet wird.</translation>
+    </message>
+    <message>
+        <source>Overview</source>
+        <translation>Überblick</translation>
+    </message>
 </context>
 <context>
     <name>design/admin/explayouts_ui/layout_create</name>
@@ -399,6 +407,26 @@
         <source>Cannot move block.</source>
         <translation>Der Block kann nicht verschoben werden.</translation>
     </message>
+    <message>
+        <source>Block type</source>
+        <translation>Blocktyp</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Löschen</translation>
+    </message>
+    <message>
+        <source>Move down</source>
+        <translation>Nach unten</translation>
+    </message>
+    <message>
+        <source>Move to zone</source>
+        <translation>In Zone verschieben</translation>
+    </message>
+    <message>
+        <source>Move up</source>
+        <translation>Nach oben</translation>
+    </message>
 </context>
 <context>
     <name>design/admin/explayouts_ui/layout_list</name>
@@ -473,6 +501,18 @@
     <message>
         <source>Layout not found.</source>
         <translation>Layout nicht gefunden.</translation>
+    </message>
+    <message>
+        <source>Sort by</source>
+        <translation>Sortieren nach</translation>
+    </message>
+    <message>
+        <source>Order</source>
+        <translation>Reihenfolge</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Öffnen</translation>
     </message>
 </context>
 <context>
@@ -643,6 +683,14 @@
     <message>
         <source>Add condition</source>
         <translation>Bedingung hinzufügen</translation>
+    </message>
+    <message>
+        <source>Target type</source>
+        <translation>Zieltyp</translation>
+    </message>
+    <message>
+        <source>Condition type</source>
+        <translation>Bedingungstyp</translation>
     </message>
 </context>
 <context>
@@ -882,6 +930,34 @@
         <source>Layout cache cleared.</source>
         <translation>Layout-Cache geleert.</translation>
     </message>
+    <message>
+        <source>Choose a location</source>
+        <translation>Ort auswählen</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Schließen</translation>
+    </message>
+    <message>
+        <source>A mapping links a layout to pages: the first enabled mapping by priority whose targets and conditions match the page wins.</source>
+        <translation>Eine Zuordnung verbindet ein Layout mit Seiten: Es gilt die erste aktive Zuordnung nach Priorität, deren Ziele und Bedingungen auf die Seite passen.</translation>
+    </message>
+    <message>
+        <source>This mapping is not used until it is enabled again.</source>
+        <translation>Diese Zuordnung wird nicht verwendet, bis sie wieder aktiviert ist.</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>Keine</translation>
+    </message>
+    <message>
+        <source>More actions</source>
+        <translation>Weitere Aktionen</translation>
+    </message>
+    <message>
+        <source>Unknown target or condition types were not saved: %types</source>
+        <translation>Unbekannte Ziel- oder Bedingungstypen wurden nicht gespeichert: %types</translation>
+    </message>
 </context>
 <context>
     <name>design/admin/explayouts_ui/setup</name>
@@ -933,6 +1009,14 @@
         <source>Database schema installed (%executed queries executed).</source>
         <translation>Datenbankschema installiert (%executed Abfragen ausgeführt).</translation>
     </message>
+    <message>
+        <source>%skipped statements skipped: their tables exist already.</source>
+        <translation>%skipped Anweisungen übersprungen: ihre Tabellen gibt es schon.</translation>
+    </message>
+    <message>
+        <source>Creates the missing explayouts_* tables. Tables that exist already and every other table of the database are left as they are.</source>
+        <translation>Legt die fehlenden explayouts_*-Tabellen an. Vorhandene Tabellen und alle anderen Tabellen der Datenbank bleiben unverändert.</translation>
+    </message>
 </context>
 <context>
     <name>design/admin/explayouts_ui/shared_layouts_list</name>
@@ -959,6 +1043,10 @@
     <message>
         <source>There are no shared layouts referenced by other layouts yet.</source>
         <translation>Es gibt noch keine gemeinsamen Layouts, auf die andere Layouts verweisen.</translation>
+    </message>
+    <message>
+        <source>Layouts whose zones other layouts link to.</source>
+        <translation>Layouts, auf deren Zonen andere Layouts verweisen.</translation>
     </message>
 </context>
 <context>
@@ -1206,6 +1294,37 @@
     <message>
         <source>Layouts</source>
         <translation>Layouts</translation>
+    </message>
+</context>
+<context>
+    <name>design/admin/parts/explayouts/menu</name>
+    <message>
+        <source>Layouts</source>
+        <translation>Layouts</translation>
+    </message>
+    <message>
+        <source>Layout mappings</source>
+        <translation>Layout-Zuordnungen</translation>
+    </message>
+    <message>
+        <source>Shared layouts</source>
+        <translation>Gemeinsame Layouts</translation>
+    </message>
+    <message>
+        <source>Components</source>
+        <translation>Komponenten</translation>
+    </message>
+    <message>
+        <source>Import</source>
+        <translation>Importieren</translation>
+    </message>
+    <message>
+        <source>Template editor</source>
+        <translation>Template-Editor</translation>
+    </message>
+    <message>
+        <source>Setup</source>
+        <translation>Einrichtung</translation>
     </message>
 </context>
 </TS>

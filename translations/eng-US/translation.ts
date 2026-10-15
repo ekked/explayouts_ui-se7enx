@@ -644,6 +644,14 @@
         <source>Add condition</source>
         <translation>Add condition</translation>
     </message>
+    <message>
+        <source>Target type</source>
+        <translation>Target type</translation>
+    </message>
+    <message>
+        <source>Condition type</source>
+        <translation>Condition type</translation>
+    </message>
 </context>
 <context>
     <name>design/admin/explayouts_ui/rule_edit</name>
@@ -881,6 +889,10 @@
     <message>
         <source>Layout cache cleared.</source>
         <translation>Layout cache cleared.</translation>
+    </message>
+    <message>
+        <source>Unknown target or condition types were not saved: %types</source>
+        <translation>Unknown target or condition types were not saved: %types</translation>
     </message>
 </context>
 <context>
