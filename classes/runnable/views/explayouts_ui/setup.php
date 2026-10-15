@@ -76,14 +76,26 @@ class Setup extends \Exponential\Runnable\ModuleView
             }
             else
             {
+                // Only the explayouts_* tables: the schema files also describe kernel and sibling tables
+                // (eztags*, ezurl*, exp_info_collection), which this page must never create or change.
                 $sql = file_get_contents( $path );
-                $queries = array_filter( array_map( 'trim', preg_split( '/;[\s]*$/m', $sql ) ) );
+                $queries = \expLayoutsInstall::ownStatements( $sql );
+                // A table that is there already is left alone, with its indexes, sequences and keys: the
+                // page installs what is missing and never fails on what an earlier run created.
+                $existing = array_map( 'strtolower', array_keys( (array)$db->eZTableList() ) );
                 $executed = 0;
                 $failed = 0;
+                $skipped = 0;
                 foreach ( $queries as $query )
                 {
                     if ( $query === '' )
                         continue;
+                    if ( preg_match( '/(se_)?(explayouts_\w+?)(_id_seq|_pkey)?\b/i', $query, $m )
+                         && in_array( strtolower( $m[2] ), $existing, true ) )
+                    {
+                        $skipped++;
+                        continue;
+                    }
 
                     $result = $db->query( $query );
                     if ( $result === false )
@@ -100,7 +112,8 @@ class Setup extends \Exponential\Runnable\ModuleView
                 if ( $failed > 0 )
                     $error = \ezpI18n::tr( 'design/admin/explayouts_ui/setup', 'Executed %executed queries, %failed failed.', null, array( '%executed' => $executed, '%failed' => $failed ) );
                 else
-                    $message = \ezpI18n::tr( 'design/admin/explayouts_ui/setup', 'Database schema installed (%executed queries executed).', null, array( '%executed' => $executed ) );
+                    $message = \ezpI18n::tr( 'design/admin/explayouts_ui/setup', 'Database schema installed (%executed queries executed).', null, array( '%executed' => $executed ) )
+                               . ( $skipped ? ' ' . \ezpI18n::tr( 'design/admin/explayouts_ui/setup', '%skipped statements skipped: their tables exist already.', null, array( '%skipped' => $skipped ) ) : '' );
             }
         }
 
