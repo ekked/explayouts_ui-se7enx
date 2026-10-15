@@ -32,6 +32,23 @@ class RuleTemplatesTest extends TestCase
         }
     }
 
+    /**
+     * Every label variable of the rule templates falls back to the stored type when it has no translation, so none of
+     * them may reach the page unwashed, whatever its name (ruleTargetTypeLabel, rowConditionLabel ...).
+     */
+    #[\PHPUnit\Framework\Attributes\DataProvider( 'designs' )]
+    public function testNoLabelVariableIsOutputUnwashed( $design )
+    {
+        foreach ( array( 'rule_detail.tpl', 'rule_list.tpl', 'rule_edit.tpl' ) as $name )
+        {
+            $file = dirname( __DIR__ ) . '/design/' . $design . '/templates/explayouts_ui/' . $name;
+            if ( !is_file( $file ) )
+                continue;
+            preg_match_all( '/\{\$(\w*Label)\s*\}/i', file_get_contents( $file ), $m );
+            $this->assertSame( array(), $m[1], $design . '/' . $name . ' prints label variables unwashed' );
+        }
+    }
+
     #[\PHPUnit\Framework\Attributes\DataProvider( 'designs' )]
     public function testPageActionsAreButtons( $design )
     {

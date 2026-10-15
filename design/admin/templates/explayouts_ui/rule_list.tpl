@@ -146,11 +146,11 @@
                                             <p>{'All'|i18n( 'design/admin/explayouts_ui/rule_list' )}</p>
                                         {elseif count($targets)|eq(1)}
                                             {def $ruleTargetValue = $targets[0].displayValue}
-                                            <p>{$ruleTargetTypeLabel}:</p>
+                                            <p>{$ruleTargetTypeLabel|wash}:</p>
                                             <ul><li>{$ruleTargetValue|wash}</li></ul>
                                             {undef $ruleTargetValue}
                                         {else}
-                                            <p>{$ruleTargetTypeLabel} ({count($targets)|wash})</p>
+                                            <p>{$ruleTargetTypeLabel|wash} ({count($targets)|wash})</p>
                                         {/if}
                                     {/if}
                                 </div>
@@ -162,7 +162,7 @@
                                                 {def $rowConditionDisplayType = cond(eq($c.condition_type,'content_type'),'class',cond(eq($c.condition_type,'siteaccess'),'siteaccess',$c.condition_type))}
                                                 {def $rowConditionLabel = cond(eq($rowConditionDisplayType,'class'),'Class'|i18n( 'design/admin/explayouts_ui/rule_list' ),cond(eq($rowConditionDisplayType,'siteaccess'),'Siteaccess'|i18n( 'design/admin/explayouts_ui/rule_list' ),cond(eq($rowConditionDisplayType,'query_parameter'),'Query parameter'|i18n( 'design/admin/explayouts_ui/rule_list' ),cond(eq($rowConditionDisplayType,'route_parameter'),'Route parameter'|i18n( 'design/admin/explayouts_ui/rule_list' ),cond(eq($rowConditionDisplayType,'time'),'Time'|i18n( 'design/admin/explayouts_ui/rule_list' ),$rowConditionDisplayType)))))}
                                                 {def $rowConditionValue = $c.displayValue}
-                                                <li>{if count($conditions)|lt(3)}{$rowConditionLabel}: {/if}{$rowConditionValue|wash}</li>
+                                                <li>{if count($conditions)|lt(3)}{$rowConditionLabel|wash}: {/if}{$rowConditionValue|wash}</li>
                                                 {undef $rowConditionDisplayType}
                                                 {undef $rowConditionLabel}
                                                 {undef $rowConditionValue}
