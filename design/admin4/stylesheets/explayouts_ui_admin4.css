@@ -1,0 +1,223 @@
+/* explayouts_ui in admin4 (design/admin4 templates of this extension, loaded with ezcss_require).
+   Only what admin4's components (.a4-*) cannot do; colours, radii, spacing and type from the --a4-* tokens, so
+   light and dark mode follow admin4 (doc/bc/6.0/admin4-styling.md). Class prefix: .explayouts-a4. */
+
+/* Layout cards: the layout type drawing beside the text, the actions at the end. */
+.explayouts-a4 .explayouts-a4-layout {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--a4-space-4);
+}
+.explayouts-a4 .explayouts-a4-type-icon {
+    display: inline-flex;
+    width: 84px;
+    color: var(--a4-muted);
+}
+.explayouts-a4 .explayouts-a4-type-icon svg {
+    width: 84px;
+    height: 63px;
+    display: block;
+}
+.explayouts-a4 .explayouts-a4-type-icon svg rect,
+.explayouts-a4 .explayouts-a4-type-icon svg path {
+    stroke: currentColor;
+}
+.explayouts-a4 .explayouts-a4-inline-form,
+.explayouts-a4 .explayouts-a4-more form {
+    display: inline;
+    margin: 0;
+}
+.explayouts-a4 .explayouts-a4-sort {
+    align-items: center;
+    gap: var(--a4-space-2);
+}
+@media (max-width: 720px) {
+    .explayouts-a4 .explayouts-a4-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mappings: a disabled mapping is muted (and its card says so in words, rule_list.tpl). */
+.explayouts-a4 .explayouts-a4-rule.is-disabled > .nl-rule-content {
+    opacity: .62;
+}
+.explayouts-a4 .explayouts-a4-rule.is-disabled {
+    border-style: dashed;
+}
+.explayouts-a4 .explayouts-a4-more > summary {
+    cursor: pointer;
+}
+
+/* The panel of a mapping (rule_detail.tpl): hidden until the page script adds .show-body to its .nl-rule,
+   then a sheet at the right edge over a dimmed page. */
+.explayouts-a4 .nl-rule-body-overlay {
+    display: none;
+}
+.explayouts-a4 .nl-rule.show-body .nl-rule-body-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: var(--a4-overlay);
+}
+.explayouts-a4 .nl-rule-body {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 560px;
+    height: 100%;
+    overflow-y: auto;
+    padding: var(--a4-space-4) var(--a4-space-5);
+    background: var(--a4-card);
+    color: var(--a4-ink);
+    box-shadow: var(--a4-shadow-m);
+    font-family: var(--a4-font);
+    font-size: var(--a4-text-m);
+}
+.explayouts-a4 .nl-rule-body .sidebar-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--a4-space-3);
+    padding-bottom: var(--a4-space-3);
+    margin-bottom: var(--a4-space-4);
+    border-bottom: 1px solid var(--a4-line);
+}
+.explayouts-a4 .nl-rule-body .sidebar-title .nl-rule-actions {
+    margin-left: auto;
+}
+.explayouts-a4 .explayouts-a4-close {
+    text-decoration: none;
+    color: var(--a4-muted);
+    font-size: var(--a4-text-xl);
+    line-height: 1;
+}
+.explayouts-a4 .nl-rule-body .rule-layout-info {
+    display: flex;
+    align-items: center;
+    gap: var(--a4-space-3);
+    margin: var(--a4-space-2) 0;
+}
+.explayouts-a4 .explayouts-a4-layout-icon {
+    width: 48px;
+    height: 48px;
+    padding: var(--a4-space-1);
+    border-radius: var(--a4-radius-s);
+    background: var(--a4-soft);
+}
+.explayouts-a4 .nl-rule-body .rule-layout-info-text p {
+    margin: 0;
+}
+.explayouts-a4 .nl-rule-body .nl-rule-setting {
+    margin-top: var(--a4-space-5);
+}
+.explayouts-a4 .nl-rule-body .settings-list {
+    list-style: none;
+    margin: var(--a4-space-2) 0 0;
+    padding: 0;
+}
+.explayouts-a4 .nl-rule-body .settings-list > li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--a4-space-2);
+    padding: var(--a4-space-2) 0;
+    border-bottom: 1px solid var(--a4-line);
+}
+.explayouts-a4 .nl-rule-body .settings-value {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+.explayouts-a4 .nl-rule-body .editable-value {
+    cursor: pointer;
+}
+.explayouts-a4 .nl-rule-body .condition-items {
+    list-style: none;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: var(--a4-space-1);
+    margin: 0;
+    padding: 0;
+}
+.explayouts-a4 .nl-rule-body .condition-items > li {
+    padding: 0 var(--a4-space-2);
+    border: 1px solid var(--a4-line);
+    border-radius: var(--a4-radius-s);
+    background: var(--a4-soft);
+}
+.explayouts-a4 .nl-rule-body .condition-edit-controls {
+    display: none;
+}
+.explayouts-a4 .nl-rule-body li.editing .condition-edit-controls {
+    display: inline;
+}
+.explayouts-a4 .nl-rule-body li.editing .condition-items {
+    display: none;
+}
+.explayouts-a4 .nl-rule-body .condition-edit-select {
+    min-width: 240px;
+    min-height: 80px;
+}
+.explayouts-a4 .nl-rule-body .settings-action-add {
+    margin-top: var(--a4-space-2);
+    gap: var(--a4-space-2);
+    align-items: center;
+}
+.explayouts-a4 .nl-rule-body .nl-select,
+.explayouts-a4 .nl-rule-body select,
+.explayouts-a4 .nl-rule-body input[type="text"] {
+    padding: var(--a4-space-1) var(--a4-space-2);
+    border: 1px solid var(--a4-field-line);
+    border-radius: var(--a4-radius-s);
+    background: var(--a4-field);
+    color: var(--a4-ink);
+    font: inherit;
+}
+.explayouts-a4 .nl-rule-body .js-view-target[hidden] {
+    display: none;
+}
+.explayouts-a4 .nl-rule-body .nl-rule-new-meta {
+    margin-top: var(--a4-space-4);
+}
+
+/* The content browser of the rule panels, a dialog on the page. */
+.explayouts-a4 ~ .ngl-content-browser-dialog,
+.ngl-content-browser-dialog {
+    width: min(960px, 92vw);
+    height: min(720px, 86vh);
+    padding: 0;
+    border: 1px solid var(--a4-line);
+    border-radius: var(--a4-radius-s);
+    background: var(--a4-card);
+    box-shadow: var(--a4-shadow-m);
+    overflow: hidden;
+}
+.ngl-content-browser-dialog::backdrop {
+    background: var(--a4-overlay);
+}
+.ngl-content-browser-dialog-frame {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+.ngl-content-browser-dialog-close {
+    position: absolute;
+    top: var(--a4-space-2);
+    right: var(--a4-space-2);
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--a4-line);
+    border-radius: 50%;
+    background: var(--a4-card);
+    color: var(--a4-ink);
+    font-size: var(--a4-text-l);
+    line-height: 1;
+    cursor: pointer;
+}
+.ngl-content-browser-dialog-close:focus-visible {
+    outline: 2px solid var(--a4-ring);
+    outline-offset: 2px;
+}

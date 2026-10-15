@@ -253,6 +253,14 @@
         <source>There are no layouts yet</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Layouts arrange zones and blocks on a page; mappings decide on which pages a layout is used.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Overview</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>design/admin/explayouts_ui/layout_create</name>
@@ -472,6 +480,18 @@
     </message>
     <message>
         <source>Layout not found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sort by</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Order</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -882,6 +902,30 @@
         <source>Layout cache cleared.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Choose a location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A mapping links a layout to pages: the first enabled mapping by priority whose targets and conditions match the page wins.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This mapping is not used until it is enabled again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>More actions</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>design/admin/explayouts_ui/setup</name>
@@ -933,6 +977,14 @@
         <source>Database schema installed (%executed queries executed).</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>%skipped statements skipped: their tables exist already.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Creates the missing explayouts_* tables. Tables that exist already and every other table of the database are left as they are.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>design/admin/explayouts_ui/shared_layouts_list</name>
@@ -958,6 +1010,10 @@
     </message>
     <message>
         <source>There are no shared layouts referenced by other layouts yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Layouts whose zones other layouts link to.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1205,6 +1261,37 @@
     <name>kernel/navigationpart</name>
     <message>
         <source>Layouts</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>design/admin/parts/explayouts/menu</name>
+    <message>
+        <source>Layouts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Layout mappings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shared layouts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Components</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Template editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Setup</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -1,0 +1,220 @@
+{* admin4: the panel of a mapping (included by rule_list.tpl), design/admin's structure and class hooks for the
+   page script, with admin4's buttons and fields and no inline style. *}
+<div class="nl-rule-body-overlay">
+    <div class="nl-rule-body">
+        <form method="post" action={'explayouts_ui/rule_list'|ezurl}>
+            {if ne($ruleId,'new')}<input type="hidden" name="RuleID" value="{$ruleId|wash}" />{/if}
+            <div class="nl-grid">
+                <div class="col-xs12 sidebar-title">
+                    <h2 class="a4-h2">{if eq($ruleId,'new')}{'New mapping'|i18n( 'design/admin/explayouts_ui/rule_detail' )}{else}{'Mapping details'|i18n( 'design/admin/explayouts_ui/rule_detail' )}{/if}</h2>
+                    {if $canEdit}
+                        <div class="nl-rule-actions a4-actions">
+                            <a href="#" class="a4-btn js-rule-edit" data-action="discard">{'Cancel'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</a>
+                            <button type="submit" name="{if eq($ruleId,'new')}AddRule{else}SaveRule{/if}" class="a4-btn a4-btn-primary js-rule-edit" data-action="publish">{if eq($ruleId,'new')}{'Add mapping'|i18n( 'design/admin/explayouts_ui/rule_detail' )}{else}{'Save changes'|i18n( 'design/admin/explayouts_ui/rule_detail' )}{/if}</button>
+                        </div>
+                    {/if}
+                    <a href="#" class="js-toggle-body explayouts-a4-close" title="{'Close'|i18n( 'design/admin/explayouts_ui/rule_list' )}"><span aria-hidden="true">&times;</span><span class="a4-sr-only">{'Close'|i18n( 'design/admin/explayouts_ui/rule_list' )}</span></a>
+                </div>
+
+                <div class="col-xs12 layout-body">
+                    <h3 class="a4-h3">{'Mapped layout:'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</h3>
+
+                    {if is_set($layout)}
+                        <div class="rule-layout-info">
+                            {* and() evaluates every argument: a rule whose layout type is unknown ($layoutType false)
+                               must not reach $layoutType.zones, which logs "Cannot retrieve attribute of a boolean" *}
+                            {def $layoutZoneCount = 0}
+                            {if is_set($layoutType)}{if $layoutType}{if is_set($layoutType.zones)}{set $layoutZoneCount = count($layoutType.zones)}{/if}{/if}{/if}
+                            {if $layoutZoneCount|gt(0)}
+                                <div class="rule-layout-info-icon">
+                                    {if and( $layoutType, $layoutType.icon, ne( $layoutType.icon, '' ) )}<img class="explayouts-a4-layout-icon" src={concat( '/extension/explayouts/design/standard/images/explayouts_standard/layout_types/', $layoutType.icon, '.svg' )|ezroot} alt="" />{/if}
+                                </div>
+                                <div class="rule-layout-info-text">
+                                    <p><strong>{$layout.name|wash}</strong></p>
+                                    <p>{if $layoutType}{$layoutType.name|wash}{else}{'Invalid layout'|i18n( 'design/admin/explayouts_ui/rule_detail' )}{/if}</p>
+                                </div>
+                            {else}
+                                <div class="rule-layout-info-text">
+                                    <p><strong>{$layout.name|wash}</strong></p>
+                                    <p>{'Invalid layout'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</p>
+                                </div>
+                            {/if}
+                            {undef $layoutZoneCount}
+                        </div>
+
+                        <div class="nl-layout-options">
+                            <a href={concat('explayouts_ui_api/app#layout/',$rule.layout_id)|ezurl} class="a4-btn a4-btn-small js-open-ngl">{'Edit layout'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</a>
+                        </div>
+
+                        {if and(is_set($rule),$rule.description|ne(''))}
+                            <div class="nl-rule-description">
+                                <p>{$rule.description|wash}</p>
+                            </div>
+                        {/if}
+
+                        {if ne($ruleId,'new')}
+                            <input type="hidden" name="LayoutID" value="{$rule.layout_id|wash}" />
+                            <input type="hidden" name="Priority" value="{$rule.priority|wash}" />
+                            <input type="hidden" name="Enabled" value="{if $rule.enabled}1{else}0{/if}" />
+                        {/if}
+                    {else}
+                        <div class="panel-name" title="{'No mapped layout'|i18n( 'design/admin/explayouts_ui/rule_detail' )}"><p>{'No mapped layout'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</p></div>
+                    {/if}
+
+                    {if eq($ruleId,'new')}
+                    <div class="nl-rule-new-meta a4-form">
+                        <div class="a4-field">
+                            <label class="a4-label" for="rule-layout-{$ruleId|wash}">{'Link layout'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</label>
+                            <select class="a4-input" id="rule-layout-{$ruleId|wash}" name="LayoutID">
+                                <option value="0"{if eq( $rule.layout_id, 0 )} selected="selected"{/if}>{'(none)'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</option>
+                                {foreach $layouts as $lo}
+                                <option value="{$lo.id|wash}"{if eq( $rule.layout_id, $lo.id )} selected="selected"{/if}>{$lo.name|wash} ({$lo.identifier|wash})</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                        <div class="a4-row">
+                            <div class="a4-field">
+                                <label class="a4-label" for="rule-priority-{$ruleId|wash}">{'Priority'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</label>
+                                <input class="a4-input is-auto" id="rule-priority-{$ruleId|wash}" type="text" name="Priority" value="{$rule.priority|wash}" size="6" inputmode="numeric" />
+                            </div>
+                            <label class="a4-check nl-toggle-switch">
+                                <input type="checkbox" id="rule-enabled-{$ruleId|wash}" class="nl-toggle-input" name="Enabled" value="1"{if $rule.enabled} checked="checked"{/if} data-rule-id="{$ruleId|wash}" />
+                                <span class="nl-toggle-label" data-on="{'Enabled'|i18n( 'design/admin/explayouts_ui/rule_detail' )|wash}" data-off="{'Disabled'|i18n( 'design/admin/explayouts_ui/rule_detail' )|wash}">{if $rule.enabled}{'Enabled'|i18n( 'design/admin/explayouts_ui/rule_detail' )}{else}{'Disabled'|i18n( 'design/admin/explayouts_ui/rule_detail' )}{/if}</span>
+                            </label>
+                        </div>
+                    </div>
+                    {/if}
+                </div>
+
+                <div class="col-xs12 nl-rule-body-rules">
+                    <div class="nl-grid">
+                        <div class="col-xs12 nl-rule-setting">
+                            {def $targetTypeLabel = cond(eq($targetType,'node'),'Location'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($targetType,'subtree'),'Subtree'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($targetType,'path'),'Path'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($targetType,'path_prefix'),'Path prefix'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($targetType,'path_regex'),'Path regex'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($targetType,'route'),'Route'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($targetType,'null'),'All'|i18n( 'design/admin/explayouts_ui/rule_detail' ),$targetType)))))))}
+
+                            {if count($targets)|gt(0)}
+                                {if ne($targetType,'null')}
+                                    <div class="sidemenu-subtitle">
+                                        <h3 class="a4-h3">{'Applied to %targettypelabel:'|i18n( 'design/admin/explayouts_ui/rule_detail',, hash( '%targettypelabel', $targetTypeLabel ) )}</h3>
+                                        <p class="note a4-help">{'NOTE: <strong>Any</strong> target can be met.'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</p>
+                                    </div>
+                                {else}
+                                    <div class="sidemenu-subtitle">
+                                        <h3 class="a4-h3">{'Targets:'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</h3>
+                                        <p class="note a4-help">{'NOTE: <strong>Any</strong> target can be met.'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</p>
+                                    </div>
+                                {/if}
+                            {else}
+                                <div class="sidemenu-subtitle">
+                                    <h3 class="a4-h3">{'No targets'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</h3>
+                                    <p class="note a4-help">{'NOTE: <strong>Any</strong> target can be met.'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</p>
+                                </div>
+                            {/if}
+
+                            <ul class="settings-list target-list" id="targets-table-{$ruleId|wash}">
+                                {foreach $targets as $t}
+                                    {def $targetItemLabel = cond(eq($t.target_type,'node'),'Location'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($t.target_type,'subtree'),'Subtree'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($t.target_type,'path'),'Path'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($t.target_type,'path_prefix'),'Path prefix'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($t.target_type,'path_regex'),'Path regex'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($t.target_type,'route'),'Route'|i18n( 'design/admin/explayouts_ui/rule_detail' ),$t.target_type))))))}
+                                    {def $targetDisplayValue = $t.displayValue}
+                                    <li class="nl-rule-setting-item">
+                                        <input type="hidden" name="TargetType[]" value="{$t.target_type|wash}" />
+                                        {if or(eq($t.target_type,'node'),eq($t.target_type,'subtree'))}
+                                            <span class="settings-value editable-value js-setting-edit" data-setting-type="target" data-setting-id=""><strong>{$targetItemLabel}:</strong>
+                                                <input type="hidden" name="TargetValue[]" value="{$t.target_value|wash}" />
+                                                <span class="target-value-display">{$targetDisplayValue|wash}</span>
+                                            </span>
+                                            {if $t.target_value|is_numeric}
+                                                <a href={concat('/content/view/full/',$t.target_value)|ezurl} target="_blank" class="a4-btn a4-btn-small a4-btn-ghost js-view-target">{'View in CMS'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</a>
+                                            {/if}
+                                        {else}
+                                            <span class="settings-value editable-value js-setting-edit" data-setting-type="target" data-setting-id=""><strong>{$targetItemLabel}:</strong> <input class="a4-input" type="text" name="TargetValue[]" value="{$t.target_value|wash}" size="40" title="{$targetDisplayValue|wash}" /></span>
+                                        {/if}
+                                        <a href="#" class="remove-setting js-remove-row a4-btn a4-btn-small a4-btn-outline-danger">{'Delete'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</a>
+                                    </li>
+                                    {undef $targetItemLabel}
+                                    {undef $targetDisplayValue}
+                                {/foreach}
+                            </ul>
+
+                            {if $canEdit}
+                                <div class="settings-action">
+                                    <div class="settings-action-add a4-row">
+                                        {if or(eq($targetType,'null'),count($targets)|eq(0))}
+                                            <select class="nl-select a4-input is-auto js-target-type" id="target-type-{$ruleId|wash}">
+                                                {foreach $targetTypes as $tt}
+                                                    {def $targetOptionLabel = cond(eq($tt,'node'),'Location'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($tt,'subtree'),'Subtree'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($tt,'path'),'Path'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($tt,'path_prefix'),'Path prefix'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($tt,'path_regex'),'Path regex'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($tt,'route'),'Route'|i18n( 'design/admin/explayouts_ui/rule_detail' ),$tt))))))}
+                                                    <option value="{$tt|wash}">{$targetOptionLabel|wash}</option>
+                                                    {undef $targetOptionLabel}
+                                                {/foreach}
+                                            </select>
+                                        {/if}
+                                        <a href="#" class="a4-btn a4-btn-small js-add-target" data-rule-id="{$ruleId|wash}" {if and(ne($targetType,'null'),count($targets)|gt(0))}data-target-type="{$targetType|wash}"{/if}>
+                                            {'Add target'|i18n( 'design/admin/explayouts_ui/rule_detail' )}
+                                        </a>
+                                    </div>
+                                </div>
+                            {/if}
+                        </div>
+
+                        <div class="col-xs12 nl-rule-setting">
+                            {if count($conditions)|gt(0)}
+                                <div class="sidemenu-subtitle">
+                                    <h3 class="a4-h3">{'Conditions:'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</h3>
+                                    <p class="note a4-help">{'NOTE: <strong>All</strong> conditions must be met.'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</p>
+                                </div>
+                            {else}
+                                <h3 class="a4-h3">{'No conditions'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</h3>
+                            {/if}
+
+                            <ul class="settings-list condition-list" id="conditions-table-{$ruleId|wash}">
+                                {foreach $conditions as $c}
+                                    {def $conditionDisplayType = cond(eq($c.condition_type,'content_type'),'class',cond(eq($c.condition_type,'siteaccess'),'siteaccess',$c.condition_type))}
+                                    {def $conditionItemLabel = cond(eq($conditionDisplayType,'class'),'Class'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($conditionDisplayType,'siteaccess'),'Siteaccess'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($conditionDisplayType,'query_parameter'),'Query parameter'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($conditionDisplayType,'route_parameter'),'Route parameter'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($conditionDisplayType,'time'),'Time'|i18n( 'design/admin/explayouts_ui/rule_detail' ),$conditionDisplayType)))))}
+                                    {def $conditionDisplayValue = $c.displayValue}
+                                    <li class="nl-rule-setting-item">
+                                        <input type="hidden" name="ConditionType[]" value="{$conditionDisplayType|wash}" />
+                                        <span class="settings-value editable-value js-setting-edit" data-setting-type="condition" data-setting-id=""><strong>{$conditionItemLabel}:</strong>
+                                            {if or(eq($conditionDisplayType,'class'),eq($conditionDisplayType,'siteaccess'))}
+                                                {def $conditionItems = $c.displayItems}
+                                                <input type="hidden" name="ConditionValue[]" value="{$c.condition_value|wash}" />
+                                                <ul class="condition-items">
+                                                    {foreach $conditionItems as $ci}
+                                                        <li>{$ci|wash}</li>
+                                                    {/foreach}
+                                                </ul>
+                                                {undef $conditionItems}
+                                            {else}
+                                                <input class="a4-input" type="text" name="ConditionValue[]" value="{$c.condition_value|wash}" size="50" title="{$conditionDisplayValue|wash}" />
+                                            {/if}
+                                        </span>
+                                        <a href="#" class="remove-setting js-remove-row a4-btn a4-btn-small a4-btn-outline-danger">{'Delete'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</a>
+                                    </li>
+                                    {undef $conditionDisplayType}
+                                    {undef $conditionItemLabel}
+                                    {undef $conditionDisplayValue}
+                                {/foreach}
+                            </ul>
+
+                            {if $canEdit}
+                                <div class="settings-action">
+                                    <div class="settings-action-add a4-row">
+                                        <select class="nl-select a4-input is-auto js-condition-type" id="condition-type-{$ruleId|wash}">
+                                            {foreach $conditionTypes as $ct}
+                                                {def $conditionOptionType = cond(eq($ct,'content_type'),'class',cond(eq($ct,'siteaccess'),'siteaccess',$ct))}
+                                                {def $conditionOptionLabel = cond(eq($conditionOptionType,'class'),'Class'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($conditionOptionType,'siteaccess'),'Siteaccess'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($conditionOptionType,'query_parameter'),'Query parameter'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($conditionOptionType,'route_parameter'),'Route parameter'|i18n( 'design/admin/explayouts_ui/rule_detail' ),cond(eq($conditionOptionType,'time'),'Time'|i18n( 'design/admin/explayouts_ui/rule_detail' ),$ct)))))}
+                                                <option value="{$ct|wash}">{$conditionOptionLabel|wash}</option>
+                                                {undef $conditionOptionType}
+                                                {undef $conditionOptionLabel}
+                                            {/foreach}
+                                        </select>
+                                        <a href="#" class="a4-btn a4-btn-small js-add-condition" data-rule-id="{$ruleId|wash}">
+                                            {'Add condition'|i18n( 'design/admin/explayouts_ui/rule_detail' )}
+                                        </a>
+                                    </div>
+                                </div>
+                            {/if}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
