@@ -74,8 +74,14 @@ class Setup extends \Exponential\Runnable\ModuleView
                 else
                     $error = $result['error'];
             }
+            elseif ( !is_callable( array( 'expLayoutsInstall', 'ownStatements' ) ) )
+            {
+                // an explayouts older than this page cannot tell its own statements from the kernel's: install nothing
+                $error = \ezpI18n::tr( 'design/admin/explayouts_ui/setup', 'This version of explayouts cannot install its tables from here. Update explayouts first.' );
+            }
             else
             {
+                require_once( 'extension/explayouts_ui/classes/explayoutsuischemastatement.php' );
                 // Only the explayouts_* tables: the schema files also describe kernel and sibling tables
                 // (eztags*, ezurl*, exp_info_collection), which this page must never create or change.
                 $sql = file_get_contents( $path );
@@ -90,8 +96,8 @@ class Setup extends \Exponential\Runnable\ModuleView
                 {
                     if ( $query === '' )
                         continue;
-                    if ( preg_match( '/(se_)?(explayouts_\w+?)(_id_seq|_pkey)?\b/i', $query, $m )
-                         && in_array( strtolower( $m[2] ), $existing, true ) )
+                    $table = \expLayoutsUiSchemaStatement::tableOf( $query );
+                    if ( $table !== '' && in_array( $table, $existing, true ) )
                     {
                         $skipped++;
                         continue;

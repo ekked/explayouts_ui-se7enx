@@ -16,3 +16,4 @@ if ( !class_exists( 'ezpI18n', false ) )
     }
 }
 require_once dirname( __DIR__ ) . '/classes/explayoutsuiruleinput.php';
+require_once dirname( __DIR__ ) . '/classes/explayoutsuischemastatement.php';

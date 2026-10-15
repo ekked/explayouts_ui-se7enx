@@ -1017,6 +1017,10 @@
         <source>Creates the missing explayouts_* tables. Tables that exist already and every other table of the database are left as they are.</source>
         <translation>Legt die fehlenden explayouts_*-Tabellen an. Vorhandene Tabellen und alle anderen Tabellen der Datenbank bleiben unverändert.</translation>
     </message>
+    <message>
+        <source>This version of explayouts cannot install its tables from here. Update explayouts first.</source>
+        <translation>Diese Version von explayouts kann ihre Tabellen nicht von hier aus installieren. Aktualisieren Sie zuerst explayouts.</translation>
+    </message>
 </context>
 <context>
     <name>design/admin/explayouts_ui/shared_layouts_list</name>
