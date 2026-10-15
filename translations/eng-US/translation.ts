@@ -253,6 +253,14 @@
         <source>There are no layouts yet</source>
         <translation>There are no layouts yet</translation>
     </message>
+    <message>
+        <source>Layouts arrange zones and blocks on a page; mappings decide on which pages a layout is used.</source>
+        <translation>Layouts arrange zones and blocks on a page; mappings decide on which pages a layout is used.</translation>
+    </message>
+    <message>
+        <source>Overview</source>
+        <translation>Overview</translation>
+    </message>
 </context>
 <context>
     <name>design/admin/explayouts_ui/layout_create</name>
@@ -399,6 +407,26 @@
         <source>Cannot move block.</source>
         <translation>Cannot move block.</translation>
     </message>
+    <message>
+        <source>Block type</source>
+        <translation>Block type</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Delete</translation>
+    </message>
+    <message>
+        <source>Move down</source>
+        <translation>Move down</translation>
+    </message>
+    <message>
+        <source>Move to zone</source>
+        <translation>Move to zone</translation>
+    </message>
+    <message>
+        <source>Move up</source>
+        <translation>Move up</translation>
+    </message>
 </context>
 <context>
     <name>design/admin/explayouts_ui/layout_list</name>
@@ -473,6 +501,18 @@
     <message>
         <source>Layout not found.</source>
         <translation>Layout not found.</translation>
+    </message>
+    <message>
+        <source>Sort by</source>
+        <translation>Sort by</translation>
+    </message>
+    <message>
+        <source>Order</source>
+        <translation>Order</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Open</translation>
     </message>
 </context>
 <context>
@@ -894,6 +934,30 @@
         <source>Unknown target or condition types were not saved: %types</source>
         <translation>Unknown target or condition types were not saved: %types</translation>
     </message>
+    <message>
+        <source>Choose a location</source>
+        <translation>Choose a location</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Close</translation>
+    </message>
+    <message>
+        <source>A mapping links a layout to pages: the first enabled mapping by priority whose targets and conditions match the page wins.</source>
+        <translation>A mapping links a layout to pages: the first enabled mapping by priority whose targets and conditions match the page wins.</translation>
+    </message>
+    <message>
+        <source>This mapping is not used until it is enabled again.</source>
+        <translation>This mapping is not used until it is enabled again.</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>None</translation>
+    </message>
+    <message>
+        <source>More actions</source>
+        <translation>More actions</translation>
+    </message>
 </context>
 <context>
     <name>design/admin/explayouts_ui/setup</name>
@@ -945,6 +1009,14 @@
         <source>Database schema installed (%executed queries executed).</source>
         <translation>Database schema installed (%executed queries executed).</translation>
     </message>
+    <message>
+        <source>%skipped statements skipped: their tables exist already.</source>
+        <translation>%skipped statements skipped: their tables exist already.</translation>
+    </message>
+    <message>
+        <source>Creates the missing explayouts_* tables. Tables that exist already and every other table of the database are left as they are.</source>
+        <translation>Creates the missing explayouts_* tables. Tables that exist already and every other table of the database are left as they are.</translation>
+    </message>
 </context>
 <context>
     <name>design/admin/explayouts_ui/shared_layouts_list</name>
@@ -971,6 +1043,10 @@
     <message>
         <source>There are no shared layouts referenced by other layouts yet.</source>
         <translation>There are no shared layouts referenced by other layouts yet.</translation>
+    </message>
+    <message>
+        <source>Layouts whose zones other layouts link to.</source>
+        <translation>Layouts whose zones other layouts link to.</translation>
     </message>
 </context>
 <context>
@@ -1218,6 +1294,37 @@
     <message>
         <source>Layouts</source>
         <translation>Layouts</translation>
+    </message>
+</context>
+<context>
+    <name>design/admin/parts/explayouts/menu</name>
+    <message>
+        <source>Layouts</source>
+        <translation>Layouts</translation>
+    </message>
+    <message>
+        <source>Layout mappings</source>
+        <translation>Layout mappings</translation>
+    </message>
+    <message>
+        <source>Shared layouts</source>
+        <translation>Shared layouts</translation>
+    </message>
+    <message>
+        <source>Components</source>
+        <translation>Components</translation>
+    </message>
+    <message>
+        <source>Import</source>
+        <translation>Import</translation>
+    </message>
+    <message>
+        <source>Template editor</source>
+        <translation>Template editor</translation>
+    </message>
+    <message>
+        <source>Setup</source>
+        <translation>Setup</translation>
     </message>
 </context>
 </TS>
