@@ -407,6 +407,26 @@
         <source>Cannot move block.</source>
         <translation>Der Block kann nicht verschoben werden.</translation>
     </message>
+    <message>
+        <source>Block type</source>
+        <translation>Blocktyp</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Löschen</translation>
+    </message>
+    <message>
+        <source>Move down</source>
+        <translation>Nach unten</translation>
+    </message>
+    <message>
+        <source>Move to zone</source>
+        <translation>In Zone verschieben</translation>
+    </message>
+    <message>
+        <source>Move up</source>
+        <translation>Nach oben</translation>
+    </message>
 </context>
 <context>
     <name>design/admin/explayouts_ui/layout_list</name>
