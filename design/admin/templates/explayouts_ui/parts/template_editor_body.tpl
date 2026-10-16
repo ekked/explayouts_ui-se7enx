@@ -35,7 +35,7 @@ window.TPL_I18N = {ldelim}
     saved: '{'Saved'|i18n( 'design/admin/explayouts_ui/template_editor' )|wash( javascript )}',
     save_failed: '{'Save failed: %message'|i18n( 'design/admin/explayouts_ui/template_editor' )|wash( javascript )}',
     save_error: '{'Save error: %message'|i18n( 'design/admin/explayouts_ui/template_editor' )|wash( javascript )}',
-    new_path: '{'New template path (relative to design/ or extension/, must end in .tpl):'|i18n( 'design/admin/explayouts_ui/template_editor' )|wash( javascript )}',
+    new_path: '{'New template path (from the installation root, inside an allowed folder, must end in .tpl):'|i18n( 'design/admin/explayouts_ui/template_editor' )|wash( javascript )}',
     must_end_tpl: '{'Path must end in .tpl'|i18n( 'design/admin/explayouts_ui/template_editor' )|wash( javascript )}',
     count: '{'(%count templates)'|i18n( 'design/admin/explayouts_ui/template_editor' )|wash( javascript )}',
     new_file_error: '{'New file error: %message'|i18n( 'design/admin/explayouts_ui/template_editor' )|wash( javascript )}'

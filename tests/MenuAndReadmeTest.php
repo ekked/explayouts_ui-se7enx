@@ -79,6 +79,9 @@ class MenuAndReadmeTest extends TestCase
         $body = file_get_contents( dirname( __DIR__ ) . '/design/admin/templates/explayouts_ui/parts/template_editor_body.tpl' );
         $this->assertMatchesRegularExpression( '#\{if \$allow_new_templates\}<button[^>]*id="new-file"[^>]*>.*?</button>\{/if\}#', $body );
         $this->assertStringContainsString( 'if (newBtn) newBtn.addEventListener', $body );
+        // The path is taken from the installation root (expLayoutsTemplateEditor::resolve()), not from design/ or extension/.
+        $this->assertStringNotContainsString( 'relative to design/ or extension/', $body );
+        $this->assertStringContainsString( 'New template path (from the installation root, inside an allowed folder, must end in .tpl):', $body );
         foreach ( array( 'admin', 'admin4' ) as $design )
         {
             $page = file_get_contents( dirname( __DIR__ ) . '/design/' . $design . '/templates/explayouts_ui/template_editor.tpl' );
