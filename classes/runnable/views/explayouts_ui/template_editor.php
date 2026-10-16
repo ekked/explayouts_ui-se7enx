@@ -105,6 +105,10 @@ class TemplateEditor extends \Exponential\Runnable\ModuleView
         $tpl->setVariable( 'initial_content_json', $initialJson );
         $tpl->setVariable( 'base_url', $baseUrl );
         $tpl->setVariable( 'csrf_token', $csrfJson );
+        // New is offered only where expLayoutsTemplateEditor::save() would create the file
+        // ([TemplateEditorSettings] AllowNewTemplates=enabled; an older explayouts without the method offers no New).
+        $tpl->setVariable( 'allow_new_templates', method_exists( 'expLayoutsTemplateEditor', 'newTemplatesAllowed' )
+            && \expLayoutsTemplateEditor::newTemplatesAllowed() );
         $html = $tpl->fetch( 'design:explayouts_ui/template_editor.tpl' );
 
         $Result = array();
