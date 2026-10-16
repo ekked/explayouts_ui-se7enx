@@ -10,12 +10,12 @@ For the legacy screens alone, no — they work against `explayouts_core` directl
 
 ## Which policies control access?
 
-The module declares `read` (lists, dashboard, preview, setup) and `edit` (create/edit views) functions on the `explayouts_ui` module. The admin menu tab additionally requires `explayouts/read` (declared in `menu.ini` `PolicyList[]`).
+The module declares `read` (lists, dashboard, preview, components) and `edit` (create/edit views, import, setup; the template editor needs both) functions on the `explayouts_ui` module. The admin menu tab requires `explayouts_ui/read` (declared in `menu.ini` `PolicyList[]`), the function of the dashboard it opens.
 
 ## Which database tables does it own?
 
 None. All data lives in the `explayouts_*` tables owned by the `explayouts` extension and is accessed through the `explayouts_core` services.
 
-## Why do I not see the "Exponential Layouts UI" tab?
+## Why do I not see the "Layouts" tab?
 
-Check that the extension is active for the admin siteaccess, that caches were cleared (`php bin/php/ezcache.php --clear-all --purge --allow-root-user`), and that your role includes the `explayouts/read` policy.
+Check that the extension is active for the admin siteaccess, that caches were cleared (`php bin/php/ezcache.php --clear-all --purge --allow-root-user`), and that your role includes the `explayouts_ui/read` policy.

@@ -2,7 +2,7 @@
 
 ## Screens and URLs
 
-All views live on the `explayouts_ui` module and are reached from the "Exponential Layouts UI" admin tab:
+All views live on the `explayouts_ui` module and are reached from the "Layouts" admin tab:
 
 | URL | Screen |
 |-----|--------|
@@ -15,11 +15,12 @@ All views live on the `explayouts_ui` module and are reached from the "Exponenti
 | `/explayouts_ui/rule_list` | Layout mapping rules |
 | `/explayouts_ui/rule_edit/(RuleID)/<id>` | Edit a rule, its targets and conditions |
 | `/explayouts_ui/transfer_import` | Import layouts/rules from a transfer file |
-| `/explayouts_ui/template_editor` | Edit layout templates (roots limited by `explayouts.ini` `[TemplateEditorSettings] AllowedTemplateRoots[]`) |
-| `/explayouts_ui/preview` | Preview a layout |
-| `/explayouts_ui/setup` | Setup/status |
+| `/explayouts_ui/template_editor` | Edit layout templates (`read` and `edit`; roots limited by `explayouts.ini` `[TemplateEditorSettings] AllowedTemplateRoots[]`, new files only with `AllowNewTemplates=enabled`) |
+| `/explayouts_ui/layout_preview/<layout_id>/<status>` | Preview a layout |
+| `/explayouts_ui/components` | The content component blocks and the content they show |
+| `/explayouts_ui/setup` | Setup/status (`edit` policy function) |
 
-List views use the `read` module function, editing views use `edit` — grant matching module policies to editor roles.
+List views, the dashboard, the preview and the components use the `read` module function, the screens that change something use `edit` — grant matching module policies to editor roles. The SPA editor (`explayouts_ui_api`) has its own: `explayouts_ui_api/read` to open it, `explayouts_ui_api/edit` for every change.
 
 ## Relationship to the modern editor
 
@@ -47,7 +48,7 @@ The admin design ships the UI assets under `design/admin`:
 Override the shipped INI from outside the extension; priority from lowest to highest: `extension/explayouts_ui/settings/`, `settings/siteaccess/<siteaccess>/`, siteaccess settings shipped in active extensions, `settings/override/`.
 
 - Rename or hide menu entries by overriding `menu.ini` sections `[Topmenu_explayouts_ui_dashboard]` / `[Leftmenu_explayouts_ui_dashboard]` (e.g. set `Shown[default]=false`, or redefine `Links[]`/`LinkNames[]`).
-- The tab's visibility is also policy-driven: `PolicyList[]=explayouts/read` — users without that policy do not see it.
+- The tab's visibility is also policy-driven: `PolicyList[]=explayouts_ui/read`, the function of the dashboard the tab opens — users without that policy do not see it.
 - Data-level behavior (available layout types, blocks, template editor roots) comes from `explayouts.ini` of the `explayouts` extension and is overridden there.
 
 ### Template layer (design override cascade)
