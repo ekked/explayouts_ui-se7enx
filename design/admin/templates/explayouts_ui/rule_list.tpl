@@ -19,7 +19,7 @@
 
         <div class="nl-rules-head">
             <div class="nl-rules-head-wrapper">
-                <div class="nl-rule-cell"><div class="nl-export-checkbox"><input type="checkbox" id="toggleSelectAll"><label for="toggleSelectAll"></label></div></div>
+                <div class="nl-rule-cell"><div class="nl-export-checkbox"><input type="checkbox" id="toggleSelectAll"><label for="toggleSelectAll"><span class="a4-sr-only">{'Select all mappings for export'|i18n( 'design/admin/explayouts_ui/rule_list' )}</span></label></div></div>
                 <div class="nl-rule-cell rule-priority"></div>
                 <div class="nl-rule-cell rule-layout">{'Mapped layout'|i18n( 'design/admin/explayouts_ui/rule_list' )}</div>
                 <div class="nl-rule-cell rule-targets">{'Targets'|i18n( 'design/admin/explayouts_ui/rule_list' )}</div>
@@ -60,7 +60,7 @@
                                 <div class="nl-rule-cell">
                                     <div class="nl-export-checkbox">
                                         <input type="checkbox" id="export{$rule.id|wash}" {if not($rule.enabled)}disabled="disabled"{/if}>
-                                        <label for="export{$rule.id|wash}"></label>
+                                        <label for="export{$rule.id|wash}"><span class="a4-sr-only">{'Select mapping %id for export'|i18n( 'design/admin/explayouts_ui/rule_list', , hash( '%id', $rule.id ) )|wash}</span></label>
                                     </div>
                                 </div>
 

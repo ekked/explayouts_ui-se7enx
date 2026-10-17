@@ -250,3 +250,13 @@ html #page .explui-page-dashboard .layouts-title.explui-recent-title, .explui-pa
 .explui-page-rules .nl-toggle-input:checked + .nl-toggle-slider { background: var(--a4-accent-text, #2196F3); }
 .explui-page-rules .nl-toggle-input:checked + .nl-toggle-slider:before { transform: translateX(20px); }
 .explui-page-rules .nl-toggle-input:focus + .nl-toggle-slider { box-shadow: 0 0 0 2px var(--a4-ring, rgba(33,150,243,.4)); }
+
+/* Text contrast of at least 4.5:1 (WCAG 1.4.3) where layouts-admin.css draws light grey or its own blue: the links of
+   the mapping rows and the component list (#2970ef was 4.2:1 on the hovered row), the modified dates (#999, 2.8:1),
+   the mapping and reference counts on their grey strip (#666 on #d4d4d4, 3.9:1) and the import hint (#9d9d9d, 2.7:1).
+   html in front: one more element of weight than the bundle's own rules. */
+html .ng-layouts-app a:not(.nl-btn) { color: var(--a4-info, #1e4fa8); }
+html .explui-page-components .nl-component__name a { color: var(--a4-ink, #1a1a1a); }
+html .nl-layouts-view-grid .nl-layout .nl-layout-info .nl-layout-modified,
+html .ng-layouts-app .layouts-header p { color: var(--a4-muted, #5d6573); }
+html .ng-layouts-app .nl-layout-actions .nl-layout-data .meta-info { color: var(--a4-ink, #1f2430); }

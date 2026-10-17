@@ -39,12 +39,12 @@
     }
 }
 
-/* Mappings: a disabled mapping is muted (and its card says so in words, rule_list.tpl). */
-.explayouts-a4 .explayouts-a4-rule.is-disabled > .nl-rule-content {
-    opacity: .62;
-}
+/* Mappings: a disabled mapping is set apart by a dashed border on the soft surface (and its card says so in words,
+   rule_list.tpl). Not by opacity: that took its text, the priority badge and the buttons below 4.5:1 (2.5:1 for the
+   badge), in both modes. */
 .explayouts-a4 .explayouts-a4-rule.is-disabled {
     border-style: dashed;
+    background: var(--a4-soft);
 }
 .explayouts-a4 .explayouts-a4-more > summary {
     cursor: pointer;

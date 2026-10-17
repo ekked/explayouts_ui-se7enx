@@ -10,7 +10,7 @@
                     <a href="#" class="nl-btn js-export explui-hidden">{'Export'|i18n( 'design/admin/explayouts_ui/layout_list' )}</a>
                     <a href="#" class="nl-btn js-change-layouts-view explui-hidden"></a>
                     <div class="layout-sorting-controls">
-                        <label for="layout-sorting-sort"><i class="material-icons">sort_by_alpha</i></label>
+                        <label for="layout-sorting-sort"><i class="material-icons" aria-hidden="true">sort_by_alpha</i><span class="a4-sr-only">{'Sort by'|i18n( 'design/admin/explayouts_ui/layout_list' )}</span></label>
                         <select id="layout-sorting-sort" class="nl-select">
                             <option value="name">{'Name'|i18n( 'design/admin/explayouts_ui/layout_list' )}</option>
                             <option value="description">{'Description'|i18n( 'design/admin/explayouts_ui/layout_list' )}</option>
@@ -18,6 +18,7 @@
                             <option value="type">{'Layout type'|i18n( 'design/admin/explayouts_ui/layout_list' )}</option>
                             <option value="mappings">{'Mappings'|i18n( 'design/admin/explayouts_ui/layout_list' )}</option>
                         </select>
+                        <label for="layout-sorting-direction" class="a4-sr-only">{'Sort direction'|i18n( 'design/admin/explayouts_ui/layout_list' )}</label>
                         <select id="layout-sorting-direction" class="nl-select">
                             <option value="asc">{'Ascending'|i18n( 'design/admin/explayouts_ui/layout_list' )}</option>
                             <option value="desc">{'Descending'|i18n( 'design/admin/explayouts_ui/layout_list' )}</option>
@@ -33,7 +34,7 @@
                 <div class="nl-layout-info">
                     <div class="nl-layout-type"><a class="js-reorder-layouts" data-sorting="type">{'Layout type'|i18n( 'design/admin/explayouts_ui/layout_list' )}<i class="sort-icon"></i></a></div>
                     <div class="nl-layout-text">
-                        <div class="nl-layout-name"><div class="nl-export-checkbox"><input type="checkbox" id="toggleSelectAll"><label for="toggleSelectAll"></label></div><a class="js-reorder-layouts active sorting-asc" data-sorting="name">{'Name'|i18n( 'design/admin/explayouts_ui/layout_list' )}<i class="sort-icon"></i></a></div>
+                        <div class="nl-layout-name"><div class="nl-export-checkbox"><input type="checkbox" id="toggleSelectAll"><label for="toggleSelectAll"><span class="a4-sr-only">{'Select all layouts for export'|i18n( 'design/admin/explayouts_ui/layout_list' )}</span></label></div><a class="js-reorder-layouts active sorting-asc" data-sorting="name">{'Name'|i18n( 'design/admin/explayouts_ui/layout_list' )}<i class="sort-icon"></i></a></div>
                         <div class="nl-layout-description"><a class="js-reorder-layouts" data-sorting="description">{'Description'|i18n( 'design/admin/explayouts_ui/layout_list' )}<i class="sort-icon"></i></a></div>
                         <div class="nl-layout-modified"><a class="js-reorder-layouts" data-sorting="modified">{'Last modified'|i18n( 'design/admin/explayouts_ui/layout_list' )}<i class="sort-icon"></i></a></div>
                     </div>
