@@ -6,8 +6,8 @@
 
 namespace
 {
-if ( !function_exists( 'expLayoutEnsureZones' ) ) {
-function expLayoutEnsureZones( $layout )
+if ( !function_exists( 'expModuleViewExplayoutsUiLayoutEditEnsureZones' ) ) {
+function expModuleViewExplayoutsUiLayoutEditEnsureZones( $layout )
 {
     $layoutType = $layout->attribute( 'layout_type' );
     if ( $layoutType === '' )
@@ -32,8 +32,8 @@ function expLayoutEnsureZones( $layout )
 }
 }
 
-if ( !function_exists( 'expLayoutDeleteBlock' ) ) {
-function expLayoutDeleteBlock( $blockId )
+if ( !function_exists( 'expModuleViewExplayoutsUiLayoutEditDeleteBlock' ) ) {
+function expModuleViewExplayoutsUiLayoutEditDeleteBlock( $blockId )
 {
     $block = expLayoutsBlock::fetch( $blockId );
     if ( !$block )
@@ -44,12 +44,12 @@ function expLayoutDeleteBlock( $blockId )
         $param->remove();
     $block->remove();
 
-    expLayoutReorderBlocks( $zoneId );
+    expModuleViewExplayoutsUiLayoutEditReorderBlocks( $zoneId );
 }
 }
 
-if ( !function_exists( 'expLayoutReorderBlocks' ) ) {
-function expLayoutReorderBlocks( $zoneId )
+if ( !function_exists( 'expModuleViewExplayoutsUiLayoutEditReorderBlocks' ) ) {
+function expModuleViewExplayoutsUiLayoutEditReorderBlocks( $zoneId )
 {
     $blocks = expLayoutsBlock::fetchByZone( $zoneId );
     if ( !is_array( $blocks ) )
@@ -117,14 +117,14 @@ class LayoutEdit extends \Exponential\Runnable\ModuleView
             if ( (int)$layout->attribute( 'status' ) === 0 )
                 $layout->setAttribute( 'status', 1 );
             $layout->store();
-            expLayoutEnsureZones( $layout );
+            expModuleViewExplayoutsUiLayoutEditEnsureZones( $layout );
             $message = \ezpI18n::tr( 'design/admin/explayouts_ui/layout_edit', 'Draft saved.' );
         }
 
         if ( $http->hasPostVariable( 'Publish' ) )
         {
             $layout->publish();
-            expLayoutEnsureZones( $layout );
+            expModuleViewExplayoutsUiLayoutEditEnsureZones( $layout );
             $message = 'Published.';
         }
 
@@ -146,7 +146,7 @@ class LayoutEdit extends \Exponential\Runnable\ModuleView
             {
                 foreach ( \expLayoutsBlock::fetchByZone( $deleteZoneId ) as $block )
                 {
-                    expLayoutDeleteBlock( (int)$block->attribute( 'id' ) );
+                    expModuleViewExplayoutsUiLayoutEditDeleteBlock( (int)$block->attribute( 'id' ) );
                 }
                 $zone->remove();
                 $message = \ezpI18n::tr( 'design/admin/explayouts_ui/layout_edit', 'Zone deleted.' );
@@ -180,7 +180,7 @@ class LayoutEdit extends \Exponential\Runnable\ModuleView
             $block = \expLayoutsBlock::fetch( $deleteBlockId );
             if ( $block && (int)$block->attribute( 'layout_id' ) === (int)$layout->attribute( 'id' ) )
             {
-                expLayoutDeleteBlock( $deleteBlockId );
+                expModuleViewExplayoutsUiLayoutEditDeleteBlock( $deleteBlockId );
                 $message = \ezpI18n::tr( 'design/admin/explayouts_ui/layout_edit', 'Block deleted.' );
             }
             else
@@ -252,7 +252,7 @@ class LayoutEdit extends \Exponential\Runnable\ModuleView
                 $block->setAttribute( 'zone_id', $targetZoneId );
                 $block->setAttribute( 'position', $newPosition );
                 $block->store();
-                expLayoutReorderBlocks( $oldZoneId );
+                expModuleViewExplayoutsUiLayoutEditReorderBlocks( $oldZoneId );
                 $message = \ezpI18n::tr( 'design/admin/explayouts_ui/layout_edit', 'Block moved to zone.' );
             }
             else

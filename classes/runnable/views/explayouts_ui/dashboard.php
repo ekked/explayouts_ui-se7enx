@@ -6,8 +6,8 @@
 
 namespace
 {
-if ( !function_exists( 'expLayoutsTableCount' ) ) {
-function expLayoutsTableCount( $table )
+if ( !function_exists( 'expModuleViewExplayoutsUiDashboardTableCount' ) ) {
+function expModuleViewExplayoutsUiDashboardTableCount( $table )
 {
     $db = eZDB::instance();
     $rows = $db->arrayQuery( "SELECT COUNT(*) AS cnt FROM {$table}" );
@@ -41,11 +41,11 @@ class Dashboard extends \Exponential\Runnable\ModuleView
 
 
         $counts = array(
-            'layouts' => expLayoutsTableCount( 'explayouts_layout' ),
-            'zones' => expLayoutsTableCount( 'explayouts_zone' ),
-            'blocks' => expLayoutsTableCount( 'explayouts_block' ),
-            'rules' => expLayoutsTableCount( 'explayouts_rule' ),
-            'collections' => expLayoutsTableCount( 'explayouts_collection' ),
+            'layouts' => expModuleViewExplayoutsUiDashboardTableCount( 'explayouts_layout' ),
+            'zones' => expModuleViewExplayoutsUiDashboardTableCount( 'explayouts_zone' ),
+            'blocks' => expModuleViewExplayoutsUiDashboardTableCount( 'explayouts_block' ),
+            'rules' => expModuleViewExplayoutsUiDashboardTableCount( 'explayouts_rule' ),
+            'collections' => expModuleViewExplayoutsUiDashboardTableCount( 'explayouts_collection' ),
         );
 
         $recentLayouts = \eZPersistentObject::fetchObjectList(

@@ -6,8 +6,8 @@
 
 namespace
 {
-if ( !function_exists( 'generateLayoutIconSvg' ) ) {
-function generateLayoutIconSvg( $zones )
+if ( !function_exists( 'expModuleViewExplayoutsUiLayoutListIconSvg' ) ) {
+function expModuleViewExplayoutsUiLayoutListIconSvg( $zones )
 {
     $header = array();
     $columns = array();
@@ -144,7 +144,7 @@ class LayoutList extends \Exponential\Runnable\ModuleView
             if ( !isset( $layoutTypeIcons[$type] ) )
             {
                 $zones = \expLayoutsLayoutType::getZones( $type );
-                $layoutTypeIcons[$type] = generateLayoutIconSvg( $zones );
+                $layoutTypeIcons[$type] = expModuleViewExplayoutsUiLayoutListIconSvg( $zones );
             }
         }
 

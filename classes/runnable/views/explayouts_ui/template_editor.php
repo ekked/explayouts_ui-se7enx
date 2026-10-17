@@ -6,8 +6,8 @@
 
 namespace
 {
-if ( !function_exists( 'expTeJsonResponse' ) ) {
-function expTeJsonResponse( $data )
+if ( !function_exists( 'expModuleViewExplayoutsUiTemplateEditorJsonResponse' ) ) {
+function expModuleViewExplayoutsUiTemplateEditorJsonResponse( $data )
 {
     header( 'Content-Type: application/json; charset=utf-8' );
     echo json_encode( $data );
@@ -46,8 +46,8 @@ class TemplateEditor extends \Exponential\Runnable\ModuleView
                 $selectedPath = $_GET['file'];
                 $content = \expLayoutsTemplateEditor::read( $selectedPath );
                 if ( $content === false )
-                    expTeJsonResponse( array( 'success' => false, 'error' => \ezpI18n::tr( 'design/admin/explayouts_ui/template_editor', 'Unable to read template: %path', null, array( '%path' => $selectedPath ) ) ) );
-                expTeJsonResponse( array( 'success' => true, 'content' => $content ) );
+                    expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => false, 'error' => \ezpI18n::tr( 'design/admin/explayouts_ui/template_editor', 'Unable to read template: %path', null, array( '%path' => $selectedPath ) ) ) );
+                expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => true, 'content' => $content ) );
             }
 
             if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_POST['SaveTemplate'] ) )
@@ -56,10 +56,10 @@ class TemplateEditor extends \Exponential\Runnable\ModuleView
                 $content = isset( $_POST['TemplateContent'] ) ? $_POST['TemplateContent'] : '';
                 $content = str_replace( "\r\n", "\n", $content );
                 $ok = \expLayoutsTemplateEditor::save( $selectedPath, $content );
-                expTeJsonResponse( array( 'success' => $ok, 'message' => $ok ? 'Saved' : \ezpI18n::tr( 'design/admin/explayouts_ui/template_editor', 'Save failed' ) ) );
+                expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => $ok, 'message' => $ok ? 'Saved' : \ezpI18n::tr( 'design/admin/explayouts_ui/template_editor', 'Save failed' ) ) );
             }
 
-            expTeJsonResponse( array( 'success' => false, 'error' => \ezpI18n::tr( 'design/admin/explayouts_ui/template_editor', 'Unknown request' ) ) );
+            expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => false, 'error' => \ezpI18n::tr( 'design/admin/explayouts_ui/template_editor', 'Unknown request' ) ) );
         }
 
         $templates = \expLayoutsTemplateEditor::listTemplates();

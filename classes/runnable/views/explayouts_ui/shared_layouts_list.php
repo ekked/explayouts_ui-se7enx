@@ -6,8 +6,8 @@
 
 namespace
 {
-if ( !function_exists( 'generateSharedLayoutIconSvg' ) ) {
-function generateSharedLayoutIconSvg( $zones )
+if ( !function_exists( 'expModuleViewExplayoutsUiSharedLayoutsListIconSvg' ) ) {
+function expModuleViewExplayoutsUiSharedLayoutsListIconSvg( $zones )
 {
     $header = array();
     $columns = array();
@@ -148,7 +148,7 @@ class SharedLayoutsList extends \Exponential\Runnable\ModuleView
             if ( !isset( $layoutTypeIcons[$type] ) )
             {
                 $zones = \expLayoutsLayoutType::getZones( $type );
-                $layoutTypeIcons[$type] = generateSharedLayoutIconSvg( $zones );
+                $layoutTypeIcons[$type] = expModuleViewExplayoutsUiSharedLayoutsListIconSvg( $zones );
             }
         }
 
