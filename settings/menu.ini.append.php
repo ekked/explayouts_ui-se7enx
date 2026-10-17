@@ -21,7 +21,10 @@ Shown[default]=true
 Shown[edit]=true
 Shown[navigation]=true
 Shown[browse]=true
-PolicyList[]=explayouts/read
+# The policy of the view the tab opens (explayouts_ui/dashboard needs
+# explayouts_ui/read): with explayouts/read the tab showed for users the view
+# then refused, and stayed hidden for users who could open it.
+PolicyList[]=explayouts_ui/read
 
 [Leftmenu_explayouts_ui_dashboard]
 Name=Layouts

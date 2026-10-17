@@ -3,7 +3,7 @@
 ## Requirements
 
 - Exponential Legacy / Exponential 6, PHP 8.1+
-- `extension/explayouts` — value objects, `explayouts_*` tables, `explayouts/read` policy
+- `extension/explayouts` — value objects, `explayouts_*` tables, the template editor class and its settings
 - `extension/explayouts_core` — service classes used by the module views
 - `extension/explayouts_ui_api` — serves the modern SPA editor that the list screens link to (`/explayouts_ui_api/app`)
 
@@ -37,9 +37,9 @@ php bin/php/ezcache.php --clear-all --purge --allow-root-user
 ## 4. Settings shipped with the extension
 
 - `settings/module.ini.append.php` — registers the `explayouts_ui` module (`read` and `edit` functions for policies).
-- `settings/menu.ini.append.php` — adds the "Exponential Layouts UI" navigation part, top admin menu tab (`explayouts_ui/dashboard`) and left menu links (Layouts, Layout mappings, Shared layouts, Import, Template editor, Setup). The tab requires the `explayouts/read` policy.
+- `settings/menu.ini.append.php` — adds the "Layouts" navigation part, top admin menu tab (`explayouts_ui/dashboard`) and left menu links (Layout mappings, Layouts, Shared layouts, Components, Import, Template editor, Setup). The tab requires the `explayouts_ui/read` policy, like the dashboard it opens.
 - `settings/design.ini.append.php` — registers the design extension so the `design/admin` templates and assets are found.
 
 ## 5. Verify
 
-Log into the admin interface and open the "Exponential Layouts UI" tab, or go to `/explayouts_ui/dashboard` directly.
+Log into the admin interface and open the "Layouts" tab, or go to `/explayouts_ui/dashboard` directly.

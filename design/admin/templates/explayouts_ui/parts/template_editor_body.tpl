@@ -12,7 +12,8 @@
     </aside>
     <main class="main">
         <div class="toolbar">
-            <button class="btn secondary" id="new-file">{'New'|i18n( 'design/admin/explayouts_ui/template_editor' )}</button>
+            {* New only with explayouts.ini [TemplateEditorSettings] AllowNewTemplates=enabled; the server refuses to create a file otherwise. *}
+            {if $allow_new_templates}<button class="btn secondary" id="new-file">{'New'|i18n( 'design/admin/explayouts_ui/template_editor' )}</button>{/if}
             <button class="btn" id="save-file">{'Save'|i18n( 'design/admin/explayouts_ui/template_editor' )}</button>
             <button class="btn secondary exit-btn" id="exit-editor" title="{'Return to admin'|i18n( 'design/admin/explayouts_ui/template_editor' )}">×</button>
             <span class="path" id="path">{'No file selected'|i18n( 'design/admin/explayouts_ui/template_editor' )}</span>
@@ -34,7 +35,7 @@ window.TPL_I18N = {ldelim}
     saved: '{'Saved'|i18n( 'design/admin/explayouts_ui/template_editor' )|wash( javascript )}',
     save_failed: '{'Save failed: %message'|i18n( 'design/admin/explayouts_ui/template_editor' )|wash( javascript )}',
     save_error: '{'Save error: %message'|i18n( 'design/admin/explayouts_ui/template_editor' )|wash( javascript )}',
-    new_path: '{'New template path (relative to design/ or extension/, must end in .tpl):'|i18n( 'design/admin/explayouts_ui/template_editor' )|wash( javascript )}',
+    new_path: '{'New template path (from the installation root, inside an allowed folder, must end in .tpl):'|i18n( 'design/admin/explayouts_ui/template_editor' )|wash( javascript )}',
     must_end_tpl: '{'Path must end in .tpl'|i18n( 'design/admin/explayouts_ui/template_editor' )|wash( javascript )}',
     count: '{'(%count templates)'|i18n( 'design/admin/explayouts_ui/template_editor' )|wash( javascript )}',
     new_file_error: '{'New file error: %message'|i18n( 'design/admin/explayouts_ui/template_editor' )|wash( javascript )}'
@@ -226,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    newBtn.addEventListener('click', function() {
+    if (newBtn) newBtn.addEventListener('click', function() {
         try {
             var p = prompt(TPL_I18N.new_path);
             if (!p) return;

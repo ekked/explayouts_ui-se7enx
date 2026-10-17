@@ -4,18 +4,18 @@ Exponential Layouts UI
 General description
 -------------------
 
-Exponential Layouts UI (`explayouts_ui`) is the admin user interface extension for Exponential Layouts on Exponential 6 / Exponential Legacy. It adds an "Exponential Layouts UI" tab to the admin interface with legacy module views for managing layouts, mapping rules and blocks, and ships the admin app UI assets (JS/CSS shell) used by the layouts editor, including `explayouts-ui.css` and the `layouts-exponential.js` application script under `design/admin`.
+Exponential Layouts UI (`explayouts_ui`) is the admin user interface extension for Exponential Layouts on Exponential 6 / Exponential Legacy. It adds a "Layouts" tab to the admin interface with legacy module views for managing layouts, mapping rules and blocks, and ships the admin app UI assets (JS/CSS shell) used by the layouts editor, including `explayouts-ui.css` and the `layouts-exponential.js` application script under `design/admin`.
 
-It is an Exponential Legacy port inspired by the `netgen/layouts-ui` package. The extension contains no PHP classes of its own: its module views call the `explayouts_core` services and the `explayouts` value objects, and its list screens link into the modern SPA editor served by `explayouts_ui_api` (`/explayouts_ui_api/app#layout/<id>`).
+It is an Exponential Legacy port inspired by the `netgen/layouts-ui` package. Its module views (one class per view under `classes/runnable/views/explayouts_ui/`) are thin controllers over the `explayouts_core` services and the `explayouts` value objects; its own classes are the rule form input (`expLayoutsUiRuleInput`), the schema statements of Setup (`expLayoutsUiSchemaStatement`) and its template operators (`expLayoutsUiTemplateOperators`), and its list screens link into the modern SPA editor served by `explayouts_ui_api` (`/explayouts_ui_api/app#layout/<id>`).
 
 This extension provides the following capabilities:
 
-- Admin navigation - An "Exponential Layouts UI" navigation part, top admin menu tab and left menu links (Layouts, Layout mappings, Shared layouts, Import, Template editor, Setup).
+- Admin navigation - A "Layouts" navigation part, top admin menu tab and left menu links (Layout mappings, Layouts, Shared layouts, Components, Import, Template editor, Setup).
 - Layout management - Server-rendered screens to list, create and edit layouts and shared layouts, with deep links into the modern SPA editor.
 - Mapping rule management - List and edit layout mapping rules together with their targets and conditions.
 - Block editing - A legacy block edit screen backed by the `explayouts_core` block service.
 - Transfer import - Import layouts and rules from transfer files.
-- Template editing - Edit layout templates from the admin, with editable roots restricted by configuration.
+- Template editing - Edit layout templates from the admin. Only the folders in `explayouts.ini` `[TemplateEditorSettings] AllowedTemplateRoots[]` are editable; explayouts ships the layout type and block template folders, and new templates are created only with `AllowNewTemplates=enabled`.
 - Preview and setup - Preview a layout and check the suite's setup/status.
 - UI assets - The complete admin app CSS/JS shell used by the layouts editor.
 
@@ -24,7 +24,7 @@ Features
 
 The following features are provided by the Exponential Layouts UI extension:
 
-- Full legacy screen set - Twelve module views on the `explayouts_ui` module cover the whole editorial workflow, reachable from the "Exponential Layouts UI" admin tab:
+- Full legacy screen set - Thirteen module views on the `explayouts_ui` module cover the whole editorial workflow, reachable from the "Layouts" admin tab:
 
 | View | Purpose |
 |------|---------|
@@ -34,21 +34,22 @@ The following features are provided by the Exponential Layouts UI extension:
 | `block_edit` | Edit a block |
 | `rule_list`, `rule_edit` | List and edit layout mapping rules |
 | `transfer_import` | Import layouts/rules from transfer files |
-| `template_editor` | Edit layout templates |
-| `preview` | Preview a layout |
+| `template_editor` | Edit layout templates (needs `read` and `edit`) |
+| `layout_preview` | Preview a layout |
+| `components` | The content component blocks and the content they show |
 | `setup` | Setup/status screen |
 
 - Modern editor integration - The list screens deep-link into the SPA served by `explayouts_ui_api` (`/explayouts_ui_api/app#layout` to create/list, `/explayouts_ui_api/app#layout/<id>` to edit). Both UIs operate on the same `explayouts_*` data through the `explayouts_core` services, so changes made in one appear in the other.
-- Policy-driven access - List views use the `read` module function, editing views use `edit`; the admin tab requires the `explayouts/read` policy. Grant matching module policies to editor roles.
-- Template editor safety - Editable roots are limited by `explayouts.ini` `[TemplateEditorSettings] AllowedTemplateRoots[]`.
+- Policy-driven access - The list views, `dashboard`, `layout_preview` and `components` use the `read` module function; `layout_create`, `layout_edit`, `block_edit`, `rule_edit`, `transfer_import` and `setup` use `edit`, `template_editor` both. The admin tab requires `explayouts_ui/read`, the function of the dashboard it opens. The SPA editor these screens link to has policies of its own: `explayouts_ui_api/read` to open it, `explayouts_ui_api/edit` for every change. Grant matching module policies to editor roles.
+- Template editor safety - Editable roots are limited by `explayouts.ini` `[TemplateEditorSettings] AllowedTemplateRoots[]` (shipped: the layout type and block template folders of explayouts; an empty list allows nothing). Every template in a root can be changed by whoever may open the editor, so do not add `design` or `extension` as a whole. The New button is shown only with `AllowNewTemplates=enabled`. Symbolic links inside a root are neither listed nor read or written. Before a save the previous version is copied to `<var directory>/explayouts/template_backup/<path>` (one generation; keep the var directory out of the web server's reach).
 - Shipped admin assets - `design/admin` contains `stylesheets/explayouts-ui.css` and `stylesheets/netgen/` (app shell CSS), `javascript/netgen/layouts-admin.js` and `javascript/netgen/layouts-exponential.js` (application scripts), and the module view templates under `templates/explayouts_ui/` and `templates/parts/`.
 - Shipped settings - `settings/module.ini.append.php` registers the `explayouts_ui` module (`read` and `edit` functions for policies), `settings/menu.ini.append.php` adds the navigation part, top menu tab (`explayouts_ui/dashboard`) and left menu links, and `settings/design.ini.append.php` registers the design extension.
-- No PHP classes by design - The module view scripts are thin controllers over the `explayouts_core` services, keeping the UI replaceable without touching domain logic.
+- Thin controllers by design - The module view classes are thin controllers over the `explayouts_core` services, keeping the UI replaceable without touching domain logic.
 
 Version
 -------
 
-- The current version of Exponential Layouts UI is 1.0.0
+- The current version of Exponential Layouts UI is the one in `extension.xml` and `ezinfo.php`
 - Last Major update: July 30, 2026
 
 Copyright
@@ -100,7 +101,7 @@ PHP version
 - Make sure you have PHP 8.1 or higher.
 
 Sibling extensions
-- `extension/explayouts` — value objects, `explayouts_*` tables, `explayouts/read` policy.
+- `extension/explayouts` — value objects, `explayouts_*` tables, the template editor class and its settings.
 - `extension/explayouts_core` — service classes used by the module views.
 - `extension/explayouts_ui_api` — serves the modern SPA editor that the list screens link to (`/explayouts_ui_api/app`).
 
@@ -110,14 +111,14 @@ Siteaccess
 Installation
 ------------
 
-In short: place the extension in `extension/explayouts_ui`, activate it after its dependencies (`explayouts`, `explayouts_core`, `explayouts_ui_api`) via `site.ini` `[ExtensionSettings] ActiveExtensions[]` (or per siteaccess via `ActiveAccessExtensions[]`) for the admin siteaccess, then regenerate autoloads and clear all caches. Verify by logging into the admin interface and opening the "Exponential Layouts UI" tab, or going to `/explayouts_ui/dashboard` directly.
+In short: place the extension in `extension/explayouts_ui`, activate it after its dependencies (`explayouts`, `explayouts_core`, `explayouts_ui_api`) via `site.ini` `[ExtensionSettings] ActiveExtensions[]` (or per siteaccess via `ActiveAccessExtensions[]`) for the admin siteaccess, then regenerate autoloads and clear all caches. Verify by logging into the admin interface and opening the "Layouts" tab, or going to `/explayouts_ui/dashboard` directly.
 
 See [INSTALL.md](INSTALL.md) for the full step-by-step installation instructions, including the settings shipped with the extension (`module.ini`, `menu.ini`, `design.ini`).
 
 Usage
 -----
 
-All views live on the `explayouts_ui` module and are reached from the "Exponential Layouts UI" admin tab:
+All views live on the `explayouts_ui` module and are reached from the "Layouts" admin tab:
 
 | URL | Screen |
 |-----|--------|
@@ -130,11 +131,12 @@ All views live on the `explayouts_ui` module and are reached from the "Exponenti
 | `/explayouts_ui/rule_list` | Layout mapping rules |
 | `/explayouts_ui/rule_edit/(RuleID)/<id>` | Edit a rule, its targets and conditions |
 | `/explayouts_ui/transfer_import` | Import layouts/rules from a transfer file |
-| `/explayouts_ui/template_editor` | Edit layout templates (roots limited by `explayouts.ini` `[TemplateEditorSettings] AllowedTemplateRoots[]`) |
-| `/explayouts_ui/preview` | Preview a layout |
-| `/explayouts_ui/setup` | Setup/status |
+| `/explayouts_ui/template_editor` | Edit layout templates (`read` and `edit`; roots limited by `explayouts.ini` `[TemplateEditorSettings] AllowedTemplateRoots[]`, new files only with `AllowNewTemplates=enabled`) |
+| `/explayouts_ui/layout_preview/<layout_id>/<status>` | Preview a layout |
+| `/explayouts_ui/components` | The content component blocks and the content they show |
+| `/explayouts_ui/setup` | Setup/status (`edit` policy function) |
 
-List views use the `read` module function, editing views use `edit` — grant matching module policies to editor roles.
+List views, the dashboard, the preview and the components use the `read` module function, the screens that change something use `edit` — grant matching module policies to editor roles. The SPA editor (`explayouts_ui_api`) has its own: `explayouts_ui_api/read` to open it, `explayouts_ui_api/edit` for every change.
 
 This extension is the legacy (server-rendered) UI. For visual drag-and-drop editing, its list screens deep-link into the SPA served by `explayouts_ui_api`:
 

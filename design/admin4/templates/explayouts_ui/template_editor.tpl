@@ -22,6 +22,6 @@
     <a href={'explayouts_ui/dashboard'|ezurl}>&larr; {'Layouts'|i18n( 'design/admin/explayouts_ui/dashboard' )}</a>
     <span class="explayouts-te-title">{'Template editor'|i18n( 'design/admin/explayouts_ui/dashboard' )}</span>
 </header>
-{include uri='design:explayouts_ui/parts/template_editor_body.tpl' files_json=$files_json selected_json=$selected_json initial_content_json=$initial_content_json base_url=$base_url csrf_token=$csrf_token}
+{include uri='design:explayouts_ui/parts/template_editor_body.tpl' files_json=$files_json selected_json=$selected_json initial_content_json=$initial_content_json base_url=$base_url csrf_token=$csrf_token allow_new_templates=$allow_new_templates}
 </body>
 </html>
