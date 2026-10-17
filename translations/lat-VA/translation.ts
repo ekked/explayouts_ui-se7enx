@@ -1115,8 +1115,8 @@
         <translation>Erratum servandi: %message</translation>
     </message>
     <message>
-        <source>New template path (relative to design/ or extension/, must end in .tpl):</source>
-        <translation>Via formulae novae (relativa ad design/ aut extension/, in .tpl desinere debet):</translation>
+        <source>New template path (from the installation root, inside an allowed folder, must end in .tpl):</source>
+        <translation>Via formulae novae (a radice installationis, intra plicam permissam, in .tpl desinere debet):</translation>
     </message>
     <message>
         <source>Path must end in .tpl</source>

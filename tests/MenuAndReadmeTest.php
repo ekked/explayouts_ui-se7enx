@@ -90,4 +90,17 @@ class MenuAndReadmeTest extends TestCase
         $view = file_get_contents( dirname( __DIR__ ) . '/classes/runnable/views/explayouts_ui/template_editor.php' );
         $this->assertStringContainsString( "setVariable( 'allow_new_templates'", $view );
     }
+
+    /** Every translation carries the prompt's current source text, so none falls back to English for it. */
+    public function testEveryTranslationCarriesThePromptsCurrentSource()
+    {
+        $files = glob( dirname( __DIR__ ) . '/translations/*/translation.ts' );
+        $this->assertNotEmpty( $files );
+        foreach ( $files as $file )
+        {
+            $ts = file_get_contents( $file );
+            $this->assertStringNotContainsString( 'relative to design/ or extension/', $ts, $file );
+            $this->assertStringContainsString( '<source>New template path (from the installation root, inside an allowed folder, must end in .tpl):</source>', $ts, $file );
+        }
+    }
 }
