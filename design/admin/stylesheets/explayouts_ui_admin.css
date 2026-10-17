@@ -9,7 +9,9 @@
 /* Small utilities of the forms and lists (former style="" attributes) */
 form.explui-inline-form { display: inline; margin: 0; }
 .ng-layouts-app .explui-hidden { display: none; }
-.ng-layouts-app .explui-show { display: block; }
+/* Shown although layouts-admin.css hides them until its script runs (#layouts { display: none }), as the former
+   style="display: block" did; the id selector outweighs that rule. */
+.ng-layouts-app .explui-show, .ng-layouts-app #layouts.explui-show { display: block; }
 .explui-mt-section { margin-top: var(--a4-space-5, 24px); }
 .explui-spaced-top { margin-top: var(--a4-space-2, 10px); }
 .material-icons.explui-icon-18 { font-size: 18px; }
