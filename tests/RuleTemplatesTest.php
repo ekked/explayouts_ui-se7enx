@@ -77,7 +77,9 @@ class RuleTemplatesTest extends TestCase
 
     public function testThePageScriptBuildsNoMarkupFromStrings()
     {
-        $script = $this->template( 'admin', 'parts/rule_list_script.tpl' );
+        // the page script is a file since 1.3.20, printed by parts/rule_list_script.tpl
+        $this->assertStringContainsString( "{ezscript( array( 'explayouts_ui_rule_list.js' ) )}", $this->template( 'admin', 'parts/rule_list_script.tpl' ) );
+        $script = file_get_contents( dirname( __DIR__ ) . '/design/admin/javascript/explayouts_ui_rule_list.js' );
         $this->assertStringNotContainsString( 'innerHTML', $script );
         $this->assertStringNotContainsString( 'insertAdjacentHTML', $script );
         $this->assertStringNotContainsString( '<a href="#" class="remove-setting', $script );

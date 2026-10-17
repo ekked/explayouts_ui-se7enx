@@ -68,33 +68,4 @@
         </div>
     </div>
 </div>
-{literal}
-<script>
-(function(){
-    var toggles = document.querySelectorAll('.nl-dropdown-toggle');
-    for (var i = 0; i < toggles.length; i++) {
-        toggles[i].addEventListener('click', function(e){
-            e.preventDefault();
-            e.stopPropagation();
-            var dd = this.parentNode;
-            var active = /\bnl-dropdown-active\b/.test(dd.className);
-            var all = document.querySelectorAll('.nl-dropdown.nl-dropdown-active');
-            for (var j = 0; j < all.length; j++) {
-                if (all[j] !== dd) all[j].className = all[j].className.replace(/\bnl-dropdown-active\b/g, '').trim();
-            }
-            if (!active) {
-                dd.className += ' nl-dropdown-active';
-            } else {
-                dd.className = dd.className.replace(/\bnl-dropdown-active\b/g, '').trim();
-            }
-        });
-    }
-    document.addEventListener('click', function(){
-        var all = document.querySelectorAll('.nl-dropdown.nl-dropdown-active');
-        for (var j = 0; j < all.length; j++) {
-            all[j].className = all[j].className.replace(/\bnl-dropdown-active\b/g, '').trim();
-        }
-    });
-})();
-</script>
-{/literal}
+{ezscript( array( 'explayouts_ui_admin.js' ) )}

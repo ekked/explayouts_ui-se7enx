@@ -155,7 +155,7 @@
 
                                             {if $canEdit}
                                                 <li>
-                                                    <form method="post" action={'explayouts_ui/rule_list'|ezurl} onsubmit="return confirm('{'Delete this mapping?'|i18n( 'design/admin/explayouts_ui/rule_list' )|wash( javascript )}');">
+                                                    <form method="post" action={'explayouts_ui/rule_list'|ezurl} data-explui-confirm="{'Delete this mapping?'|i18n( 'design/admin/explayouts_ui/rule_list' )|wash}">
                                                         <input type="hidden" name="DeleteRuleID" value="{$rule.id|wash}" />
                                                         <button type="submit" name="DeleteRule" class="js-rule-delete">{'Delete mapping'|i18n( 'design/admin/explayouts_ui/rule_list' )}</button>
                                                     </form>
@@ -240,3 +240,4 @@
 
 
 {include uri='design:explayouts_ui/parts/rule_list_script.tpl' targetTypes=$targetTypes conditionTypes=$conditionTypes contentClassesJson=$contentClassesJson siteAccessListJson=$siteAccessListJson autoOpenNewRule=$autoOpenNewRule autoOpenRuleId=$autoOpenRuleId}
+{ezscript( array( 'explayouts_ui_admin.js' ) )}

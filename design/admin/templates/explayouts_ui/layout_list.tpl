@@ -74,7 +74,7 @@
                                     <ul class="nl-dropdown-menu main-dropdown">
                                         <li><a href={concat('explayouts_ui/layout_preview/',$layout.id,'/',$layout.status)|ezurl} target="_blank"><i class="material-icons explui-icon-inline">visibility</i> {'Preview'|i18n( 'design/admin/explayouts_ui/layout_list' )}</a></li>
                                         <li>
-                                            <form method="post" action={'explayouts_ui/layout_list'|ezurl} class="explui-inline-form" onsubmit="return confirm('{'Delete this layout and all its zones/blocks?'|i18n( 'design/admin/explayouts_ui/layout_list' )|wash( javascript )}');">
+                                            <form method="post" action={'explayouts_ui/layout_list'|ezurl} class="explui-inline-form" data-explui-confirm="{'Delete this layout and all its zones/blocks?'|i18n( 'design/admin/explayouts_ui/layout_list' )|wash}">
                                                 <input type="hidden" name="DeleteLayoutID" value="{$layout.id|wash}" />
                                                 <button type="submit" name="DeleteLayout" class="explui-menu-button">{'Delete'|i18n( 'design/admin/explayouts_ui/layout_list' )}</button>
                                             </form>
@@ -107,63 +107,4 @@
         </div>
     </div>
 </div>
-{literal}
-<script>
-(function(){
-    var sortSelect = document.getElementById('layout-sorting-sort');
-    var dirSelect = document.getElementById('layout-sorting-direction');
-    function sortLayouts() {
-        var sort = sortSelect.value;
-        var dir = dirSelect.value;
-        var container = document.querySelector('.nl-layouts');
-        if (!container) return;
-        var cards = Array.prototype.slice.call(container.children);
-        cards.sort(function(a, b) {
-            var av = a.getAttribute('data-' + sort) || '';
-            var bv = b.getAttribute('data-' + sort) || '';
-            if (sort === 'modified' || sort === 'mappings') {
-                av = parseInt(av) || 0;
-                bv = parseInt(bv) || 0;
-            } else {
-                av = av.toLowerCase();
-                bv = bv.toLowerCase();
-            }
-            if (av < bv) return -1;
-            if (av > bv) return 1;
-            return 0;
-        });
-        if (dir === 'desc') cards.reverse();
-        for (var k = 0; k < cards.length; k++) {
-            container.appendChild(cards[k]);
-        }
-    }
-    if (sortSelect) sortSelect.addEventListener('change', sortLayouts);
-    if (dirSelect) dirSelect.addEventListener('change', sortLayouts);
-
-    var toggles = document.querySelectorAll('.nl-dropdown-toggle');
-    for (var i = 0; i < toggles.length; i++) {
-        toggles[i].addEventListener('click', function(e){
-            e.preventDefault();
-            e.stopPropagation();
-            var dd = this.parentNode;
-            var active = /\bnl-dropdown-active\b/.test(dd.className);
-            var all = document.querySelectorAll('.nl-dropdown.nl-dropdown-active');
-            for (var j = 0; j < all.length; j++) {
-                if (all[j] !== dd) all[j].className = all[j].className.replace(/\bnl-dropdown-active\b/g, '').trim();
-            }
-            if (!active) {
-                dd.className += ' nl-dropdown-active';
-            } else {
-                dd.className = dd.className.replace(/\bnl-dropdown-active\b/g, '').trim();
-            }
-        });
-    }
-    document.addEventListener('click', function(){
-        var all = document.querySelectorAll('.nl-dropdown.nl-dropdown-active');
-        for (var j = 0; j < all.length; j++) {
-            all[j].className = all[j].className.replace(/\bnl-dropdown-active\b/g, '').trim();
-        }
-    });
-})();
-</script>
-{/literal}
+{ezscript( array( 'explayouts_ui_admin.js' ) )}

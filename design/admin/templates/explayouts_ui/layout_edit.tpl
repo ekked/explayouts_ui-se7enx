@@ -43,7 +43,7 @@
                                 <h4>{$zone.identifier|wash}</h4>
                                 <form method="post" action={concat('explayouts_ui/layout_edit/',$layout.id)|ezurl} class="explui-inline-form">
                                     <input type="hidden" name="DeleteZoneID" value="{$zone.id|wash}" />
-                                    <button type="submit" name="DeleteZone" class="nl-btn nl-btn-small" onclick="return confirm('{'Delete this zone and all its blocks?'|i18n( 'design/admin/explayouts_ui/layout_edit' )|wash( javascript )}');"><i class="material-icons">delete</i> {'Delete zone'|i18n( 'design/admin/explayouts_ui/layout_edit' )}</button>
+                                    <button type="submit" name="DeleteZone" class="nl-btn nl-btn-small" data-explui-confirm="{'Delete this zone and all its blocks?'|i18n( 'design/admin/explayouts_ui/layout_edit' )|wash}"><i class="material-icons">delete</i> {'Delete zone'|i18n( 'design/admin/explayouts_ui/layout_edit' )}</button>
                                 </form>
                             </div>
 
@@ -73,7 +73,7 @@
                                                 </form>
                                                 <form method="post" action={concat('explayouts_ui/layout_edit/',$layout.id)|ezurl} class="explui-inline-form">
                                                     <input type="hidden" name="DeleteBlockID" value="{$block.id|wash}" />
-                                                    <button type="submit" name="DeleteBlock" class="nl-btn nl-btn-small" onclick="return confirm('{'Delete this block?'|i18n( 'design/admin/explayouts_ui/layout_edit' )|wash( javascript )}');"><i class="material-icons">delete</i></button>
+                                                    <button type="submit" name="DeleteBlock" class="nl-btn nl-btn-small" data-explui-confirm="{'Delete this block?'|i18n( 'design/admin/explayouts_ui/layout_edit' )|wash}"><i class="material-icons">delete</i></button>
                                                 </form>
                                             </div>
                                         </div>
@@ -108,3 +108,4 @@
         </div>
     </div>
 </div>
+{ezscript( array( 'explayouts_ui_admin.js' ) )}

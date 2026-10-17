@@ -7,13 +7,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{'7x Template Editor'|i18n( 'design/admin/explayouts_ui/template_editor' )}</title>
-    {literal}<script>
-    (function () {
-        var theme = null;
-        try { theme = window.localStorage.getItem('exp-admin4-theme'); } catch (e) {}
-        document.documentElement.setAttribute('data-a4-theme', theme === 'dark' ? 'dark' : 'light');
-    })();
-    </script>{/literal}
+    {* The color mode, before anything is drawn: a blocking script (until 1.3.19 inline). *}
+    <script src={'javascript/explayouts_ui_template_editor_theme.js'|ezdesign}></script>
     <link rel="stylesheet" href={'stylesheets/components.css'|ezdesign}>
     <link rel="stylesheet" href={'stylesheets/explayouts_ui_template_editor.css'|ezdesign}>
 </head>

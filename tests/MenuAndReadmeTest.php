@@ -78,7 +78,9 @@ class MenuAndReadmeTest extends TestCase
     {
         $body = file_get_contents( dirname( __DIR__ ) . '/design/admin/templates/explayouts_ui/parts/template_editor_body.tpl' );
         $this->assertMatchesRegularExpression( '#\{if \$allow_new_templates\}<button[^>]*id="new-file"[^>]*>.*?</button>\{/if\}#', $body );
-        $this->assertStringContainsString( 'if (newBtn) newBtn.addEventListener', $body );
+        // the script is a file since 1.3.20 (javascript/explayouts_ui_template_editor.js), printed by the body
+        $this->assertStringContainsString( "<script src={'javascript/explayouts_ui_template_editor.js'|ezdesign}></script>", $body );
+        $this->assertStringContainsString( 'if (newBtn) newBtn.addEventListener', file_get_contents( dirname( __DIR__ ) . '/design/admin/javascript/explayouts_ui_template_editor.js' ) );
         // The path is taken from the installation root (expLayoutsTemplateEditor::resolve()), not from design/ or extension/.
         $this->assertStringNotContainsString( 'relative to design/ or extension/', $body );
         $this->assertStringContainsString( 'New template path (from the installation root, inside an allowed folder, must end in .tpl):', $body );
