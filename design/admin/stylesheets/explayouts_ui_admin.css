@@ -14,8 +14,8 @@ form.explui-inline-form { display: inline; margin: 0; }
 .ng-layouts-app .explui-show, .ng-layouts-app #layouts.explui-show { display: block; }
 .explui-mt-section { margin-top: var(--a4-space-5, 24px); }
 .explui-spaced-top { margin-top: var(--a4-space-2, 10px); }
-html #page .material-icons.explui-icon-18, .material-icons.explui-icon-18 { font-size: 18px; }
-html #page .material-icons.explui-icon-inline, .material-icons.explui-icon-inline { font-size: 18px; vertical-align: middle; margin-right: var(--a4-space-1, 4px); }
+html #page .ng-layouts-app .material-icons.explui-icon-18, .material-icons.explui-icon-18 { font-size: 18px; }
+html #page .ng-layouts-app .material-icons.explui-icon-inline, .material-icons.explui-icon-inline { font-size: 18px; vertical-align: middle; margin-right: var(--a4-space-1, 4px); }
 button.explui-menu-button { display: block; width: 100%; text-align: left; border: 0; background: transparent; cursor: pointer; padding: .6em 1em; }
 .layout-type-option .layout-type-thumb .layout-icon.explui-layout-icon-blank { background-color: var(--a4-disabled, #a1a1a1); }
 img.layout-icon.explui-layout-icon { object-fit: contain; }
