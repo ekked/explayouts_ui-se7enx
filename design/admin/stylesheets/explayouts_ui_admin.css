@@ -17,7 +17,7 @@ form.explui-inline-form { display: inline; margin: 0; }
 .material-icons.explui-icon-18 { font-size: 18px; }
 .material-icons.explui-icon-inline { font-size: 18px; vertical-align: middle; margin-right: var(--a4-space-1, 4px); }
 button.explui-menu-button { display: block; width: 100%; text-align: left; border: 0; background: transparent; cursor: pointer; padding: .6em 1em; }
-.layout-icon.explui-layout-icon-blank { background-color: var(--a4-line-strong, #a1a1a1); }
+.layout-type-option .layout-type-thumb .layout-icon.explui-layout-icon-blank { background-color: var(--a4-line-strong, #a1a1a1); }
 img.layout-icon.explui-layout-icon { object-fit: contain; }
 
 /* The New mapping form of the mapping panel (rule_detail.tpl) */
@@ -30,7 +30,7 @@ select.explui-select-wide { min-width: 260px; padding: var(--a4-space-2, 8px); }
 input.explui-input-pad { padding: var(--a4-space-2, 8px); }
 
 /* Dashboard */
-.explui-page-dashboard .explui-recent-title { font-size: 18px; margin-bottom: 12px; }
+.explui-page-dashboard .layouts-header .layouts-title.explui-recent-title, .explui-page-dashboard .layouts-title.explui-recent-title { font-size: 18px; margin-bottom: 12px; }
 .explui-page-dashboard th.explui-col-action { width: 160px; }
 .explui-page-dashboard .nl-dashboard-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
 .explui-page-dashboard .nl-stat-card { background: var(--a4-card, #fff); border: 1px solid var(--a4-line, #e0e0e0); border-radius: 4px; padding: 16px; text-align: center; }
