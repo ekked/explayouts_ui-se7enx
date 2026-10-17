@@ -1,71 +1,14 @@
-{ezcss_require(array('netgen/layouts-admin.css','netgen/layouts-exponential.css','explayouts-ui.css'))}
+{ezcss_require(array('netgen/layouts-admin.css','netgen/layouts-exponential.css','explayouts-ui.css','explayouts_ui_admin.css'))}
 {* layouts-admin.js is not loaded: its content browser stops at once without Netgen's page tags, so none of it ever ran here, and these pages have their own scripts. *}
 {ezscript_load(array('netgen/layouts-exponential.js'))}
-{literal}<style>
-.nl-layout-type { text-align: center; width: 110px; flex-shrink: 0; }
-.nl-layout-type p { margin: 6px 0 0; font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.03em; }
-.nl-layout-icon { border: 0px solid #a1a1a1; padding: 4px; margin-bottom: 6px; opacity: .65; }
-.nl-layout-icon svg { width: 84px; height: 63px; display: block; }
-.nl-layout-info { align-items: flex-start; gap: 18px; }
-.nl-layout-text {
-  min-width: 0;
-  padding-top: 2px;
-  padding-left: 13px;
-}
-.nl-layout-name { line-height: 1.3; margin: 0 0 2px 0; }
-.nl-layout-description { margin-bottom: 2px; }
-.nl-dropdown { display: inline-block !important; opacity: 1 !important; visibility: visible !important; }
-.nl-dropdown-toggle { visibility: visible !important; }
-
-/* Patch: keep layout cards inside the admin content area */
-.nl-layouts { display: grid !important; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; width: 100%; box-sizing: border-box; }
-.nl-layout { width: 100% !important; max-width: 100% !important; margin: 0 !important; box-sizing: border-box; }
-.nl-layout-content { min-width: 0; width: 100%; }
-.nl-layout-info { min-width: 0; flex: 1 1 auto; width: 100%; }
-.nl-layout-text { min-width: 0; overflow: hidden; width: 100%; }
-.nl-layout-name, .nl-layout-description { word-break: break-word; overflow-wrap: anywhere; }
-
-/* Sorting controls rendered as one bar matching the New layout button height */
-.layouts-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-.layouts-title { margin: 0; }
-.layouts-controls { display: flex; align-items: center; gap: 8px; flex: 1; justify-content: flex-end; flex-wrap: wrap; }
-.layout-sorting-controls { display: inline-flex; align-items: center; gap: 4px; height: 2.6428571429em; font-size: .875em; border: 1px solid #ccc; border-radius: 2px; background: #fff; padding: 0 4px; box-sizing: border-box; }
-.layout-sorting-controls label { display: inline-flex; align-items: center; margin: 0; padding: 0 4px; }
-.layout-sorting-controls .material-icons { font-size: 18px; color: #666; }
-.layout-sorting-controls .nl-select { height: 100%; border: none; background: transparent; padding: 0 4px; margin: 0; font-size: 1em; max-width: 120px; min-width: 70px; }
-
-/* The header is one row: the title, the two sorting selects and the New
-   layout button. Nothing in it could wrap and the selects carry a minimum
-   width, so on a narrow screen the row ran past the edge of the content area
-   and the button went off it. The row wraps now, and below the width where
-   it stops fitting the controls take a line of their own, left aligned, with
-   the selects free to shrink. */
-@media only screen and (max-width: 900px) {
-  .layouts-controls { flex: 1 1 100%; justify-content: flex-start; }
-  .layout-sorting-controls { flex: 1 1 auto; min-width: 0; }
-  .layout-sorting-controls .nl-select { flex: 1 1 auto; min-width: 0; max-width: none; }
-  #add-new-button { flex: 0 0 auto; }
-}
-
-/* A phone in portrait has no room for the sorting bar and the button side by
-   side, so each takes the full width. */
-@media only screen and (max-width: 480px) {
-  .layout-sorting-controls { flex-basis: 100%; }
-  #add-new-button { flex: 1 1 100%; justify-content: center; }
-}
-
-/* The cards themselves are laid out on a fixed 260px minimum, which is wider
-   than the content area on a small phone and overflows it. */
-.nl-layouts { grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); }
-</style>{/literal}
-<div class="ng-layouts-app row">
+<div class="ng-layouts-app row explui-page-layouts">
     <div class="layouts-content">
-        <div id="layouts" class="nl-layouts-view-grid" style="display: block;">
+        <div id="layouts" class="nl-layouts-view-grid explui-show">
             <div class="layouts-header">
                 <h2 class="layouts-title">{'Layouts'|i18n( 'design/admin/explayouts_ui/layout_list' )}</h2>
                 <div class="layouts-controls">
-                    <a style="display: none" href="#" class="nl-btn js-export">{'Export'|i18n( 'design/admin/explayouts_ui/layout_list' )}</a>
-                    <a href="#" class="nl-btn js-change-layouts-view" style="display: none;"></a>
+                    <a href="#" class="nl-btn js-export explui-hidden">{'Export'|i18n( 'design/admin/explayouts_ui/layout_list' )}</a>
+                    <a href="#" class="nl-btn js-change-layouts-view explui-hidden"></a>
                     <div class="layout-sorting-controls">
                         <label for="layout-sorting-sort"><i class="material-icons">sort_by_alpha</i></label>
                         <select id="layout-sorting-sort" class="nl-select">
@@ -86,7 +29,7 @@
                 </div>
             </div>
 
-            <div class="nl-layouts-head" style="display: none;">
+            <div class="nl-layouts-head explui-hidden">
                 <div class="nl-layout-info">
                     <div class="nl-layout-type"><a class="js-reorder-layouts" data-sorting="type">{'Layout type'|i18n( 'design/admin/explayouts_ui/layout_list' )}<i class="sort-icon"></i></a></div>
                     <div class="nl-layout-text">
@@ -129,11 +72,11 @@
                                 <div class="nl-dropdown" data-position="right">
                                     <button class="nl-btn nl-dropdown-toggle" type="button"><i class="material-icons">more_horiz</i></button>
                                     <ul class="nl-dropdown-menu main-dropdown">
-                                        <li><a href={concat('explayouts_ui/layout_preview/',$layout.id,'/',$layout.status)|ezurl} target="_blank"><i class="material-icons" style="font-size:18px;vertical-align:middle;margin-right:4px;">visibility</i> {'Preview'|i18n( 'design/admin/explayouts_ui/layout_list' )}</a></li>
+                                        <li><a href={concat('explayouts_ui/layout_preview/',$layout.id,'/',$layout.status)|ezurl} target="_blank"><i class="material-icons explui-icon-inline">visibility</i> {'Preview'|i18n( 'design/admin/explayouts_ui/layout_list' )}</a></li>
                                         <li>
-                                            <form method="post" action={'explayouts_ui/layout_list'|ezurl} style="display:inline;margin:0;" onsubmit="return confirm('{'Delete this layout and all its zones/blocks?'|i18n( 'design/admin/explayouts_ui/layout_list' )|wash( javascript )}');">
+                                            <form method="post" action={'explayouts_ui/layout_list'|ezurl} class="explui-inline-form" onsubmit="return confirm('{'Delete this layout and all its zones/blocks?'|i18n( 'design/admin/explayouts_ui/layout_list' )|wash( javascript )}');">
                                                 <input type="hidden" name="DeleteLayoutID" value="{$layout.id|wash}" />
-                                                <button type="submit" name="DeleteLayout" style="display:block;width:100%;text-align:left;border:0;background:transparent;cursor:pointer;padding:.6em 1em;">{'Delete'|i18n( 'design/admin/explayouts_ui/layout_list' )}</button>
+                                                <button type="submit" name="DeleteLayout" class="explui-menu-button">{'Delete'|i18n( 'design/admin/explayouts_ui/layout_list' )}</button>
                                             </form>
                                         </li>
                                     </ul>
@@ -159,7 +102,7 @@
 
 
             {if count($layouts)|eq(0)}
-                <p class="nl-no-items" style="display: block;">{'There are no layouts defined'|i18n( 'design/admin/explayouts_ui/layout_list' )}</p>
+                <p class="nl-no-items explui-show">{'There are no layouts defined'|i18n( 'design/admin/explayouts_ui/layout_list' )}</p>
             {/if}
         </div>
     </div>

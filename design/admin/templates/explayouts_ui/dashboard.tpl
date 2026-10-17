@@ -1,22 +1,9 @@
-{ezcss_require(array('netgen/layouts-admin.css','netgen/layouts-exponential.css','explayouts-ui.css'))}
+{ezcss_require(array('netgen/layouts-admin.css','netgen/layouts-exponential.css','explayouts-ui.css','explayouts_ui_admin.css'))}
 {* layouts-admin.js is not loaded: its content browser stops at once without Netgen's page tags, so none of it ever ran here, and these pages have their own scripts. *}
 {ezscript_load(array('netgen/layouts-exponential.js'))}
 
-{literal}<style>
-.nl-dashboard-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-.nl-stat-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 4px; padding: 16px; text-align: center; }
-.nl-stat-card .nl-stat-value { font-size: 28px; font-weight: 500; color: #333; line-height: 1; margin-bottom: 6px; }
-.nl-stat-card .nl-stat-label { font-size: 12px; text-transform: uppercase; color: #777; letter-spacing: 0.04em; }
-.nl-recent-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
-.nl-recent-table th,
-.nl-recent-table td { text-align: left; padding: 10px 8px; border-bottom: 1px solid #e0e0e0; }
-.nl-recent-table th { font-size: 12px; text-transform: uppercase; color: #777; font-weight: 500; }
-.nl-recent-table td { font-size: 13px; color: #333; }
-.nl-recent-table .nl-status-label { display: inline-block; padding: 2px 6px; border-radius: 12px; font-size: 10px; font-weight: 500; text-transform: uppercase; background: #f5f5f5; color: #777; }
-.nl-recent-table .nl-status-label.published { background: #e6f5e6; color: #2e7d32; }
-</style>{/literal}
 
-<div class="ng-layouts-app">
+<div class="ng-layouts-app explui-page-dashboard">
     <div class="layouts-content">
         <div class="layouts-header">
             <h2 class="layouts-title">{'Layouts Dashboard'|i18n( 'design/admin/explayouts_ui/dashboard' )}</h2>
@@ -62,7 +49,7 @@
             </div>
         </div>
 
-        <h3 class="layouts-title" style="font-size:18px;margin-bottom:12px;">{'Recent layouts'|i18n( 'design/admin/explayouts_ui/dashboard' )}</h3>
+        <h3 class="layouts-title explui-recent-title">{'Recent layouts'|i18n( 'design/admin/explayouts_ui/dashboard' )}</h3>
 
         {if count($recent_layouts)}
             <table class="nl-recent-table" cellspacing="0">
@@ -72,7 +59,7 @@
                         <th>{'Identifier'|i18n( 'design/admin/explayouts_ui/dashboard' )}</th>
                         <th>{'Status'|i18n( 'design/admin/explayouts_ui/dashboard' )}</th>
                         <th>{'Modified'|i18n( 'design/admin/explayouts_ui/dashboard' )}</th>
-                        <th style="width:160px;">{'Action'|i18n( 'design/admin/explayouts_ui/dashboard' )}</th>
+                        <th class="explui-col-action">{'Action'|i18n( 'design/admin/explayouts_ui/dashboard' )}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -90,7 +77,7 @@
                             <td>{$layout.modified|datetime( 'custom', '%Y-%m-%d %H:%i' )}</td>
                             <td>
                                 <a href={concat('explayouts_ui_api/app#layout/',$layout.id)|ezurl} class="nl-btn nl-btn-small">
-                                    <i class="material-icons" style="font-size:18px;">open_in_new</i> {'Open'|i18n( 'design/admin/explayouts_ui/dashboard' )}
+                                    <i class="material-icons explui-icon-18">open_in_new</i> {'Open'|i18n( 'design/admin/explayouts_ui/dashboard' )}
                                 </a>
                             </td>
                         </tr>

@@ -1,4 +1,4 @@
-{ezcss_require(array('netgen/layouts-admin.css','netgen/layouts-exponential.css','explayouts-ui.css'))}
+{ezcss_require(array('netgen/layouts-admin.css','netgen/layouts-exponential.css','explayouts-ui.css','explayouts_ui_admin.css'))}
 {* layouts-admin.js is not loaded: its content browser stops at once without Netgen's page tags, so none of it ever ran here, and these pages have their own scripts. *}
 {ezscript_load(array('netgen/layouts-exponential.js'))}
 <div class="ng-layouts-app row">
@@ -25,7 +25,7 @@
                 <input type="checkbox" name="Enabled" value="1" {if $rule.enabled}checked="checked"{/if} /> {'Enabled'|i18n( 'design/admin/explayouts_ui/rule_edit' )}
             </label>
 
-            <h3 style="margin-top:24px;">{'Targets'|i18n( 'design/admin/explayouts_ui/rule_edit' )}</h3>
+            <h3 class="explui-mt-section">{'Targets'|i18n( 'design/admin/explayouts_ui/rule_edit' )}</h3>
             <p>{'First matching target wins. Types: <code>path_prefix</code>, <code>path</code>, <code>path_regex</code> (pattern without delimiters), <code>node</code> (node ID or URL alias).'|i18n( 'design/admin/explayouts_ui/rule_edit' )}</p>
             <table class="list" cellspacing="0">
                 <tr><th>{'Type'|i18n( 'design/admin/explayouts_ui/rule_edit' )}</th><th>{'Value'|i18n( 'design/admin/explayouts_ui/rule_edit' )}</th></tr>

@@ -1,4 +1,4 @@
-{ezcss_require(array('netgen/layouts-admin.css','netgen/layouts-exponential.css','explayouts-ui.css'))}
+{ezcss_require(array('netgen/layouts-admin.css','netgen/layouts-exponential.css','explayouts-ui.css','explayouts_ui_admin.css'))}
 {* layouts-admin.js is not loaded: its content browser stops at once without Netgen's page tags, so none of it ever ran here, and these pages have their own scripts. *}
 {ezscript_load(array('netgen/layouts-exponential.js'))}
 <div class="ng-layouts-app row">
@@ -41,7 +41,7 @@
                         <div class="nl-zone">
                             <div class="nl-zone-header">
                                 <h4>{$zone.identifier|wash}</h4>
-                                <form method="post" action={concat('explayouts_ui/layout_edit/',$layout.id)|ezurl} style="display:inline;margin:0;">
+                                <form method="post" action={concat('explayouts_ui/layout_edit/',$layout.id)|ezurl} class="explui-inline-form">
                                     <input type="hidden" name="DeleteZoneID" value="{$zone.id|wash}" />
                                     <button type="submit" name="DeleteZone" class="nl-btn nl-btn-small" onclick="return confirm('{'Delete this zone and all its blocks?'|i18n( 'design/admin/explayouts_ui/layout_edit' )|wash( javascript )}');"><i class="material-icons">delete</i> {'Delete zone'|i18n( 'design/admin/explayouts_ui/layout_edit' )}</button>
                                 </form>
@@ -55,12 +55,12 @@
                                             <span class="nl-block-type">{$block.definition_identifier|wash}</span>
                                             <div class="nl-block-actions">
                                                 <a class="nl-btn nl-btn-small" href={concat('explayouts_ui/block_edit/',$block.id)|ezurl}><i class="material-icons">edit</i> {'Edit'|i18n( 'design/admin/explayouts_ui/layout_edit' )}</a>
-                                                <form method="post" action={concat('explayouts_ui/layout_edit/',$layout.id)|ezurl} style="display:inline;margin:0;">
+                                                <form method="post" action={concat('explayouts_ui/layout_edit/',$layout.id)|ezurl} class="explui-inline-form">
                                                     <input type="hidden" name="MoveBlockID" value="{$block.id|wash}" />
                                                     <button type="submit" name="MoveBlockUp" class="nl-btn nl-btn-small"><i class="material-icons">arrow_upward</i></button>
                                                     <button type="submit" name="MoveBlockDown" class="nl-btn nl-btn-small"><i class="material-icons">arrow_downward</i></button>
                                                 </form>
-                                                <form method="post" action={concat('explayouts_ui/layout_edit/',$layout.id)|ezurl} style="display:inline;margin:0;">
+                                                <form method="post" action={concat('explayouts_ui/layout_edit/',$layout.id)|ezurl} class="explui-inline-form">
                                                     <input type="hidden" name="MoveBlockID" value="{$block.id|wash}" />
                                                     <select name="TargetZoneID" class="nl-select nl-select-small">
                                                         {foreach $zones as $z}
@@ -71,7 +71,7 @@
                                                     </select>
                                                     <button type="submit" name="MoveBlockToZone" class="nl-btn nl-btn-small">{'Move'|i18n( 'design/admin/explayouts_ui/layout_edit' )}</button>
                                                 </form>
-                                                <form method="post" action={concat('explayouts_ui/layout_edit/',$layout.id)|ezurl} style="display:inline;margin:0;">
+                                                <form method="post" action={concat('explayouts_ui/layout_edit/',$layout.id)|ezurl} class="explui-inline-form">
                                                     <input type="hidden" name="DeleteBlockID" value="{$block.id|wash}" />
                                                     <button type="submit" name="DeleteBlock" class="nl-btn nl-btn-small" onclick="return confirm('{'Delete this block?'|i18n( 'design/admin/explayouts_ui/layout_edit' )|wash( javascript )}');"><i class="material-icons">delete</i></button>
                                                 </form>

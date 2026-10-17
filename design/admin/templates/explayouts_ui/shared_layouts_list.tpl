@@ -1,29 +1,9 @@
-{ezcss_require(array('netgen/layouts-admin.css','netgen/layouts-exponential.css','explayouts-ui.css'))}
+{ezcss_require(array('netgen/layouts-admin.css','netgen/layouts-exponential.css','explayouts-ui.css','explayouts_ui_admin.css'))}
 {* layouts-admin.js is not loaded: its content browser stops at once without Netgen's page tags, so none of it ever ran here, and these pages have their own scripts. *}
 {ezscript_load(array('netgen/layouts-exponential.js'))}
-{literal}<style>
-.nl-layout-type { text-align: center; width: 110px; flex-shrink: 0; }
-.nl-layout-type p { margin: 6px 0 0; font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.03em; }
-.nl-layout-icon { border: 0px solid #a1a1a1; padding: 4px; margin-bottom: 6px; opacity: .65; }
-.nl-layout-icon svg { width: 84px; height: 63px; display: block; }
-.nl-layout-info { align-items: flex-start; gap: 18px; }
-.nl-layout-text { min-width: 0; padding-top: 2px; padding-left: 13px; }
-.nl-layout-name { line-height: 1.3; margin: 0 0 2px 0; }
-.nl-layout-description { margin-bottom: 2px; }
-.nl-dropdown { display: inline-block !important; opacity: 1 !important; visibility: visible !important; }
-.nl-dropdown-toggle { visibility: visible !important; }
-
-/* Patch: keep layout cards inside the admin content area */
-.nl-layouts { display: grid !important; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; width: 100%; box-sizing: border-box; }
-.nl-layout { width: 100% !important; max-width: 100% !important; margin: 0 !important; box-sizing: border-box; }
-.nl-layout-content { min-width: 0; width: 100%; }
-.nl-layout-info { min-width: 0; flex: 1 1 auto; width: 100%; }
-.nl-layout-text { min-width: 0; overflow: hidden; width: 100%; }
-.nl-layout-name, .nl-layout-description { word-break: break-word; overflow-wrap: anywhere; }
-</style>{/literal}
-<div class="ng-layouts-app row">
+<div class="ng-layouts-app row explui-page-shared-layouts">
     <div class="layouts-content">
-        <div class="nl-layouts-view-grid" style="display: block;">
+        <div class="nl-layouts-view-grid explui-show">
             <div class="layouts-header">
                 <h2 class="layouts-title">{'Shared layouts'|i18n( 'design/admin/explayouts_ui/shared_layouts_list' )}</h2>
                 <div class="layouts-controls">
@@ -59,7 +39,7 @@
                                 <div class="nl-dropdown" data-position="right">
                                     <button class="nl-btn nl-dropdown-toggle" type="button"><i class="material-icons">more_horiz</i></button>
                                     <ul class="nl-dropdown-menu main-dropdown">
-                                        <li><a href={concat('explayouts_ui/layout_preview/',$layout.id,'/',$layout.status)|ezurl} target="_blank"><i class="material-icons" style="font-size:18px;vertical-align:middle;margin-right:4px;">visibility</i> {'Preview'|i18n( 'design/admin/explayouts_ui/shared_layouts_list' )}</a></li>
+                                        <li><a href={concat('explayouts_ui/layout_preview/',$layout.id,'/',$layout.status)|ezurl} target="_blank"><i class="material-icons explui-icon-inline">visibility</i> {'Preview'|i18n( 'design/admin/explayouts_ui/shared_layouts_list' )}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -83,7 +63,7 @@
 
 
             {if count($layouts)|eq(0)}
-                <p class="nl-no-items" style="display: block;">{'There are no shared layouts referenced by other layouts yet.'|i18n( 'design/admin/explayouts_ui/shared_layouts_list' )}</p>
+                <p class="nl-no-items explui-show">{'There are no shared layouts referenced by other layouts yet.'|i18n( 'design/admin/explayouts_ui/shared_layouts_list' )}</p>
             {/if}
         </div>
     </div>

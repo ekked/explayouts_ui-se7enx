@@ -25,7 +25,7 @@
                             {if is_set($layoutType)}{if $layoutType}{if is_set($layoutType.zones)}{set $layoutZoneCount = count($layoutType.zones)}{/if}{/if}{/if}
                             {if $layoutZoneCount|gt(0)}
                                 <div class="rule-layout-info-icon">
-                                    {if $layoutType}<i class="layout-icon {if $layoutType.identifier}{$layoutType.identifier|wash}{/if}" {if and($layoutType.icon,ne($layoutType.icon,''))}style="background-image:url('{concat('/extension/explayouts/design/standard/images/explayouts_standard/layout_types/',$layoutType.icon,'.svg')|wash}')"{/if}></i>{/if}
+                                    {if and( $layoutType, $layoutType.icon, ne( $layoutType.icon, '' ) )}<img class="layout-icon explui-layout-icon" src={concat( '/extension/explayouts/design/standard/images/explayouts_standard/layout_types/', $layoutType.icon, '.svg' )|ezroot} alt="" />{/if}
                                 </div>
                                 <div class="rule-layout-info-text">
                                     <p><strong>{$layout.name|wash}</strong></p>
@@ -60,10 +60,10 @@
                     {/if}
 
                     {if eq($ruleId,'new')}
-                    <div class="nl-rule-new-meta" style="margin-top:18px;">
-                        <div style="margin-bottom:14px;">
-                            <label style="display:block;margin-bottom:6px;font-weight:500;">{'Link layout'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</label>
-                            <select name="LayoutID" style="min-width:260px;padding:8px;">
+                    <div class="nl-rule-new-meta explui-rule-meta">
+                        <div class="explui-field">
+                            <label class="explui-field-label">{'Link layout'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</label>
+                            <select name="LayoutID" class="explui-select-wide">
                                 <option value="0" {if eq($rule.layout_id,0)}selected="selected"{/if}>{'(none)'|i18n( 'design/admin/explayouts_ui/rule_detail' )}</option>
                                 {foreach $layouts as $lo}
                                     <option value="{$lo.id|wash}" {if eq($rule.layout_id,$lo.id)}selected="selected"{/if}>{$lo.name|wash} ({$lo.identifier|wash})</option>
@@ -71,9 +71,9 @@
                             </select>
                         </div>
 
-                        <div style="display:flex;gap:24px;align-items:center;">
-                            <label style="font-weight:500;">{'Priority'|i18n( 'design/admin/explayouts_ui/rule_detail' )} <input type="text" name="Priority" value="{$rule.priority|wash}" size="6" style="padding:8px;" /></label>
-                            <label class="nl-toggle-switch" style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;">
+                        <div class="explui-row">
+                            <label class="explui-label-strong">{'Priority'|i18n( 'design/admin/explayouts_ui/rule_detail' )} <input type="text" name="Priority" value="{$rule.priority|wash}" size="6" class="explui-input-pad" /></label>
+                            <label class="nl-toggle-switch">
                                 <input type="checkbox" id="rule-enabled-{$ruleId|wash}" class="nl-toggle-input" name="Enabled" value="1" {if $rule.enabled}checked="checked"{/if} data-rule-id="{$ruleId|wash}" />
                                 <span class="nl-toggle-slider"></span>
                                 <span class="nl-toggle-label" data-on="Enabled" data-off="Disabled">{if $rule.enabled}{'Enabled'|i18n( 'design/admin/explayouts_ui/rule_detail' )}{else}{'Disabled'|i18n( 'design/admin/explayouts_ui/rule_detail' )}{/if}</span>
@@ -133,7 +133,7 @@
 
                             {if $canEdit}
                                 <div class="settings-action">
-                                    <div class="settings-action-add" style="margin-top:10px;">
+                                    <div class="settings-action-add explui-spaced-top">
                                         {if or(eq($targetType,'null'),count($targets)|eq(0))}
                                             <select class="nl-select js-target-type" id="target-type-{$ruleId|wash}" aria-label="{'Target type'|i18n( 'design/admin/explayouts_ui/rule_detail' )}">
                                                 {foreach $targetTypes as $tt}
@@ -192,7 +192,7 @@
 
                             {if $canEdit}
                                 <div class="settings-action">
-                                    <div class="settings-action-add" style="margin-top:10px;">
+                                    <div class="settings-action-add explui-spaced-top">
                                         <select class="nl-select js-condition-type" id="condition-type-{$ruleId|wash}" aria-label="{'Condition type'|i18n( 'design/admin/explayouts_ui/rule_detail' )}">
                                             {foreach $conditionTypes as $ct}
                                                 {def $conditionOptionType = cond(eq($ct,'content_type'),'class',cond(eq($ct,'siteaccess'),'siteaccess',$ct))}

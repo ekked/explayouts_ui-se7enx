@@ -1,3 +1,4 @@
+{ezcss_require( 'explayouts_ui_admin.css' )}
 <div class="context-block">
     <div class="box-header"><h1 class="context-title">{'Edit block'|i18n( 'design/admin/explayouts_ui/block_edit' )}</h1></div>
     <div class="box-ml">
@@ -68,7 +69,7 @@
                                 <td>{$item.value_id|wash}</td>
                                 <td>{$item.position|wash}</td>
                                 <td>
-                                    <form method="post" action={concat('explayouts_ui/block_edit/',$block.id)|ezurl} style="display:inline;margin:0;">
+                                    <form method="post" action={concat('explayouts_ui/block_edit/',$block.id)|ezurl} class="explui-inline-form">
                                         <input type="hidden" name="CollectionItemID" value="{$item.id|wash}" />
                                         <button type="submit" name="RemoveCollectionItem" class="button">{'Remove'|i18n( 'design/admin/explayouts_ui/block_edit' )}</button>
                                     </form>

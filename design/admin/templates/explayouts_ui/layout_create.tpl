@@ -1,4 +1,4 @@
-{ezcss_require(array('netgen/layouts-admin.css','netgen/layouts-exponential.css','explayouts-ui.css'))}
+{ezcss_require(array('netgen/layouts-admin.css','netgen/layouts-exponential.css','explayouts-ui.css','explayouts_ui_admin.css'))}
 {* layouts-admin.js is not loaded: its content browser stops at once without Netgen's page tags, so none of it ever ran here, and these pages have their own scripts. *}
 {ezscript_load(array('netgen/layouts-exponential.js'))}
 <div class="ng-layouts-app row">
@@ -11,7 +11,7 @@
                     {foreach $available_types as $type}
                         <label class="layout-type-option">
                             <input type="radio" name="LayoutType" value="{$type.identifier|wash}" {if eq($type.identifier,$available_types.0.identifier)}checked="checked"{/if} />
-                            <span class="layout-type-thumb"><span class="layout-icon" style="background-color:#a1a1a1;"></span></span>
+                            <span class="layout-type-thumb"><span class="layout-icon explui-layout-icon-blank"></span></span>
                             <span class="layout-type-name">{$type.name|wash}</span>
                         </label>
                     {/foreach}

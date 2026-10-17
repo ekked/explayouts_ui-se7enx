@@ -1,69 +1,6 @@
-{ezcss_require(array('netgen/layouts-admin.css','netgen/layouts-exponential.css','explayouts-ui.css'))}
-{literal}<style>
-#rules { visibility: visible !important; }
-#rules .message-feedback,
-#rules .message-error { margin: 14px 18px; }
-#rules .rule-layout .icon-rule,
-#rules .rule-layout .icon-rule-disabled { font-family: 'Material Icons' !important; }
-#rules .nl-rule-body .nl-rule-setting h4 { margin: 0 0 6px; font-size: 15px; }
-#rules .nl-rule-body .nl-rule-setting .note { font-size: 12px; color: #777; margin: 0 0 10px; }
+{ezcss_require(array('netgen/layouts-admin.css','netgen/layouts-exponential.css','explayouts-ui.css','explayouts_ui_admin.css'))}
 
-#rules .nl-rule-body-overlay { position: fixed; top: 0; right: 0; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,.5); z-index: 100000; }
-#rules .nl-rule-body { position: absolute; top: 0; right: 0; left: auto; width: 100%; max-width: 560px; height: 100%; background: #fff; box-shadow: -2px 0 8px rgba(0,0,0,.2); display: flex; flex-direction: column; overflow: hidden; padding: 0 18px; box-sizing: border-box; }
-#rules .nl-rule-body form { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; width: 100%; background: #fff; margin: 0; padding: 0; }
-#rules .nl-rule-body form > .nl-grid { display: flex; flex-direction: column; flex-wrap: nowrap; flex: 1 1 auto; min-height: 0; }
-#rules .nl-rule-body form > .nl-grid > .col-xs12 { flex: 0 0 auto; min-height: 0; }
-#rules .nl-rule-body form > .nl-grid > .nl-rule-body-rules { flex: 1 1 auto; overflow-y: auto; min-height: 0; }
-#rules .nl-rule-body .sidebar-title { flex: 0 0 auto; background: #fff; z-index: 10; padding: 16px 0; margin: 0; border-bottom: 1px solid #e8e8e8; }
-#rules .nl-rule-body .sidebar-title h1 { margin: 0; font-size: 24px; }
-#rules .nl-rule-body .sidebar-title .nl-rule-actions { display: flex; align-items: center; gap: 8px; }
-#rules .nl-rule-body .sidebar-title .js-toggle-body { margin-left: auto; }
-
-#rules .rule-layout-info { display: flex; align-items: center; gap: 12px; margin: 8px 0 12px; }
-#rules .rule-layout-info-icon { flex: 0 0 48px; width: 48px; height: 48px; background: #f5f5f5; border-radius: 4px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-#rules .rule-layout-info-icon .layout-icon { display: inline-block; width: 40px; height: 40px; background-size: contain; background-repeat: no-repeat; background-position: center; }
-#rules .rule-layout-info-text p { margin: 0; font-size: 14px; }
-#rules .rule-layout-info-text p strong { font-weight: 500; }
-#rules .nl-layout-options a { font-size: 14px; color: #2196F3; text-decoration: none; }
-#rules .nl-layout-options a:hover { text-decoration: underline; }
-
-#rules .nl-rule-body .settings-list { list-style: none; margin: 0; padding: 0; }
-#rules .nl-rule-body .settings-list li { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid #e8e8e8; }
-#rules .nl-rule-body .settings-list li:last-child { border-bottom: none; }
-#rules .nl-rule-body .settings-list .settings-value { flex: 1 1 auto; font-size: 14px; color: #333; position: relative; padding-right: 24px; }
-#rules .nl-rule-body .settings-list .settings-value strong { font-weight: 500; }
-#rules .nl-rule-body .settings-list .settings-value.editable-value:after { content: 'edit'; font-family: 'Material Icons'; font-size: 18px; color: #999; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
-#rules .nl-rule-body .settings-list .settings-value input[type="text"] { width: auto; min-width: 160px; padding: 4px 6px; border: none; border-bottom: 1px solid transparent; background: transparent; font-size: 14px; margin-left: 4px; }
-#rules .nl-rule-body .settings-list .settings-value input[type="text"]:hover { border-bottom-color: #ddd; }
-#rules .nl-rule-body .settings-list .settings-value input[type="text"]:focus { border-bottom-color: #2196F3; background: #fff; outline: none; }
-#rules .nl-rule-body .settings-list select { min-width: 140px; padding: 6px; border: 1px solid #ddd; border-radius: 2px; font-size: 14px; }
-#rules .nl-rule-body .settings-list .remove-setting { flex: 0 0 auto; color: #d32f2f; font-size: 13px; text-decoration: none; }
-#rules .nl-rule-body .settings-list .remove-setting:hover { text-decoration: underline; }
-#rules .nl-rule-body .settings-list .js-view-target { font-size: 13px; color: #2196F3; text-decoration: none; }
-#rules .nl-rule-body .settings-list .js-view-target:hover { text-decoration: underline; }
-
-#rules .nl-rule-body .condition-items { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
-#rules .nl-rule-body .condition-items li { display: inline-flex; align-items: center; padding: 4px 10px; background: #f0f0f0; border-radius: 12px; font-size: 13px; color: #333; border: 1px solid #e0e0e0; }
-
-#rules .nl-rule-body .settings-list .settings-value.editable-value { cursor: pointer; }
-#rules .nl-rule-body .settings-list li.editing .condition-items { display: none; }
-#rules .nl-rule-body .settings-list .condition-edit-controls { display: none; }
-#rules .nl-rule-body .settings-list li.editing .condition-edit-controls { display: inline; }
-#rules .nl-rule-body .settings-list .condition-edit-select { min-width: 240px; padding: 4px; border: 1px solid #ddd; border-radius: 2px; min-height: 80px; }
-
-#rules .nl-rule-body .settings-action { margin-top: 8px; }
-#rules .nl-rule-body .settings-action-add { display: flex; align-items: center; gap: 8px; }
-#rules .nl-rule-body .settings-action-add .nl-select { min-width: 160px; padding: 6px; border: 1px solid #ddd; border-radius: 2px; }
-#rules .nl-rule-body .settings-action-add .nl-btn-link { display: inline-flex; align-items: center; gap: 4px; color: #2196F3; text-decoration: none; font-size: 14px; }
-#rules .nl-rule-body .settings-action-add .nl-btn-link:hover { text-decoration: underline; }
-
-#rules .nl-dropdown-menu form { margin: 0; }
-#rules .nl-dropdown-menu button { background: none; border: none; width: 100%; text-align: left; padding: 8px 16px; cursor: pointer; font: inherit; color: inherit; }
-#rules .nl-dropdown-menu button:disabled { opacity: .5; cursor: not-allowed; }
-#rules .nl-dropdown-menu a, #rules .nl-dropdown-menu button { display: block; width: 100%; box-sizing: border-box; }
-</style>{/literal}
-
-<div class="ng-layouts-app">
+<div class="ng-layouts-app explui-page-rules">
     <div class="layouts-content">
         <div id="rules" class="nl-element">
         <div class="layouts-header">
@@ -301,14 +238,5 @@
 </div>
 </div>
 
-{literal}<style>
-.nl-toggle-switch { position: relative; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 500; }
-.nl-toggle-input { opacity: 0; width: 0; height: 0; position: absolute; }
-.nl-toggle-slider { position: relative; display: inline-block; width: 44px; height: 24px; background: #ccc; border-radius: 24px; transition: background .2s; }
-.nl-toggle-slider:before { content: ""; position: absolute; height: 18px; width: 18px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: transform .2s; }
-.nl-toggle-input:checked + .nl-toggle-slider { background: #2196F3; }
-.nl-toggle-input:checked + .nl-toggle-slider:before { transform: translateX(20px); }
-.nl-toggle-input:focus + .nl-toggle-slider { box-shadow: 0 0 0 2px rgba(33,150,243,.4); }
-</style>{/literal}
 
 {include uri='design:explayouts_ui/parts/rule_list_script.tpl' targetTypes=$targetTypes conditionTypes=$conditionTypes contentClassesJson=$contentClassesJson siteAccessListJson=$siteAccessListJson autoOpenNewRule=$autoOpenNewRule autoOpenRuleId=$autoOpenRuleId}
