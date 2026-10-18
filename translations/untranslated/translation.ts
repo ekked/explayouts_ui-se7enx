@@ -1056,15 +1056,71 @@
 <context>
     <name>design/admin/explayouts_ui/template_editor</name>
     <message>
-        <source>7x Template Editor</source>
+        <source>Edit the templates that draw layouts and blocks. Every change is checked by the template engine and shown as a list of differences before it is saved; the first save keeps the original, so it can be put back.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Filter templates...</source>
+        <source>Templates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>New</source>
+        <source>New template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name or path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Design</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All designs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All folders</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All templates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Changed in the editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Overridden in another design</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not overridden</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%count templates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No template selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Review changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1072,19 +1128,67 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Return to admin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No file selected</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select a template from the list to start editing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>TPL_FILES is not an array. Check the server response.</source>
+        <source>Template text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+S or Cmd+S reviews and saves. Tab indents; press Esc, then Tab, to leave the text.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You may read the templates, not change them.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Revert to original</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The template goes back to the original the editor kept before its first change. The version saved now stays in the backup.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Compare with</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The saved template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The original</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Differences</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>From the installation root, inside one of the folders listed here, ending in .tpl.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%shown of %count templates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1092,7 +1196,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Render error: %message</source>
+        <source>Loading...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1104,35 +1208,83 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Save failed: %message</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Save error: %message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>New template path (from the installation root, inside an allowed folder, must end in .tpl):</source>
+        <source>Unsaved changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Path must end in .tpl</source>
+        <source>No changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>(%count templates)</source>
+        <source>This template has unsaved changes. Discard them?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>New file error: %message</source>
+        <source>Overridden in %count other designs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Unable to read template: %path</source>
+        <source>Also in: %paths</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Save failed</source>
+        <source>Used by %count blocks in %layouts layouts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Used by %count layouts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not used by a published layout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lines added: %added, lines removed: %removed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The text is the same as the version compared with.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The template engine found no syntax errors.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Syntax errors: fix them before saving.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please check before saving:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Line %line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Checking...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The original is back.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The path must end in .tpl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New template, not saved yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Template editor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1140,7 +1292,35 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Template not found.</source>
+        <source>Unable to read template: %path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Changes must be sent with POST.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are not allowed to change templates.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The form has expired. Please reload the page and try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not saved: the template has syntax errors.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This template has no original kept by the editor.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Revert failed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1618,6 +1798,10 @@
     </message>
     <message>
         <source>Components</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Template editor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

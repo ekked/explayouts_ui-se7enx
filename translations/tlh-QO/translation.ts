@@ -1059,92 +1059,272 @@
 <context>
     <name>design/admin/explayouts_ui/template_editor</name>
     <message>
-        <source>7x Template Editor</source>
-        <translation>7x mIw &apos;echlet choHwI&apos;</translation>
+        <source>Edit the templates that draw layouts and blocks. Every change is checked by the template engine and shown as a list of differences before it is saved; the first save keeps the original, so it can be put back.</source>
+        <translation>nab &apos;ej ngoghmey cha&apos;bogh mIw &apos;echletmey tIchoH. Hoch choHghachvaD mIw &apos;echlet jo&apos;Hom nuD, &apos;ej pollu&apos;pa&apos; pImghachmey tetlh &apos;agh; wa&apos;DIch polghach wa&apos;DIch mIw &apos;echlet pol, vaj chegh &apos;e&apos; laH.</translation>
     </message>
     <message>
-        <source>Filter templates...</source>
-        <translation>mIw &apos;echletmey tISay&apos;moH...</translation>
+        <source>Templates</source>
+        <translation>mIw &apos;echletmey</translation>
     </message>
     <message>
-        <source>New</source>
-        <translation>chu&apos;</translation>
+        <source>New template</source>
+        <translation>mIw &apos;echlet chu&apos;</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation>yInej</translation>
+    </message>
+    <message>
+        <source>Name or path</source>
+        <translation>pong ghap He</translation>
+    </message>
+    <message>
+        <source>Design</source>
+        <translation>HaSta</translation>
+    </message>
+    <message>
+        <source>All designs</source>
+        <translation>Hoch HaSta</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>ngaSwI&apos;</translation>
+    </message>
+    <message>
+        <source>All folders</source>
+        <translation>Hoch ngaSwI&apos;</translation>
+    </message>
+    <message>
+        <source>Show</source>
+        <translation>yI&apos;ang</translation>
+    </message>
+    <message>
+        <source>All templates</source>
+        <translation>Hoch mIw &apos;echlet</translation>
+    </message>
+    <message>
+        <source>Changed in the editor</source>
+        <translation>choHwI&apos;Daq choHlu&apos;ta&apos;</translation>
+    </message>
+    <message>
+        <source>Overridden in another design</source>
+        <translation>latlh HaStaDaq tamlu&apos;</translation>
+    </message>
+    <message>
+        <source>Not overridden</source>
+        <translation>tamlu&apos;be&apos;</translation>
+    </message>
+    <message>
+        <source>%count templates</source>
+        <translation>%count mIw &apos;echletmey</translation>
+    </message>
+    <message>
+        <source>No template selected</source>
+        <translation>mIw &apos;echlet wIvlu&apos;be&apos;</translation>
+    </message>
+    <message>
+        <source>Review changes</source>
+        <translation>choHghachmey tInuD</translation>
     </message>
     <message>
         <source>Save</source>
         <translation>yIpol</translation>
     </message>
     <message>
-        <source>Return to admin</source>
-        <translation>loHmeH jIHDaq yIchegh</translation>
-    </message>
-    <message>
-        <source>No file selected</source>
-        <translation>ghItlh wIvlu&apos;be&apos;</translation>
-    </message>
-    <message>
         <source>Select a template from the list to start editing.</source>
-        <translation>choHghach DataghmeH tetlhvo&apos; mIw &apos;echlet yIwIv.</translation>
+        <translation>choHmeH tetlhvo&apos; mIw &apos;echlet yIwIv.</translation>
     </message>
     <message>
-        <source>TPL_FILES is not an array. Check the server response.</source>
-        <translation>tetlh &apos;oHbe&apos; TPL_FILES. jabwI&apos; jang yInuD.</translation>
+        <source>Template text</source>
+        <translation>mIw &apos;echlet ghItlh</translation>
+    </message>
+    <message>
+        <source>Ctrl+S or Cmd+S reviews and saves. Tab indents; press Esc, then Tab, to leave the text.</source>
+        <translation>Ctrl+S ghap Cmd+S nuD &apos;ej pol. Tab Hop; ghItlh DamejmeH Esc yI&apos;uy, ghIq Tab yI&apos;uy.</translation>
+    </message>
+    <message>
+        <source>You may read the templates, not change them.</source>
+        <translation>mIw &apos;echletmey DalaH, &apos;ach bIchoHlaHbe&apos;.</translation>
+    </message>
+    <message>
+        <source>Revert to original</source>
+        <translation>wa&apos;DIch mIw &apos;echletDaq yIchegh</translation>
+    </message>
+    <message>
+        <source>The template goes back to the original the editor kept before its first change. The version saved now stays in the backup.</source>
+        <translation>wa&apos;DIch choHghachpa&apos; choHwI&apos; polta&apos;bogh wa&apos;DIch mIw &apos;echletDaq chegh mIw &apos;echlet. DaH polbogh mIw &apos;echlet lach polwI&apos;Daq ratlh.</translation>
+    </message>
+    <message>
+        <source>Compare with</source>
+        <translation>yIqel</translation>
+    </message>
+    <message>
+        <source>The saved template</source>
+        <translation>mIw &apos;echlet pollu&apos;ta&apos;bogh</translation>
+    </message>
+    <message>
+        <source>The original</source>
+        <translation>wa&apos;DIch mIw &apos;echlet</translation>
+    </message>
+    <message>
+        <source>Differences</source>
+        <translation>pImghachmey</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>yISoQmoH</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>He</translation>
+    </message>
+    <message>
+        <source>From the installation root, inside one of the folders listed here, ending in .tpl.</source>
+        <translation>jom &apos;aDvo&apos;, naDev ngaSwI&apos;mey tetlhlu&apos;bogh wa&apos;Daq, .tpl Dorbogh.</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>yIqIl</translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation>yIchenmoH</translation>
+    </message>
+    <message>
+        <source>%shown of %count templates</source>
+        <translation>%count mIw &apos;echletmeyvo&apos; %shown</translation>
     </message>
     <message>
         <source>No templates match.</source>
         <translation>rapbogh mIw &apos;echletmey tu&apos;lu&apos;be&apos;.</translation>
     </message>
     <message>
-        <source>Render error: %message</source>
-        <translation>&apos;aghghach Qagh: %message</translation>
+        <source>Loading...</source>
+        <translation>lI&apos;lu&apos;taH...</translation>
     </message>
     <message>
         <source>Load error: %message</source>
-        <translation>qemghach Qagh: %message</translation>
+        <translation>lI&apos;ghach Qagh: %message</translation>
     </message>
     <message>
         <source>Saved</source>
         <translation>pollu&apos;ta&apos;</translation>
     </message>
     <message>
-        <source>Save failed: %message</source>
-        <translation>polghach Qapbe&apos;: %message</translation>
-    </message>
-    <message>
         <source>Save error: %message</source>
         <translation>polghach Qagh: %message</translation>
     </message>
     <message>
-        <source>New template path (from the installation root, inside an allowed folder, must end in .tpl):</source>
-        <translation>mIw &apos;echlet He chu&apos; (jom &apos;oQqar vo&apos;, qawHaq chaw&apos;lu&apos;bogh Daq, .tpl rInnIS):</translation>
+        <source>Unsaved changes</source>
+        <translation>choHghachmey pollu&apos;be&apos;bogh</translation>
     </message>
     <message>
-        <source>Path must end in .tpl</source>
-        <translation>.tpl rInnIS He</translation>
+        <source>No changes</source>
+        <translation>choHghach tu&apos;lu&apos;be&apos;</translation>
     </message>
     <message>
-        <source>(%count templates)</source>
-        <translation>(mIw &apos;echletmey: %count)</translation>
+        <source>This template has unsaved changes. Discard them?</source>
+        <translation>choHghachmey pollu&apos;be&apos;bogh ghaj mIw &apos;echletvam. DaghImmoH&apos;a&apos;?</translation>
     </message>
     <message>
-        <source>New file error: %message</source>
-        <translation>ghItlh chu&apos; Qagh: %message</translation>
+        <source>Overridden in %count other designs</source>
+        <translation>%count latlh HaStaDaq tamlu&apos;</translation>
     </message>
     <message>
-        <source>Unable to read template: %path</source>
-        <translation>mIw &apos;echlet laDlu&apos;be&apos;: %path</translation>
+        <source>Also in: %paths</source>
+        <translation>je: %paths</translation>
     </message>
     <message>
-        <source>Save failed</source>
-        <translation>polghach Qapbe&apos;</translation>
+        <source>Used by %count blocks in %layouts layouts</source>
+        <translation>%layouts nabDaq %count ngogh lo&apos;</translation>
+    </message>
+    <message>
+        <source>Used by %count layouts</source>
+        <translation>%count nab lo&apos;</translation>
+    </message>
+    <message>
+        <source>Not used by a published layout</source>
+        <translation>nab chenmoHlu&apos;ta&apos;bogh lo&apos;be&apos;</translation>
+    </message>
+    <message>
+        <source>Lines added: %added, lines removed: %removed</source>
+        <translation>tlheghmey chel: %added, tlheghmey teq: %removed</translation>
+    </message>
+    <message>
+        <source>The text is the same as the version compared with.</source>
+        <translation>rap ghItlh &apos;ej mIw &apos;echlet qellu&apos;bogh.</translation>
+    </message>
+    <message>
+        <source>The template engine found no syntax errors.</source>
+        <translation>mu&apos;tlhegh Qaghmey tu&apos;be&apos; mIw &apos;echlet jo&apos;Hom.</translation>
+    </message>
+    <message>
+        <source>Syntax errors: fix them before saving.</source>
+        <translation>mu&apos;tlhegh Qaghmey: bIpolpa&apos; tI&apos;ole&apos;.</translation>
+    </message>
+    <message>
+        <source>Please check before saving:</source>
+        <translation>bIpolpa&apos; yInuD:</translation>
+    </message>
+    <message>
+        <source>Line %line</source>
+        <translation>tlhegh %line</translation>
+    </message>
+    <message>
+        <source>Checking...</source>
+        <translation>nuDlu&apos;taH...</translation>
+    </message>
+    <message>
+        <source>The original is back.</source>
+        <translation>chegh wa&apos;DIch mIw &apos;echlet.</translation>
+    </message>
+    <message>
+        <source>The path must end in .tpl</source>
+        <translation>.tpl Dor He &apos;e&apos; poQlu&apos;</translation>
+    </message>
+    <message>
+        <source>New template, not saved yet</source>
+        <translation>mIw &apos;echlet chu&apos;, wej pollu&apos;</translation>
+    </message>
+    <message>
+        <source>Template editor</source>
+        <translation>mIw &apos;echlet choHwI&apos;</translation>
     </message>
     <message>
         <source>Unknown request</source>
         <translation>tlhobghach Sovlu&apos;be&apos;</translation>
     </message>
     <message>
-        <source>Template not found.</source>
-        <translation>mIw &apos;echlet tu&apos;lu&apos;be&apos;.</translation>
+        <source>Unable to read template: %path</source>
+        <translation>mIw &apos;echlet laDlaHbe&apos;lu&apos;: %path</translation>
+    </message>
+    <message>
+        <source>Changes must be sent with POST.</source>
+        <translation>POST lo&apos;taHvIS choHghachmey ngeHnIS.</translation>
+    </message>
+    <message>
+        <source>You are not allowed to change templates.</source>
+        <translation>mIw &apos;echletmey DachoHlaHbe&apos;.</translation>
+    </message>
+    <message>
+        <source>The form has expired. Please reload the page and try again.</source>
+        <translation>Dotlh mIw rInta&apos;. ghItlh yIlI&apos;qa&apos; &apos;ej yInIDqa&apos;.</translation>
+    </message>
+    <message>
+        <source>Not saved: the template has syntax errors.</source>
+        <translation>pollu&apos;be&apos;: mu&apos;tlhegh Qaghmey ghaj mIw &apos;echlet.</translation>
+    </message>
+    <message>
+        <source>Save failed</source>
+        <translation>polghach Qapbe&apos;</translation>
+    </message>
+    <message>
+        <source>This template has no original kept by the editor.</source>
+        <translation>mIw &apos;echletvam wa&apos;DIch mIw &apos;echlet polbe&apos; choHwI&apos;.</translation>
+    </message>
+    <message>
+        <source>Revert failed</source>
+        <translation>cheghmoHghach Qapbe&apos;</translation>
     </message>
 </context>
 <context>
@@ -1622,6 +1802,10 @@
     <message>
         <source>Components</source>
         <translation>&apos;ay&apos;mey</translation>
+    </message>
+    <message>
+        <source>Template editor</source>
+        <translation>mIw &apos;echlet choHwI&apos;</translation>
     </message>
     <message>
         <source>Export</source>

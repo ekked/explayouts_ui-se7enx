@@ -1056,92 +1056,272 @@
 <context>
     <name>design/admin/explayouts_ui/template_editor</name>
     <message>
-        <source>7x Template Editor</source>
-        <translation>Editor de plantillas de 7x</translation>
+        <source>Edit the templates that draw layouts and blocks. Every change is checked by the template engine and shown as a list of differences before it is saved; the first save keeps the original, so it can be put back.</source>
+        <translation>Edita las plantillas que dibujan los diseños y los bloques. Cada cambio lo revisa el motor de plantillas y se muestra como una lista de diferencias antes de guardarlo; el primer guardado conserva el original, para poder restaurarlo.</translation>
     </message>
     <message>
-        <source>Filter templates...</source>
-        <translation>Filtrar plantillas...</translation>
+        <source>Templates</source>
+        <translation>Plantillas</translation>
     </message>
     <message>
-        <source>New</source>
-        <translation>Nuevo</translation>
+        <source>New template</source>
+        <translation>Nueva plantilla</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation>Buscar</translation>
+    </message>
+    <message>
+        <source>Name or path</source>
+        <translation>Nombre o ruta</translation>
+    </message>
+    <message>
+        <source>Design</source>
+        <translation>Diseño gráfico</translation>
+    </message>
+    <message>
+        <source>All designs</source>
+        <translation>Todos los diseños gráficos</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>Carpeta</translation>
+    </message>
+    <message>
+        <source>All folders</source>
+        <translation>Todas las carpetas</translation>
+    </message>
+    <message>
+        <source>Show</source>
+        <translation>Mostrar</translation>
+    </message>
+    <message>
+        <source>All templates</source>
+        <translation>Todas las plantillas</translation>
+    </message>
+    <message>
+        <source>Changed in the editor</source>
+        <translation>Cambiada en el editor</translation>
+    </message>
+    <message>
+        <source>Overridden in another design</source>
+        <translation>Sustituida en otro diseño gráfico</translation>
+    </message>
+    <message>
+        <source>Not overridden</source>
+        <translation>No sustituida</translation>
+    </message>
+    <message>
+        <source>%count templates</source>
+        <translation>%count plantillas</translation>
+    </message>
+    <message>
+        <source>No template selected</source>
+        <translation>Ninguna plantilla seleccionada</translation>
+    </message>
+    <message>
+        <source>Review changes</source>
+        <translation>Revisar los cambios</translation>
     </message>
     <message>
         <source>Save</source>
         <translation>Guardar</translation>
     </message>
     <message>
-        <source>Return to admin</source>
-        <translation>Regresar a la administración</translation>
-    </message>
-    <message>
-        <source>No file selected</source>
-        <translation>Ningún archivo seleccionado</translation>
-    </message>
-    <message>
         <source>Select a template from the list to start editing.</source>
         <translation>Selecciona una plantilla de la lista para empezar a editar.</translation>
     </message>
     <message>
-        <source>TPL_FILES is not an array. Check the server response.</source>
-        <translation>TPL_FILES no es un arreglo. Revisa la respuesta del servidor.</translation>
+        <source>Template text</source>
+        <translation>Texto de la plantilla</translation>
+    </message>
+    <message>
+        <source>Ctrl+S or Cmd+S reviews and saves. Tab indents; press Esc, then Tab, to leave the text.</source>
+        <translation>Ctrl+S o Cmd+S revisa y guarda. Tab sangra; presiona Esc y después Tab para salir del texto.</translation>
+    </message>
+    <message>
+        <source>You may read the templates, not change them.</source>
+        <translation>Puedes leer las plantillas, pero no cambiarlas.</translation>
+    </message>
+    <message>
+        <source>Revert to original</source>
+        <translation>Volver al original</translation>
+    </message>
+    <message>
+        <source>The template goes back to the original the editor kept before its first change. The version saved now stays in the backup.</source>
+        <translation>La plantilla vuelve al original que el editor conservó antes de su primer cambio. La versión guardada ahora se queda en la copia de seguridad.</translation>
+    </message>
+    <message>
+        <source>Compare with</source>
+        <translation>Comparar con</translation>
+    </message>
+    <message>
+        <source>The saved template</source>
+        <translation>La plantilla guardada</translation>
+    </message>
+    <message>
+        <source>The original</source>
+        <translation>El original</translation>
+    </message>
+    <message>
+        <source>Differences</source>
+        <translation>Diferencias</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Cerrar</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>Ruta</translation>
+    </message>
+    <message>
+        <source>From the installation root, inside one of the folders listed here, ending in .tpl.</source>
+        <translation>Desde la raíz de la instalación, dentro de una de las carpetas listadas aquí, terminada en .tpl.</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Cancelar</translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation>Crear</translation>
+    </message>
+    <message>
+        <source>%shown of %count templates</source>
+        <translation>%shown de %count plantillas</translation>
     </message>
     <message>
         <source>No templates match.</source>
         <translation>Ninguna plantilla coincide.</translation>
     </message>
     <message>
-        <source>Render error: %message</source>
-        <translation>Error de renderizado: %message</translation>
+        <source>Loading...</source>
+        <translation>Cargando...</translation>
     </message>
     <message>
         <source>Load error: %message</source>
-        <translation>Error de carga: %message</translation>
+        <translation>Error al cargar: %message</translation>
     </message>
     <message>
         <source>Saved</source>
         <translation>Guardado</translation>
     </message>
     <message>
-        <source>Save failed: %message</source>
-        <translation>No se pudo guardar: %message</translation>
-    </message>
-    <message>
         <source>Save error: %message</source>
         <translation>Error al guardar: %message</translation>
     </message>
     <message>
-        <source>New template path (from the installation root, inside an allowed folder, must end in .tpl):</source>
-        <translation>Ruta de la nueva plantilla (desde la raíz de la instalación, dentro de una carpeta permitida, debe terminar en .tpl):</translation>
+        <source>Unsaved changes</source>
+        <translation>Cambios sin guardar</translation>
     </message>
     <message>
-        <source>Path must end in .tpl</source>
+        <source>No changes</source>
+        <translation>Sin cambios</translation>
+    </message>
+    <message>
+        <source>This template has unsaved changes. Discard them?</source>
+        <translation>Esta plantilla tiene cambios sin guardar. ¿Descartarlos?</translation>
+    </message>
+    <message>
+        <source>Overridden in %count other designs</source>
+        <translation>Sustituida en %count diseños gráficos más</translation>
+    </message>
+    <message>
+        <source>Also in: %paths</source>
+        <translation>También en: %paths</translation>
+    </message>
+    <message>
+        <source>Used by %count blocks in %layouts layouts</source>
+        <translation>Usada por %count bloques en %layouts diseños</translation>
+    </message>
+    <message>
+        <source>Used by %count layouts</source>
+        <translation>Usada por %count diseños</translation>
+    </message>
+    <message>
+        <source>Not used by a published layout</source>
+        <translation>No la usa ningún diseño publicado</translation>
+    </message>
+    <message>
+        <source>Lines added: %added, lines removed: %removed</source>
+        <translation>Líneas agregadas: %added, líneas eliminadas: %removed</translation>
+    </message>
+    <message>
+        <source>The text is the same as the version compared with.</source>
+        <translation>El texto es el mismo que el de la versión comparada.</translation>
+    </message>
+    <message>
+        <source>The template engine found no syntax errors.</source>
+        <translation>El motor de plantillas no encontró errores de sintaxis.</translation>
+    </message>
+    <message>
+        <source>Syntax errors: fix them before saving.</source>
+        <translation>Errores de sintaxis: corrígelos antes de guardar.</translation>
+    </message>
+    <message>
+        <source>Please check before saving:</source>
+        <translation>Revísalo antes de guardar:</translation>
+    </message>
+    <message>
+        <source>Line %line</source>
+        <translation>Línea %line</translation>
+    </message>
+    <message>
+        <source>Checking...</source>
+        <translation>Revisando...</translation>
+    </message>
+    <message>
+        <source>The original is back.</source>
+        <translation>Se restauró el original.</translation>
+    </message>
+    <message>
+        <source>The path must end in .tpl</source>
         <translation>La ruta debe terminar en .tpl</translation>
     </message>
     <message>
-        <source>(%count templates)</source>
-        <translation>(%count plantillas)</translation>
+        <source>New template, not saved yet</source>
+        <translation>Plantilla nueva, aún sin guardar</translation>
     </message>
     <message>
-        <source>New file error: %message</source>
-        <translation>Error al crear el archivo: %message</translation>
-    </message>
-    <message>
-        <source>Unable to read template: %path</source>
-        <translation>No se pudo leer la plantilla: %path</translation>
-    </message>
-    <message>
-        <source>Save failed</source>
-        <translation>No se pudo guardar</translation>
+        <source>Template editor</source>
+        <translation>Editor de plantillas</translation>
     </message>
     <message>
         <source>Unknown request</source>
         <translation>Solicitud desconocida</translation>
     </message>
     <message>
-        <source>Template not found.</source>
-        <translation>No se encontró la plantilla.</translation>
+        <source>Unable to read template: %path</source>
+        <translation>No se puede leer la plantilla: %path</translation>
+    </message>
+    <message>
+        <source>Changes must be sent with POST.</source>
+        <translation>Los cambios deben enviarse con POST.</translation>
+    </message>
+    <message>
+        <source>You are not allowed to change templates.</source>
+        <translation>No tienes permiso para cambiar plantillas.</translation>
+    </message>
+    <message>
+        <source>The form has expired. Please reload the page and try again.</source>
+        <translation>El formulario caducó. Vuelve a cargar la página e inténtalo de nuevo.</translation>
+    </message>
+    <message>
+        <source>Not saved: the template has syntax errors.</source>
+        <translation>No se guardó: la plantilla tiene errores de sintaxis.</translation>
+    </message>
+    <message>
+        <source>Save failed</source>
+        <translation>No se pudo guardar</translation>
+    </message>
+    <message>
+        <source>This template has no original kept by the editor.</source>
+        <translation>El editor no conservó ningún original de esta plantilla.</translation>
+    </message>
+    <message>
+        <source>Revert failed</source>
+        <translation>No se pudo restaurar</translation>
     </message>
 </context>
 <context>
@@ -1619,6 +1799,10 @@
     <message>
         <source>Components</source>
         <translation>Componentes</translation>
+    </message>
+    <message>
+        <source>Template editor</source>
+        <translation>Editor de plantillas</translation>
     </message>
     <message>
         <source>Export</source>

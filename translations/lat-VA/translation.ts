@@ -1059,92 +1059,272 @@
 <context>
     <name>design/admin/explayouts_ui/template_editor</name>
     <message>
-        <source>7x Template Editor</source>
-        <translation>7x Recensor formularum</translation>
+        <source>Edit the templates that draw layouts and blocks. Every change is checked by the template engine and shown as a list of differences before it is saved; the first save keeps the original, so it can be put back.</source>
+        <translation>Formulas muta quae dispositiones et partes pingunt. Quaeque mutatio a machina formularum probatur et ante servationem ut index differentiarum ostenditur; prima servatio exemplar primum retinet, ut restitui possit.</translation>
     </message>
     <message>
-        <source>Filter templates...</source>
-        <translation>Formulas filtrare...</translation>
+        <source>Templates</source>
+        <translation>Formulae</translation>
     </message>
     <message>
-        <source>New</source>
-        <translation>Novum</translation>
+        <source>New template</source>
+        <translation>Nova formula</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation>Quaerere</translation>
+    </message>
+    <message>
+        <source>Name or path</source>
+        <translation>Nomen aut via</translation>
+    </message>
+    <message>
+        <source>Design</source>
+        <translation>Species</translation>
+    </message>
+    <message>
+        <source>All designs</source>
+        <translation>Omnes species</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>Capsa</translation>
+    </message>
+    <message>
+        <source>All folders</source>
+        <translation>Omnes capsae</translation>
+    </message>
+    <message>
+        <source>Show</source>
+        <translation>Ostendere</translation>
+    </message>
+    <message>
+        <source>All templates</source>
+        <translation>Omnes formulae</translation>
+    </message>
+    <message>
+        <source>Changed in the editor</source>
+        <translation>In recensore mutata</translation>
+    </message>
+    <message>
+        <source>Overridden in another design</source>
+        <translation>In alia specie superposita</translation>
+    </message>
+    <message>
+        <source>Not overridden</source>
+        <translation>Non superposita</translation>
+    </message>
+    <message>
+        <source>%count templates</source>
+        <translation>%count formulae</translation>
+    </message>
+    <message>
+        <source>No template selected</source>
+        <translation>Nulla formula selecta</translation>
+    </message>
+    <message>
+        <source>Review changes</source>
+        <translation>Mutationes recensere</translation>
     </message>
     <message>
         <source>Save</source>
         <translation>Servare</translation>
     </message>
     <message>
-        <source>Return to admin</source>
-        <translation>Ad administrationem redire</translation>
-    </message>
-    <message>
-        <source>No file selected</source>
-        <translation>Nullus fasciculus selectus</translation>
-    </message>
-    <message>
         <source>Select a template from the list to start editing.</source>
-        <translation>Formulam ex indice selige ut recensere incipias.</translation>
+        <translation>Formulam ex indice selige ut mutare incipias.</translation>
     </message>
     <message>
-        <source>TPL_FILES is not an array. Check the server response.</source>
-        <translation>TPL_FILES series non est. Responsum servitri inspice.</translation>
+        <source>Template text</source>
+        <translation>Textus formulae</translation>
+    </message>
+    <message>
+        <source>Ctrl+S or Cmd+S reviews and saves. Tab indents; press Esc, then Tab, to leave the text.</source>
+        <translation>Ctrl+S aut Cmd+S recenset et servat. Tab introrsum movet; Esc, deinde Tab preme ut textum relinquas.</translation>
+    </message>
+    <message>
+        <source>You may read the templates, not change them.</source>
+        <translation>Formulas legere licet, non mutare.</translation>
+    </message>
+    <message>
+        <source>Revert to original</source>
+        <translation>Ad exemplar primum redire</translation>
+    </message>
+    <message>
+        <source>The template goes back to the original the editor kept before its first change. The version saved now stays in the backup.</source>
+        <translation>Formula ad exemplar primum redit quod recensor ante primam mutationem servavit. Forma nunc servata in tutela manet.</translation>
+    </message>
+    <message>
+        <source>Compare with</source>
+        <translation>Comparare cum</translation>
+    </message>
+    <message>
+        <source>The saved template</source>
+        <translation>Formula servata</translation>
+    </message>
+    <message>
+        <source>The original</source>
+        <translation>Exemplar primum</translation>
+    </message>
+    <message>
+        <source>Differences</source>
+        <translation>Differentiae</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Claudere</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>Via</translation>
+    </message>
+    <message>
+        <source>From the installation root, inside one of the folders listed here, ending in .tpl.</source>
+        <translation>A radice installationis, intra unam capsarum hic enumeratarum, in .tpl desinens.</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Abrogare</translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation>Creare</translation>
+    </message>
+    <message>
+        <source>%shown of %count templates</source>
+        <translation>%shown ex %count formulis</translation>
     </message>
     <message>
         <source>No templates match.</source>
         <translation>Nullae formulae congruunt.</translation>
     </message>
     <message>
-        <source>Render error: %message</source>
-        <translation>Erratum reddendi: %message</translation>
+        <source>Loading...</source>
+        <translation>Oneratur...</translation>
     </message>
     <message>
         <source>Load error: %message</source>
-        <translation>Erratum onerandi: %message</translation>
+        <translation>Error onerandi: %message</translation>
     </message>
     <message>
         <source>Saved</source>
         <translation>Servatum</translation>
     </message>
     <message>
-        <source>Save failed: %message</source>
-        <translation>Servatio defecit: %message</translation>
-    </message>
-    <message>
         <source>Save error: %message</source>
-        <translation>Erratum servandi: %message</translation>
+        <translation>Error servandi: %message</translation>
     </message>
     <message>
-        <source>New template path (from the installation root, inside an allowed folder, must end in .tpl):</source>
-        <translation>Via formulae novae (a radice installationis, intra plicam permissam, in .tpl desinere debet):</translation>
+        <source>Unsaved changes</source>
+        <translation>Mutationes non servatae</translation>
     </message>
     <message>
-        <source>Path must end in .tpl</source>
+        <source>No changes</source>
+        <translation>Nullae mutationes</translation>
+    </message>
+    <message>
+        <source>This template has unsaved changes. Discard them?</source>
+        <translation>Haec formula mutationes non servatas habet. Abicere?</translation>
+    </message>
+    <message>
+        <source>Overridden in %count other designs</source>
+        <translation>In %count aliis speciebus superposita</translation>
+    </message>
+    <message>
+        <source>Also in: %paths</source>
+        <translation>Etiam in: %paths</translation>
+    </message>
+    <message>
+        <source>Used by %count blocks in %layouts layouts</source>
+        <translation>Adhibita a %count partibus in %layouts dispositionibus</translation>
+    </message>
+    <message>
+        <source>Used by %count layouts</source>
+        <translation>Adhibita a %count dispositionibus</translation>
+    </message>
+    <message>
+        <source>Not used by a published layout</source>
+        <translation>A nulla dispositione edita adhibita</translation>
+    </message>
+    <message>
+        <source>Lines added: %added, lines removed: %removed</source>
+        <translation>Lineae additae: %added, lineae remotae: %removed</translation>
+    </message>
+    <message>
+        <source>The text is the same as the version compared with.</source>
+        <translation>Textus idem est ac forma comparata.</translation>
+    </message>
+    <message>
+        <source>The template engine found no syntax errors.</source>
+        <translation>Machina formularum nullos errores syntaxis invenit.</translation>
+    </message>
+    <message>
+        <source>Syntax errors: fix them before saving.</source>
+        <translation>Errores syntaxis: eos ante servationem corrige.</translation>
+    </message>
+    <message>
+        <source>Please check before saving:</source>
+        <translation>Ante servationem inspice:</translation>
+    </message>
+    <message>
+        <source>Line %line</source>
+        <translation>Linea %line</translation>
+    </message>
+    <message>
+        <source>Checking...</source>
+        <translation>Probatur...</translation>
+    </message>
+    <message>
+        <source>The original is back.</source>
+        <translation>Exemplar primum restitutum est.</translation>
+    </message>
+    <message>
+        <source>The path must end in .tpl</source>
         <translation>Via in .tpl desinere debet</translation>
     </message>
     <message>
-        <source>(%count templates)</source>
-        <translation>(formulae: %count)</translation>
+        <source>New template, not saved yet</source>
+        <translation>Nova formula, nondum servata</translation>
     </message>
     <message>
-        <source>New file error: %message</source>
-        <translation>Erratum fasciculi novi: %message</translation>
-    </message>
-    <message>
-        <source>Unable to read template: %path</source>
-        <translation>Formula legi non potest: %path</translation>
-    </message>
-    <message>
-        <source>Save failed</source>
-        <translation>Servatio defecit</translation>
+        <source>Template editor</source>
+        <translation>Recensor formularum</translation>
     </message>
     <message>
         <source>Unknown request</source>
         <translation>Petitio ignota</translation>
     </message>
     <message>
-        <source>Template not found.</source>
-        <translation>Formula non inventa est.</translation>
+        <source>Unable to read template: %path</source>
+        <translation>Formula legi non potest: %path</translation>
+    </message>
+    <message>
+        <source>Changes must be sent with POST.</source>
+        <translation>Mutationes per POST mittendae sunt.</translation>
+    </message>
+    <message>
+        <source>You are not allowed to change templates.</source>
+        <translation>Tibi non licet formulas mutare.</translation>
+    </message>
+    <message>
+        <source>The form has expired. Please reload the page and try again.</source>
+        <translation>Formula exspiravit. Paginam renova et iterum conare.</translation>
+    </message>
+    <message>
+        <source>Not saved: the template has syntax errors.</source>
+        <translation>Non servatum: formula errores syntaxis habet.</translation>
+    </message>
+    <message>
+        <source>Save failed</source>
+        <translation>Servatio defecit</translation>
+    </message>
+    <message>
+        <source>This template has no original kept by the editor.</source>
+        <translation>Recensor nullum exemplar primum huius formulae servavit.</translation>
+    </message>
+    <message>
+        <source>Revert failed</source>
+        <translation>Restitutio defecit</translation>
     </message>
 </context>
 <context>
@@ -1622,6 +1802,10 @@
     <message>
         <source>Components</source>
         <translation>Partes</translation>
+    </message>
+    <message>
+        <source>Template editor</source>
+        <translation>Recensor formularum</translation>
     </message>
     <message>
         <source>Export</source>

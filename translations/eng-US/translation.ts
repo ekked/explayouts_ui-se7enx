@@ -1056,44 +1056,148 @@
 <context>
     <name>design/admin/explayouts_ui/template_editor</name>
     <message>
-        <source>7x Template Editor</source>
-        <translation>7x Template Editor</translation>
+        <source>Edit the templates that draw layouts and blocks. Every change is checked by the template engine and shown as a list of differences before it is saved; the first save keeps the original, so it can be put back.</source>
+        <translation>Edit the templates that draw layouts and blocks. Every change is checked by the template engine and shown as a list of differences before it is saved; the first save keeps the original, so it can be put back.</translation>
     </message>
     <message>
-        <source>Filter templates...</source>
-        <translation>Filter templates...</translation>
+        <source>Templates</source>
+        <translation>Templates</translation>
     </message>
     <message>
-        <source>New</source>
-        <translation>New</translation>
+        <source>New template</source>
+        <translation>New template</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation>Search</translation>
+    </message>
+    <message>
+        <source>Name or path</source>
+        <translation>Name or path</translation>
+    </message>
+    <message>
+        <source>Design</source>
+        <translation>Design</translation>
+    </message>
+    <message>
+        <source>All designs</source>
+        <translation>All designs</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>Folder</translation>
+    </message>
+    <message>
+        <source>All folders</source>
+        <translation>All folders</translation>
+    </message>
+    <message>
+        <source>Show</source>
+        <translation>Show</translation>
+    </message>
+    <message>
+        <source>All templates</source>
+        <translation>All templates</translation>
+    </message>
+    <message>
+        <source>Changed in the editor</source>
+        <translation>Changed in the editor</translation>
+    </message>
+    <message>
+        <source>Overridden in another design</source>
+        <translation>Overridden in another design</translation>
+    </message>
+    <message>
+        <source>Not overridden</source>
+        <translation>Not overridden</translation>
+    </message>
+    <message>
+        <source>%count templates</source>
+        <translation>%count templates</translation>
+    </message>
+    <message>
+        <source>No template selected</source>
+        <translation>No template selected</translation>
+    </message>
+    <message>
+        <source>Review changes</source>
+        <translation>Review changes</translation>
     </message>
     <message>
         <source>Save</source>
         <translation>Save</translation>
     </message>
     <message>
-        <source>Return to admin</source>
-        <translation>Return to admin</translation>
-    </message>
-    <message>
-        <source>No file selected</source>
-        <translation>No file selected</translation>
-    </message>
-    <message>
         <source>Select a template from the list to start editing.</source>
         <translation>Select a template from the list to start editing.</translation>
     </message>
     <message>
-        <source>TPL_FILES is not an array. Check the server response.</source>
-        <translation>TPL_FILES is not an array. Check the server response.</translation>
+        <source>Template text</source>
+        <translation>Template text</translation>
+    </message>
+    <message>
+        <source>Ctrl+S or Cmd+S reviews and saves. Tab indents; press Esc, then Tab, to leave the text.</source>
+        <translation>Ctrl+S or Cmd+S reviews and saves. Tab indents; press Esc, then Tab, to leave the text.</translation>
+    </message>
+    <message>
+        <source>You may read the templates, not change them.</source>
+        <translation>You may read the templates, not change them.</translation>
+    </message>
+    <message>
+        <source>Revert to original</source>
+        <translation>Revert to original</translation>
+    </message>
+    <message>
+        <source>The template goes back to the original the editor kept before its first change. The version saved now stays in the backup.</source>
+        <translation>The template goes back to the original the editor kept before its first change. The version saved now stays in the backup.</translation>
+    </message>
+    <message>
+        <source>Compare with</source>
+        <translation>Compare with</translation>
+    </message>
+    <message>
+        <source>The saved template</source>
+        <translation>The saved template</translation>
+    </message>
+    <message>
+        <source>The original</source>
+        <translation>The original</translation>
+    </message>
+    <message>
+        <source>Differences</source>
+        <translation>Differences</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Close</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>Path</translation>
+    </message>
+    <message>
+        <source>From the installation root, inside one of the folders listed here, ending in .tpl.</source>
+        <translation>From the installation root, inside one of the folders listed here, ending in .tpl.</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Cancel</translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation>Create</translation>
+    </message>
+    <message>
+        <source>%shown of %count templates</source>
+        <translation>%shown of %count templates</translation>
     </message>
     <message>
         <source>No templates match.</source>
         <translation>No templates match.</translation>
     </message>
     <message>
-        <source>Render error: %message</source>
-        <translation>Render error: %message</translation>
+        <source>Loading...</source>
+        <translation>Loading...</translation>
     </message>
     <message>
         <source>Load error: %message</source>
@@ -1104,44 +1208,120 @@
         <translation>Saved</translation>
     </message>
     <message>
-        <source>Save failed: %message</source>
-        <translation>Save failed: %message</translation>
-    </message>
-    <message>
         <source>Save error: %message</source>
         <translation>Save error: %message</translation>
     </message>
     <message>
-        <source>New template path (from the installation root, inside an allowed folder, must end in .tpl):</source>
-        <translation>New template path (from the installation root, inside an allowed folder, must end in .tpl):</translation>
+        <source>Unsaved changes</source>
+        <translation>Unsaved changes</translation>
     </message>
     <message>
-        <source>Path must end in .tpl</source>
-        <translation>Path must end in .tpl</translation>
+        <source>No changes</source>
+        <translation>No changes</translation>
     </message>
     <message>
-        <source>(%count templates)</source>
-        <translation>(%count templates)</translation>
+        <source>This template has unsaved changes. Discard them?</source>
+        <translation>This template has unsaved changes. Discard them?</translation>
     </message>
     <message>
-        <source>New file error: %message</source>
-        <translation>New file error: %message</translation>
+        <source>Overridden in %count other designs</source>
+        <translation>Overridden in %count other designs</translation>
     </message>
     <message>
-        <source>Unable to read template: %path</source>
-        <translation>Unable to read template: %path</translation>
+        <source>Also in: %paths</source>
+        <translation>Also in: %paths</translation>
     </message>
     <message>
-        <source>Save failed</source>
-        <translation>Save failed</translation>
+        <source>Used by %count blocks in %layouts layouts</source>
+        <translation>Used by %count blocks in %layouts layouts</translation>
+    </message>
+    <message>
+        <source>Used by %count layouts</source>
+        <translation>Used by %count layouts</translation>
+    </message>
+    <message>
+        <source>Not used by a published layout</source>
+        <translation>Not used by a published layout</translation>
+    </message>
+    <message>
+        <source>Lines added: %added, lines removed: %removed</source>
+        <translation>Lines added: %added, lines removed: %removed</translation>
+    </message>
+    <message>
+        <source>The text is the same as the version compared with.</source>
+        <translation>The text is the same as the version compared with.</translation>
+    </message>
+    <message>
+        <source>The template engine found no syntax errors.</source>
+        <translation>The template engine found no syntax errors.</translation>
+    </message>
+    <message>
+        <source>Syntax errors: fix them before saving.</source>
+        <translation>Syntax errors: fix them before saving.</translation>
+    </message>
+    <message>
+        <source>Please check before saving:</source>
+        <translation>Please check before saving:</translation>
+    </message>
+    <message>
+        <source>Line %line</source>
+        <translation>Line %line</translation>
+    </message>
+    <message>
+        <source>Checking...</source>
+        <translation>Checking...</translation>
+    </message>
+    <message>
+        <source>The original is back.</source>
+        <translation>The original is back.</translation>
+    </message>
+    <message>
+        <source>The path must end in .tpl</source>
+        <translation>The path must end in .tpl</translation>
+    </message>
+    <message>
+        <source>New template, not saved yet</source>
+        <translation>New template, not saved yet</translation>
+    </message>
+    <message>
+        <source>Template editor</source>
+        <translation>Template editor</translation>
     </message>
     <message>
         <source>Unknown request</source>
         <translation>Unknown request</translation>
     </message>
     <message>
-        <source>Template not found.</source>
-        <translation>Template not found.</translation>
+        <source>Unable to read template: %path</source>
+        <translation>Unable to read template: %path</translation>
+    </message>
+    <message>
+        <source>Changes must be sent with POST.</source>
+        <translation>Changes must be sent with POST.</translation>
+    </message>
+    <message>
+        <source>You are not allowed to change templates.</source>
+        <translation>You are not allowed to change templates.</translation>
+    </message>
+    <message>
+        <source>The form has expired. Please reload the page and try again.</source>
+        <translation>The form has expired. Please reload the page and try again.</translation>
+    </message>
+    <message>
+        <source>Not saved: the template has syntax errors.</source>
+        <translation>Not saved: the template has syntax errors.</translation>
+    </message>
+    <message>
+        <source>Save failed</source>
+        <translation>Save failed</translation>
+    </message>
+    <message>
+        <source>This template has no original kept by the editor.</source>
+        <translation>This template has no original kept by the editor.</translation>
+    </message>
+    <message>
+        <source>Revert failed</source>
+        <translation>Revert failed</translation>
     </message>
 </context>
 <context>
@@ -1619,6 +1799,10 @@
     <message>
         <source>Components</source>
         <translation>Components</translation>
+    </message>
+    <message>
+        <source>Template editor</source>
+        <translation>Template editor</translation>
     </message>
     <message>
         <source>Export</source>

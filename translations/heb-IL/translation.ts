@@ -1058,44 +1058,148 @@
 <context>
     <name>design/admin/explayouts_ui/template_editor</name>
     <message>
-        <source>7x Template Editor</source>
-        <translation>עורך התבניות של 7x</translation>
+        <source>Edit the templates that draw layouts and blocks. Every change is checked by the template engine and shown as a list of differences before it is saved; the first save keeps the original, so it can be put back.</source>
+        <translation>עריכת התבניות שמציגות פריסות ובלוקים. כל שינוי נבדק על ידי מנוע התבניות ומוצג כרשימת הבדלים לפני השמירה; השמירה הראשונה שומרת את המקור, כך שאפשר להחזיר אותו.</translation>
     </message>
     <message>
-        <source>Filter templates...</source>
-        <translation>סינון תבניות...</translation>
+        <source>Templates</source>
+        <translation>תבניות</translation>
     </message>
     <message>
-        <source>New</source>
-        <translation>חדש</translation>
+        <source>New template</source>
+        <translation>תבנית חדשה</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation>חיפוש</translation>
+    </message>
+    <message>
+        <source>Name or path</source>
+        <translation>שם או נתיב</translation>
+    </message>
+    <message>
+        <source>Design</source>
+        <translation>עיצוב</translation>
+    </message>
+    <message>
+        <source>All designs</source>
+        <translation>כל העיצובים</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>תיקייה</translation>
+    </message>
+    <message>
+        <source>All folders</source>
+        <translation>כל התיקיות</translation>
+    </message>
+    <message>
+        <source>Show</source>
+        <translation>הצגה</translation>
+    </message>
+    <message>
+        <source>All templates</source>
+        <translation>כל התבניות</translation>
+    </message>
+    <message>
+        <source>Changed in the editor</source>
+        <translation>שונתה בעורך</translation>
+    </message>
+    <message>
+        <source>Overridden in another design</source>
+        <translation>נדרסה בעיצוב אחר</translation>
+    </message>
+    <message>
+        <source>Not overridden</source>
+        <translation>לא נדרסה</translation>
+    </message>
+    <message>
+        <source>%count templates</source>
+        <translation>%count תבניות</translation>
+    </message>
+    <message>
+        <source>No template selected</source>
+        <translation>לא נבחרה תבנית</translation>
+    </message>
+    <message>
+        <source>Review changes</source>
+        <translation>סקירת השינויים</translation>
     </message>
     <message>
         <source>Save</source>
         <translation>שמירה</translation>
     </message>
     <message>
-        <source>Return to admin</source>
-        <translation>חזרה לממשק הניהול</translation>
-    </message>
-    <message>
-        <source>No file selected</source>
-        <translation>לא נבחר קובץ</translation>
-    </message>
-    <message>
         <source>Select a template from the list to start editing.</source>
-        <translation>יש לבחור תבנית מהרשימה כדי להתחיל לערוך.</translation>
+        <translation>בחרו תבנית מהרשימה כדי להתחיל לערוך.</translation>
     </message>
     <message>
-        <source>TPL_FILES is not an array. Check the server response.</source>
-        <translation>TPL_FILES אינו מערך. יש לבדוק את תגובת השרת.</translation>
+        <source>Template text</source>
+        <translation>טקסט התבנית</translation>
+    </message>
+    <message>
+        <source>Ctrl+S or Cmd+S reviews and saves. Tab indents; press Esc, then Tab, to leave the text.</source>
+        <translation>Ctrl+S או Cmd+S סוקרים ושומרים. Tab מזיח; כדי לצאת מהטקסט הקישו Esc ואחר כך Tab.</translation>
+    </message>
+    <message>
+        <source>You may read the templates, not change them.</source>
+        <translation>מותר לך לקרוא את התבניות, לא לשנות אותן.</translation>
+    </message>
+    <message>
+        <source>Revert to original</source>
+        <translation>חזרה למקור</translation>
+    </message>
+    <message>
+        <source>The template goes back to the original the editor kept before its first change. The version saved now stays in the backup.</source>
+        <translation>התבנית חוזרת למקור שהעורך שמר לפני השינוי הראשון. הגרסה השמורה כעת נשארת בגיבוי.</translation>
+    </message>
+    <message>
+        <source>Compare with</source>
+        <translation>השוואה מול</translation>
+    </message>
+    <message>
+        <source>The saved template</source>
+        <translation>התבנית השמורה</translation>
+    </message>
+    <message>
+        <source>The original</source>
+        <translation>המקור</translation>
+    </message>
+    <message>
+        <source>Differences</source>
+        <translation>הבדלים</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>סגירה</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>נתיב</translation>
+    </message>
+    <message>
+        <source>From the installation root, inside one of the folders listed here, ending in .tpl.</source>
+        <translation>משורש ההתקנה, בתוך אחת התיקיות המופיעות כאן, ומסתיים ב־.tpl.</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>ביטול</translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation>יצירה</translation>
+    </message>
+    <message>
+        <source>%shown of %count templates</source>
+        <translation>%shown מתוך %count תבניות</translation>
     </message>
     <message>
         <source>No templates match.</source>
         <translation>אין תבניות תואמות.</translation>
     </message>
     <message>
-        <source>Render error: %message</source>
-        <translation>שגיאת עיבוד: %message</translation>
+        <source>Loading...</source>
+        <translation>בטעינה...</translation>
     </message>
     <message>
         <source>Load error: %message</source>
@@ -1106,44 +1210,120 @@
         <translation>נשמר</translation>
     </message>
     <message>
-        <source>Save failed: %message</source>
-        <translation>השמירה נכשלה: %message</translation>
-    </message>
-    <message>
         <source>Save error: %message</source>
         <translation>שגיאת שמירה: %message</translation>
     </message>
     <message>
-        <source>New template path (from the installation root, inside an allowed folder, must end in .tpl):</source>
-        <translation>נתיב התבנית החדשה (משורש ההתקנה, בתוך תיקייה מותרת, חייב להסתיים ב־.tpl):</translation>
+        <source>Unsaved changes</source>
+        <translation>שינויים שלא נשמרו</translation>
     </message>
     <message>
-        <source>Path must end in .tpl</source>
+        <source>No changes</source>
+        <translation>אין שינויים</translation>
+    </message>
+    <message>
+        <source>This template has unsaved changes. Discard them?</source>
+        <translation>בתבנית זו יש שינויים שלא נשמרו. לבטל אותם?</translation>
+    </message>
+    <message>
+        <source>Overridden in %count other designs</source>
+        <translation>נדרסה ב־%count עיצובים אחרים</translation>
+    </message>
+    <message>
+        <source>Also in: %paths</source>
+        <translation>גם ב: %paths</translation>
+    </message>
+    <message>
+        <source>Used by %count blocks in %layouts layouts</source>
+        <translation>בשימוש של %count בלוקים ב־%layouts פריסות</translation>
+    </message>
+    <message>
+        <source>Used by %count layouts</source>
+        <translation>בשימוש של %count פריסות</translation>
+    </message>
+    <message>
+        <source>Not used by a published layout</source>
+        <translation>אינה בשימוש בפריסה שפורסמה</translation>
+    </message>
+    <message>
+        <source>Lines added: %added, lines removed: %removed</source>
+        <translation>שורות שנוספו: %added, שורות שהוסרו: %removed</translation>
+    </message>
+    <message>
+        <source>The text is the same as the version compared with.</source>
+        <translation>הטקסט זהה לגרסה שמולה הושווה.</translation>
+    </message>
+    <message>
+        <source>The template engine found no syntax errors.</source>
+        <translation>מנוע התבניות לא מצא שגיאות תחביר.</translation>
+    </message>
+    <message>
+        <source>Syntax errors: fix them before saving.</source>
+        <translation>שגיאות תחביר: יש לתקן אותן לפני השמירה.</translation>
+    </message>
+    <message>
+        <source>Please check before saving:</source>
+        <translation>נא לבדוק לפני השמירה:</translation>
+    </message>
+    <message>
+        <source>Line %line</source>
+        <translation>שורה %line</translation>
+    </message>
+    <message>
+        <source>Checking...</source>
+        <translation>בבדיקה...</translation>
+    </message>
+    <message>
+        <source>The original is back.</source>
+        <translation>המקור הוחזר.</translation>
+    </message>
+    <message>
+        <source>The path must end in .tpl</source>
         <translation>הנתיב חייב להסתיים ב־.tpl</translation>
     </message>
     <message>
-        <source>(%count templates)</source>
-        <translation>(%count תבניות)</translation>
+        <source>New template, not saved yet</source>
+        <translation>תבנית חדשה, טרם נשמרה</translation>
     </message>
     <message>
-        <source>New file error: %message</source>
-        <translation>שגיאה ביצירת קובץ חדש: %message</translation>
-    </message>
-    <message>
-        <source>Unable to read template: %path</source>
-        <translation>לא ניתן לקרוא את התבנית: %path</translation>
-    </message>
-    <message>
-        <source>Save failed</source>
-        <translation>השמירה נכשלה</translation>
+        <source>Template editor</source>
+        <translation>עורך התבניות</translation>
     </message>
     <message>
         <source>Unknown request</source>
         <translation>בקשה לא מוכרת</translation>
     </message>
     <message>
-        <source>Template not found.</source>
-        <translation>התבנית לא נמצאה.</translation>
+        <source>Unable to read template: %path</source>
+        <translation>לא ניתן לקרוא את התבנית: %path</translation>
+    </message>
+    <message>
+        <source>Changes must be sent with POST.</source>
+        <translation>יש לשלוח שינויים ב־POST.</translation>
+    </message>
+    <message>
+        <source>You are not allowed to change templates.</source>
+        <translation>אין לך הרשאה לשנות תבניות.</translation>
+    </message>
+    <message>
+        <source>The form has expired. Please reload the page and try again.</source>
+        <translation>תוקף הטופס פג. נא לטעון מחדש את הדף ולנסות שוב.</translation>
+    </message>
+    <message>
+        <source>Not saved: the template has syntax errors.</source>
+        <translation>לא נשמר: בתבנית יש שגיאות תחביר.</translation>
+    </message>
+    <message>
+        <source>Save failed</source>
+        <translation>השמירה נכשלה</translation>
+    </message>
+    <message>
+        <source>This template has no original kept by the editor.</source>
+        <translation>העורך לא שמר מקור לתבנית זו.</translation>
+    </message>
+    <message>
+        <source>Revert failed</source>
+        <translation>השחזור נכשל</translation>
     </message>
 </context>
 <context>
@@ -1621,6 +1801,10 @@
     <message>
         <source>Components</source>
         <translation>רכיבים</translation>
+    </message>
+    <message>
+        <source>Template editor</source>
+        <translation>עורך התבניות</translation>
     </message>
     <message>
         <source>Export</source>
