@@ -1129,7 +1129,7 @@
     </message>
     <message>
         <source>Select a template from the list to start editing.</source>
-        <translation>Seleccione una plantilla de la lista para empezar a editar.</translation>
+        <translation>Selecciona una plantilla de la lista para empezar a editar.</translation>
     </message>
     <message>
         <source>Template text</source>
@@ -1137,11 +1137,11 @@
     </message>
     <message>
         <source>Ctrl+S or Cmd+S reviews and saves. Tab indents; press Esc, then Tab, to leave the text.</source>
-        <translation>Ctrl+S o Cmd+S revisa y guarda. Tab sangra; pulse Esc y después Tab para salir del texto.</translation>
+        <translation>Ctrl+S o Cmd+S revisa y guarda. Tab sangra; pulsa Esc y después Tab para salir del texto.</translation>
     </message>
     <message>
         <source>You may read the templates, not change them.</source>
-        <translation>Puede leer las plantillas, pero no cambiarlas.</translation>
+        <translation>Puedes leer las plantillas, pero no cambiarlas.</translation>
     </message>
     <message>
         <source>Revert to original</source>
@@ -1301,11 +1301,11 @@
     </message>
     <message>
         <source>You are not allowed to change templates.</source>
-        <translation>No tiene permiso para cambiar plantillas.</translation>
+        <translation>No tienes permiso para cambiar plantillas.</translation>
     </message>
     <message>
         <source>The form has expired. Please reload the page and try again.</source>
-        <translation>El formulario ha caducado. Vuelva a cargar la página e inténtelo de nuevo.</translation>
+        <translation>El formulario ha caducado. Vuelve a cargar la página e inténtalo de nuevo.</translation>
     </message>
     <message>
         <source>Not saved: the template has syntax errors.</source>
