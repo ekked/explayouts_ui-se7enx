@@ -81,9 +81,18 @@ $ViewList['template_editor'] = array(
     'params' => array( 'FilePath' )
 );
 
+// The layouts transfer: export and import are separate policies, so a role can be
+// allowed to take layouts out of an installation without being allowed to write them in.
+$ViewList['transfer_export'] = array(
+    'script' => 'transfer_export.php',
+    'functions' => array( 'transfer_export' ),
+    'default_navigation_part' => 'ezexplayoutsuinavigationpart',
+    'params' => array()
+);
+
 $ViewList['transfer_import'] = array(
     'script' => 'transfer_import.php',
-    'functions' => array( 'edit' ),
+    'functions' => array( 'transfer_import' ),
     'default_navigation_part' => 'ezexplayoutsuinavigationpart',
     'params' => array()
 );
@@ -98,3 +107,5 @@ $ViewList['components'] = array(
 $FunctionList = array();
 $FunctionList['read'] = array();
 $FunctionList['edit'] = array();
+$FunctionList['transfer_export'] = array();
+$FunctionList['transfer_import'] = array();

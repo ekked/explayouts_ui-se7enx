@@ -61,8 +61,8 @@ class MenuAndReadmeTest extends TestCase
     {
         $readme = file_get_contents( dirname( __DIR__ ) . '/README.md' );
         $views = array_keys( self::moduleViews() );
-        $this->assertCount( 13, $views );
-        $this->assertStringContainsString( 'Thirteen module views', $readme );
+        $this->assertCount( 14, $views );
+        $this->assertStringContainsString( 'Fourteen module views', $readme );
         preg_match( '/\| View \| Purpose \|\n\|[-|]+\|\n((?:\|.*\|\n)+)/', $readme, $m );
         $this->assertNotEmpty( $m, 'the view table of the README' );
         preg_match_all( '/`([a-z_]+)`/', implode( "\n", array_map( function ( $row ) { return explode( '|', $row )[1]; }, explode( "\n", trim( $m[1] ) ) ) ), $named );

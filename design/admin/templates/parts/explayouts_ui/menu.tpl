@@ -15,8 +15,16 @@
         <i class="material-icons">extension</i>
         <span>{'Components'|i18n( 'design/admin/parts/explayouts_ui/menu' )}</span>
     </a>
+    {if fetch( 'user', 'has_access_to', hash( 'module', 'explayouts_ui', 'function', 'transfer_export' ) )}
+    <a href={concat('explayouts_ui/transfer_export')|ezurl} class="{if $module_result.uri|extract(1)|eq('explayouts_ui/transfer_export')}active{/if}">
+        <i class="material-icons">file_download</i>
+        <span>{'Export'|i18n( 'design/admin/parts/explayouts_ui/menu' )}</span>
+    </a>
+    {/if}
+    {if fetch( 'user', 'has_access_to', hash( 'module', 'explayouts_ui', 'function', 'transfer_import' ) )}
     <a href={concat('explayouts_ui/transfer_import')|ezurl} class="{if $module_result.uri|extract(1)|eq('explayouts_ui/transfer_import')}active{/if}">
         <i class="material-icons">file_upload</i>
         <span>{'Import'|i18n( 'design/admin/parts/explayouts_ui/menu' )}</span>
     </a>
+    {/if}
 </nav>

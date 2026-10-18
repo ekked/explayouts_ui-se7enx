@@ -14,7 +14,7 @@ This extension provides the following capabilities:
 - Layout management - Server-rendered screens to list, create and edit layouts and shared layouts, with deep links into the modern SPA editor.
 - Mapping rule management - List and edit layout mapping rules together with their targets and conditions.
 - Block editing - A legacy block edit screen backed by the `explayouts_core` block service.
-- Transfer import - Import layouts and rules from transfer files.
+- Layouts transfer - Export layouts, shared layouts and mappings into a versioned ZIP file and import it with a preview, per-item strategies and one transaction (admin pages and `./console exp:layouts`).
 - Template editing - Edit layout templates from the admin. Only the folders in `explayouts.ini` `[TemplateEditorSettings] AllowedTemplateRoots[]` are editable; explayouts ships the layout type and block template folders, and new templates are created only with `AllowNewTemplates=enabled`.
 - Preview and setup - Preview a layout and check the suite's setup/status.
 - UI assets - The complete admin app CSS/JS shell used by the layouts editor.
@@ -24,7 +24,7 @@ Features
 
 The following features are provided by the Exponential Layouts UI extension:
 
-- Full legacy screen set - Thirteen module views on the `explayouts_ui` module cover the whole editorial workflow, reachable from the "Layouts" admin tab:
+- Full legacy screen set - Fourteen module views on the `explayouts_ui` module cover the whole editorial workflow, reachable from the "Layouts" admin tab:
 
 | View | Purpose |
 |------|---------|
@@ -33,14 +33,14 @@ The following features are provided by the Exponential Layouts UI extension:
 | `layout_create`, `layout_edit` | Create and edit a layout |
 | `block_edit` | Edit a block |
 | `rule_list`, `rule_edit` | List and edit layout mapping rules |
-| `transfer_import` | Import layouts/rules from transfer files |
+| `transfer_export`, `transfer_import` | Export layouts, shared layouts and mappings to a transfer file; preview and import one (see "Layouts transfer" below) |
 | `template_editor` | Edit layout templates (needs `read` and `edit`) |
 | `layout_preview` | Preview a layout |
 | `components` | The content component blocks and the content they show |
 | `setup` | Setup/status screen |
 
 - Modern editor integration - The list screens deep-link into the SPA served by `explayouts_ui_api` (`/explayouts_ui_api/app#layout` to create/list, `/explayouts_ui_api/app#layout/<id>` to edit). Both UIs operate on the same `explayouts_*` data through the `explayouts_core` services, so changes made in one appear in the other.
-- Policy-driven access - The list views, `dashboard`, `layout_preview` and `components` use the `read` module function; `layout_create`, `layout_edit`, `block_edit`, `rule_edit`, `transfer_import` and `setup` use `edit`, `template_editor` both. The admin tab requires `explayouts_ui/read`, the function of the dashboard it opens. The SPA editor these screens link to has policies of its own: `explayouts_ui_api/read` to open it, `explayouts_ui_api/edit` for every change. Grant matching module policies to editor roles.
+- Policy-driven access - The list views, `dashboard`, `layout_preview` and `components` use the `read` module function; `layout_create`, `layout_edit`, `block_edit`, `rule_edit` and `setup` use `edit`, `template_editor` both; `transfer_export` and `transfer_import` have policies of their own, `transfer_export` and `transfer_import` (export and import can be granted apart). The admin tab requires `explayouts_ui/read`, the function of the dashboard it opens. The SPA editor these screens link to has policies of its own: `explayouts_ui_api/read` to open it, `explayouts_ui_api/edit` for every change. Grant matching module policies to editor roles.
 - Template editor safety - Editable roots are limited by `explayouts.ini` `[TemplateEditorSettings] AllowedTemplateRoots[]` (shipped: the layout type and block template folders of explayouts; an empty list allows nothing). Every template in a root can be changed by whoever may open the editor, so do not add `design` or `extension` as a whole. The New button is shown only with `AllowNewTemplates=enabled`. Symbolic links inside a root are neither listed nor read or written. Before a save the previous version is copied to `<var directory>/explayouts/template_backup/<path>` (one generation; keep the var directory out of the web server's reach).
 - Shipped admin assets - `design/admin` contains `stylesheets/explayouts-ui.css` and `stylesheets/netgen/` (app shell CSS), `javascript/netgen/layouts-admin.js` and `javascript/netgen/layouts-exponential.js` (application scripts), and the module view templates under `templates/explayouts_ui/` and `templates/parts/`.
 - Shipped settings - `settings/module.ini.append.php` registers the `explayouts_ui` module (`read` and `edit` functions for policies), `settings/menu.ini.append.php` adds the navigation part, top menu tab (`explayouts_ui/dashboard`) and left menu links, and `settings/design.ini.append.php` registers the design extension.
@@ -130,7 +130,8 @@ All views live on the `explayouts_ui` module and are reached from the "Layouts" 
 | `/explayouts_ui/block_edit/(BlockID)/<id>` | Edit a block |
 | `/explayouts_ui/rule_list` | Layout mapping rules |
 | `/explayouts_ui/rule_edit/(RuleID)/<id>` | Edit a rule, its targets and conditions |
-| `/explayouts_ui/transfer_import` | Import layouts/rules from a transfer file |
+| `/explayouts_ui/transfer_export` | Export layouts, shared layouts and mappings (`transfer_export` policy function) |
+| `/explayouts_ui/transfer_import` | Preview and import a layouts transfer file (`transfer_import` policy function) |
 | `/explayouts_ui/template_editor` | Edit layout templates (`read` and `edit`; roots limited by `explayouts.ini` `[TemplateEditorSettings] AllowedTemplateRoots[]`, new files only with `AllowNewTemplates=enabled`) |
 | `/explayouts_ui/layout_preview/<layout_id>/<status>` | Preview a layout |
 | `/explayouts_ui/components` | The content component blocks and the content they show |
@@ -146,6 +147,38 @@ This extension is the legacy (server-rendered) UI. For visual drag-and-drop edit
 ```
 
 See [doc/USAGE.md](doc/USAGE.md) for exhaustive scenarios: all screens and URLs, the relationship to the modern editor, the shipped assets, and the full customization guide covering the settings layer (INI cascade — renaming/hiding menu entries via `menu.ini` overrides, policy-driven visibility), the template layer (design override cascade for `design/admin/templates/explayouts_ui/` and `templates/parts/`) and the PHP layer (building your own module views on the `explayouts_core` services).
+
+Layouts transfer
+----------------
+
+`explayouts_ui/transfer_export` and `explayouts_ui/transfer_import` move layouts between installations (or keep a
+copy of them). The file format and the import rules are described in `extension/explayouts_core/doc/TRANSFER.md`.
+
+- **Export**: choose layouts (one, several, all), shared layouts, the mappings (none, those of the chosen layouts, all)
+  and whether open drafts go along, or "Export everything". The shared layouts a chosen layout links a zone to are
+  always included. The download is a ZIP with JSON documents and a `manifest.json` (format version, source site,
+  counts, a sha256 per file).
+- **Import**: upload the file; it is validated (format, version, checksums, schema) and previewed as a dry run. Each
+  layout and mapping is *new*, *identical*, *changed* or *conflicting* (another layout type or shared flag, an open draft
+  here, or the same targets mapped to another layout), with the differences. Choose a strategy globally or per item:
+  *skip*, *overwrite* (a new draft, published only with "Publish") or *create a copy* (the layout service's `copy()`).
+  Node and object ids are mapped by remote id; references without a match are listed and left out, kept or stop the
+  import. The import writes in one transaction (rolled back on any error), relinks shared-layout zones by identifier,
+  writes audit events (`data.explayouts_core.import`) and removes only the resolver cache entries of the layouts and
+  mappings it touched.
+- **Console**, with the same choices:
+
+```
+./console exp:layouts list [--drafts] [--json]
+./console exp:layouts export --all | --only=<id or identifier,...> [--shared=all|<...>] [--rules=none|selected|all] [--drafts] [--output=file.zip] [--json]
+./console exp:layouts import file.zip [--dry-run] [--strategy=skip|overwrite|copy] [--item=<key>=<strategy>,...] [--only=<identifiers>|--all] [--publish] [--unmapped=drop|keep|fail] [--json]
+```
+
+  (`exp:layouts` is the alias of `ext:explayouts_ui:layouts`.) Signed in with `--login`, the console checks the same
+  policies as the pages.
+- **Policies**: `explayouts_ui/transfer_export` and `explayouts_ui/transfer_import`. Before 1.3.22 the import page asked
+  for `explayouts_ui/edit`; roles that should keep importing need `explayouts_ui/transfer_import` now (roles with
+  `explayouts_ui/*` have it).
 
 Documentation
 -------------
