@@ -1252,6 +1252,10 @@
         <source>Preview layout</source>
         <translation>Vista previa de la disposición</translation>
     </message>
+    <message>
+        <source>No public siteaccess to preview this layout in. Set explayouts.ini [PreviewSettings] SiteAccess for this administration.</source>
+        <translation>No hay ningún siteaccess público en el que previsualizar este diseño. Configura explayouts.ini [PreviewSettings] SiteAccess para esta administración.</translation>
+    </message>
 </context>
 <context>
     <name>explayouts_ui/rule</name>

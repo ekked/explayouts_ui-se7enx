@@ -1255,6 +1255,10 @@
         <source>Preview layout</source>
         <translation>Dispositionem praevidere</translation>
     </message>
+    <message>
+        <source>No public siteaccess to preview this layout in. Set explayouts.ini [PreviewSettings] SiteAccess for this administration.</source>
+        <translation>Nullus siteaccess publicus est in quo haec dispositio praevideatur. Pone explayouts.ini [PreviewSettings] SiteAccess huic administrationi.</translation>
+    </message>
 </context>
 <context>
     <name>explayouts_ui/rule</name>

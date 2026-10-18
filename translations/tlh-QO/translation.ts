@@ -1255,6 +1255,10 @@
         <source>Preview layout</source>
         <translation>mIch mIw nungbogh mIllogh</translation>
     </message>
+    <message>
+        <source>No public siteaccess to preview this layout in. Set explayouts.ini [PreviewSettings] SiteAccess for this administration.</source>
+        <translation>nab wIleghmeH siteaccess Daq pagh. explayouts.ini [PreviewSettings] SiteAccess yIchoH ngoQ SeHlaw&apos;vaD.</translation>
+    </message>
 </context>
 <context>
     <name>explayouts_ui/rule</name>
