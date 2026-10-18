@@ -63,8 +63,27 @@ class RuleInputTest extends TestCase
         $resolver = dirname( __DIR__, 2 ) . '/explayouts/classes/explayoutsresolver.php';
         if ( !is_file( $resolver ) )
             $this->markTestSkipped( 'explayouts is not installed next to explayouts_ui' );
-        $source = file_get_contents( $resolver );
-        foreach ( array_merge( expLayoutsUiRuleInput::STORABLE_TARGET_TYPES, expLayoutsUiRuleInput::STORABLE_CONDITION_TYPES ) as $type )
-            $this->assertStringContainsString( "case '" . $type . "':", $source, $type );
+        require_once $resolver;
+        if ( !defined( 'expLayoutsResolver::TARGET_TYPES' ) )
+        {
+            // an explayouts without the type lists: every storable type must at least be handled by the resolver
+            $source = file_get_contents( $resolver );
+            foreach ( array_merge( expLayoutsUiRuleInput::STORABLE_TARGET_TYPES, expLayoutsUiRuleInput::STORABLE_CONDITION_TYPES ) as $type )
+                $this->assertStringContainsString( "'" . $type . "'", $source, $type );
+            return;
+        }
+        // the storable types are the resolver's, and the fallback lists name the same
+        $this->assertSame( expLayoutsResolver::TARGET_TYPES, expLayoutsUiRuleInput::storableTargetTypes() );
+        $this->assertSame( expLayoutsResolver::CONDITION_TYPES, expLayoutsUiRuleInput::storableConditionTypes() );
+        $this->assertEqualsCanonicalizing( expLayoutsResolver::TARGET_TYPES, expLayoutsUiRuleInput::STORABLE_TARGET_TYPES );
+        $this->assertEqualsCanonicalizing( expLayoutsResolver::CONDITION_TYPES, expLayoutsUiRuleInput::STORABLE_CONDITION_TYPES );
+    }
+
+    public function testAModuleTargetOfAnAdminLayoutRuleIsKept()
+    {
+        $rejected = array();
+        $targets = expLayoutsUiRuleInput::targets( array( 'module_view', 'module' ), array( 'content/view', 'user' ), $rejected );
+        $this->assertSame( array( array( 'type' => 'module_view', 'value' => 'content/view' ), array( 'type' => 'module', 'value' => 'user' ) ), $targets );
+        $this->assertSame( array(), $rejected );
     }
 }
