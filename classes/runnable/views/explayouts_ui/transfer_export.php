@@ -54,9 +54,20 @@ class TransferExport extends \Exponential\Runnable\ModuleView
                 $export = $service->export( $selection );
                 if ( $export['ok'] )
                 {
-                    // Sends the file and ends the request (never inside a catch: the exit is an exception under
-                    // a persistent server).
-                    \eZFile::download( $export['path'], true, $export['filename'] );
+                    // Sends the file and ends the request, the way that works under Apache and the persistent
+                    // server alike (no ob_end_clean); never inside a catch: the exit is an exception there.
+                    // Whatever the request wrote so far would corrupt the archive. The current buffer is emptied,
+                    // not ended: the persistent server captures the response in a buffer of its own.
+                    if ( ob_get_level() > 0 )
+                        ob_clean();
+                    header( 'Content-Type: application/zip' );
+                    header( 'Content-Disposition: attachment; filename="' . $export['filename'] . '"' );
+                    header( 'Content-Length: ' . filesize( $export['path'] ) );
+                    header( 'Cache-Control: no-store' );
+                    header( 'X-Content-Type-Options: nosniff' );
+                    readfile( $export['path'] );
+                    @unlink( $export['path'] );
+                    \eZExecution::cleanExit();
                     return $this->viewResult( null, null );
                 }
                 $errors = $export['errors'];
