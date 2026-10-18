@@ -133,8 +133,21 @@ class Preview extends \Exponential\Runnable\ModuleView
         // the public site.ini rather than the admin one.
         $previewNode = false;
 
-        // Render preview in the default/public siteaccess so it uses the real site styles, scripts and pagelayout.
-        $siteAccess = \eZINI::instance( 'site.ini' )->variable( 'SiteSettings', 'DefaultAccess' );
+        // Render the preview in the public siteaccess of this administration, so it uses the real site styles,
+        // scripts and pagelayout. Not DefaultAccess: that is the default of the whole installation, in a tree that
+        // serves several sites another site's, whose settings and design then ran on this site's database.
+        // expLayoutsPreviewSiteAccess finds none with this database: say so instead of mixing two installations.
+        $siteAccess = \expLayoutsPreviewSiteAccess::resolve();
+        if ( $siteAccess === false )
+        {
+            \eZDebug::writeWarning( \expLayoutsPreviewSiteAccess::$lastError, 'explayouts_ui/layout_preview' );
+            $Result = array();
+            $Result['content'] = '<p class="message-error">' . htmlspecialchars( \ezpI18n::tr( 'design/admin/explayouts_ui/preview',
+                'No public siteaccess to preview this layout in. Set explayouts.ini [PreviewSettings] SiteAccess for this administration.' ) )
+                . '</p><p>' . htmlspecialchars( \expLayoutsPreviewSiteAccess::$lastError ) . '</p>';
+            $Result['path'] = array( array( 'url' => false, 'text' => \ezpI18n::tr( 'explayouts/preview', 'Preview layout' ) ) );
+            return $this->viewResult( isset( $Result ) ? $Result : null, $Result );
+        }
 
         $access = $GLOBALS['eZCurrentAccess'];
         $access['name'] = $siteAccess;
