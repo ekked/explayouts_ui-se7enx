@@ -3,42 +3,90 @@
  * The layout preview renders in the public siteaccess of the administration in use (expLayoutsPreviewSiteAccess of
  * explayouts), not in site.ini [SiteSettings] DefaultAccess: in an installation serving several sites that is the
  * default of the whole installation, another site's, whose settings and design then ran on this site's database.
- * Where no siteaccess qualifies the preview says so instead of switching.
+ * Where no siteaccess qualifies, or explayouts is too old to say, the preview says so instead of switching.
+ *
+ * The view runs on stand-ins; eZSiteAccess::load() records the siteaccess and stops the view there.
  *
  * @license GPL-2.0-or-later
  */
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use PHPUnit\Framework\TestCase;
 
+if ( !class_exists( 'Exponential\\Runnable\\ModuleView', false ) )
+    eval( 'namespace Exponential\\Runnable; abstract class ModuleView { abstract public function run( array $scope ); protected function viewResult( $result, $returned ) { return empty( $result ) ? $returned : $result; } }' );
+
+class PreviewSiteAccessStop extends Exception {}
+
+#[RunTestsInSeparateProcesses]
 class PreviewSiteAccessTest extends TestCase
 {
-    protected static function view(): string
+    /** Stand-ins of the kernel and of explayouts up to the siteaccess switch; $preview: the answer of resolve(), or null for an explayouts without the class */
+    protected static function standIns( $preview, $reason = '' )
     {
-        $file = dirname( __DIR__ ) . '/classes/runnable/views/explayouts_ui/preview.php';
-        self::assertFileExists( $file );
-        return (string)file_get_contents( $file );
+        if ( !class_exists( 'eZUser', false ) )
+            eval( 'class eZUser { public static function currentUser() { return new self(); } public function hasAccessTo( $m, $f = false ) { return true; } }' );
+        if ( !class_exists( 'eZDebug', false ) )
+            eval( 'class eZDebug { public static $warnings = array(); public static function writeWarning( $m, $l = "" ) { self::$warnings[] = $m; } public static function checkDebugByUser() {} }' );
+        if ( !class_exists( 'expLayoutsLayout', false ) )
+            eval( 'class expLayoutsLayout { public static function fetch( $id, $status = 2 ) { return new self(); } }' );
+        if ( !class_exists( 'expLayoutsRenderer', false ) )
+            eval( 'class expLayoutsRenderer { public static function prepareLayout( $layout, $status = 2 ) { return array(); } }' );
+        if ( !class_exists( 'eZSiteAccess', false ) )
+            eval( 'class eZSiteAccess { const TYPE_URI = 2; public static $loaded = array(); public static function load( $access ) { self::$loaded[] = $access["name"]; throw new PreviewSiteAccessStop(); } }' );
+        if ( !class_exists( 'eZINI', false ) )
+            eval( 'class eZINI { public function variable( $g, $n ) { return $n === "DefaultAccess" ? "other_site" : ""; } public static function instance( $f = "site.ini" ) { return new self(); } }' );
+        if ( $preview !== null )
+        {
+            eval( 'class expLayoutsPreviewSiteAccess { public static $lastError = ""; public static function resolve() { return ' . var_export( $preview, true ) . '; } }' );
+            expLayoutsPreviewSiteAccess::$lastError = $reason;
+        }
+        $GLOBALS['eZCurrentAccess'] = array( 'name' => 'site_admin', 'type' => 1 );
+        require_once dirname( __DIR__ ) . '/classes/runnable/views/explayouts_ui/preview.php';
     }
 
-    public function testThePreviewDoesNotSwitchToDefaultAccess()
+    protected static function preview( ?string &$loaded = null )
     {
-        $this->assertStringNotContainsString( "'DefaultAccess'", self::view() );
+        $view = new \Exponential\View\Extension\ExplayoutsUi\ExplayoutsUi\Preview();
+        try
+        {
+            return $view->run( array( 'Params' => array( 'Module' => null, 'LayoutID' => 2 ) ) );
+        }
+        catch ( PreviewSiteAccessStop $e )
+        {
+            $loaded = end( eZSiteAccess::$loaded );
+            return null;
+        }
     }
 
-    public function testThePreviewAsksForThePublicSiteaccessOfTheAdministrationBeforeSwitching()
+    public function testThePreviewSwitchesToThePublicSiteaccessOfTheAdministration()
     {
-        $view = self::view();
-        $resolve = strpos( $view, '\\expLayoutsPreviewSiteAccess::resolve()' );
-        $switch = strpos( $view, '\\eZSiteAccess::load( $access )' );
-        $this->assertNotFalse( $resolve );
-        $this->assertNotFalse( $switch );
-        $this->assertLessThan( $switch, $resolve );
+        self::standIns( 'site' );
+        $loaded = null;
+        self::preview( $loaded );
+        $this->assertSame( 'site', $loaded, 'not DefaultAccess (other_site)' );
     }
 
-    public function testWithoutAPublicSiteaccessThePreviewReturnsBeforeSwitching()
+    public function testWithoutAPublicSiteaccessThePreviewSaysWhyAndDoesNotSwitch()
     {
-        $view = self::view();
-        $this->assertSame( 1, preg_match( '/if \( \$siteAccess === false \)\s*\{(.*?)\n        \}/s', $view, $m ) );
-        $this->assertStringContainsString( 'return $this->viewResult(', $m[1] );
-        $this->assertStringContainsString( 'expLayoutsPreviewSiteAccess::$lastError', $m[1] );
-        $this->assertStringContainsString( 'htmlspecialchars(', $m[1] );
+        self::standIns( false, "The siteaccess 'other_site' uses another database than 'site_admin'." );
+        $result = self::preview();
+        $this->assertSame( array(), eZSiteAccess::$loaded );
+        $this->assertStringContainsString( 'No public siteaccess to preview this layout in.', $result['content'] );
+        $this->assertStringContainsString( 'another database than &#039;site_admin&#039;', $result['content'] );
+    }
+
+    public function testAnExplayoutsWithoutThePreviewClassSaysSoAndDoesNotSwitch()
+    {
+        // without the class: the kernel's autoloader (pulled in by vendor/autoload.php) would find explayouts' one
+        foreach ( spl_autoload_functions() as $loader )
+        {
+            $owner = is_array( $loader ) ? ( is_object( $loader[0] ) ? get_class( $loader[0] ) : $loader[0] ) : '';
+            if ( stripos( (string)$owner, 'ezp' ) === 0 )
+                spl_autoload_unregister( $loader );
+        }
+        self::standIns( null );
+        $result = self::preview();
+        $this->assertSame( array(), eZSiteAccess::$loaded );
+        $this->assertStringContainsString( 'update explayouts', $result['content'] );
     }
 }

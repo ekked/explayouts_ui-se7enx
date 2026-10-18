@@ -137,14 +137,18 @@ class Preview extends \Exponential\Runnable\ModuleView
         // scripts and pagelayout. Not DefaultAccess: that is the default of the whole installation, in a tree that
         // serves several sites another site's, whose settings and design then ran on this site's database.
         // expLayoutsPreviewSiteAccess finds none with this database: say so instead of mixing two installations.
-        $siteAccess = \expLayoutsPreviewSiteAccess::resolve();
+        // expLayoutsPreviewSiteAccess comes with a newer explayouts: without it nothing is switched either
+        $previewAvailable = class_exists( 'expLayoutsPreviewSiteAccess' );
+        $siteAccess = $previewAvailable ? \expLayoutsPreviewSiteAccess::resolve() : false;
+        $reason = $previewAvailable ? \expLayoutsPreviewSiteAccess::$lastError
+            : 'The installed explayouts has no expLayoutsPreviewSiteAccess; update explayouts to preview layouts.';
         if ( $siteAccess === false )
         {
-            \eZDebug::writeWarning( \expLayoutsPreviewSiteAccess::$lastError, 'explayouts_ui/layout_preview' );
+            \eZDebug::writeWarning( $reason, 'explayouts_ui/layout_preview' );
             $Result = array();
             $Result['content'] = '<p class="message-error">' . htmlspecialchars( \ezpI18n::tr( 'explayouts_ui/preview',
                 'No public siteaccess to preview this layout in. Set explayouts.ini [PreviewSettings] SiteAccess for this administration.' ) )
-                . '</p><p>' . htmlspecialchars( \expLayoutsPreviewSiteAccess::$lastError ) . '</p>';
+                . '</p><p>' . htmlspecialchars( $reason ) . '</p>';
             $Result['path'] = array( array( 'url' => false, 'text' => \ezpI18n::tr( 'explayouts_ui/preview', 'Preview layout' ) ) );
             return $this->viewResult( isset( $Result ) ? $Result : null, $Result );
         }
