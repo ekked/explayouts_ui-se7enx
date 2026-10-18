@@ -1,15 +1,33 @@
 <?php
 /**
- * The code of extension/explayouts_ui/modules/explayouts_ui/template_editor.php, moved into a class (#207 stage 1). The file extension/explayouts_ui/modules/explayouts_ui/template_editor.php is one call to it.
- * Guide: doc/bc/6.0/cli_cronjob_view_abstractions.md
+ * explayouts_ui/template_editor: the template editor of the layout templates, inside the administration's page (top
+ * menu, breadcrumb, the Layouts left menu).
+ *
+ * GET                           the page: the template list (search and filters) and the editor
+ * GET  ?file=<path>, XHR        a template's text and facts (original kept, used by, overridden by)
+ * POST Action=check, XHR        the syntax check and the diff of the editor's text against the saved file (or the
+ *                               original, Compare=original); writes nothing
+ * POST Action=save, XHR         checks, then saves (the original is kept the first time); refused on a syntax error
+ * POST Action=revert, XHR       puts the original back
+ *
+ * Every POST needs explayouts_ui/edit (the view itself also opens with explayouts_ui/read) and the form token, and
+ * every save and revert is written to the audit log (system.template.change, never the text). Which folders may be
+ * read and written: explayouts.ini [TemplateEditorSettings] (expLayoutsTemplateEditor).
+ *
+ * The code of extension/explayouts_ui/modules/explayouts_ui/template_editor.php (#207); guide:
+ * doc/bc/6.0/cli_cronjob_view_abstractions.md
  */
 
 namespace
 {
 if ( !function_exists( 'expModuleViewExplayoutsUiTemplateEditorJsonResponse' ) ) {
-function expModuleViewExplayoutsUiTemplateEditorJsonResponse( $data )
+function expModuleViewExplayoutsUiTemplateEditorJsonResponse( $data, $status = 200 )
 {
+    if ( $status !== 200 )
+        header( 'HTTP/1.1 ' . (int)$status . ' ' . ( $status === 403 ? 'Forbidden' : ( $status === 405 ? 'Method Not Allowed' : 'Unprocessable Entity' ) ) );
     header( 'Content-Type: application/json; charset=utf-8' );
+    header( 'Cache-Control: no-store' );
+    header( 'X-Content-Type-Options: nosniff' );
     echo json_encode( $data );
     eZExecution::cleanExit();
 }
@@ -21,6 +39,8 @@ namespace Exponential\View\Extension\ExplayoutsUi\ExplayoutsUi
 
 class TemplateEditor extends \Exponential\Runnable\ModuleView
 {
+    const CONTEXT = 'design/admin/explayouts_ui/template_editor';
+
     public function run( array $scope )
     {
         // the including function's variables ($Params, $Module, $cli, ...)
@@ -29,99 +49,168 @@ class TemplateEditor extends \Exponential\Runnable\ModuleView
                 ${$__name} = &$scope[$__name];
         unset( $__name );
 
-        \eZDebug::updateSettings( array( 'debug-enabled' => false ) );
-        $editorClassFile = \eZSys::rootDir() . '/extension/explayouts/classes/explayoutstemplateeditor.php';
-        if ( function_exists( 'opcache_invalidate' ) && file_exists( $editorClassFile ) )
-            opcache_invalidate( $editorClassFile, true );
+        $isXhr = isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
+        $method = isset( $_SERVER['REQUEST_METHOD'] ) ? $_SERVER['REQUEST_METHOD'] : 'GET';
 
-        $httpCharset = \eZTextCodec::httpCharset();
-        $selectedPath = '';
-        $content = '';
-
-
-        if ( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest' )
+        if ( $isXhr )
         {
-            if ( isset( $_GET['file'] ) && $_GET['file'] !== '' )
-            {
-                $selectedPath = $_GET['file'];
-                $content = \expLayoutsTemplateEditor::read( $selectedPath );
-                if ( $content === false )
-                    expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => false, 'error' => \ezpI18n::tr( 'design/admin/explayouts_ui/template_editor', 'Unable to read template: %path', null, array( '%path' => $selectedPath ) ) ) );
-                expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => true, 'content' => $content ) );
-            }
-
-            if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_POST['SaveTemplate'] ) )
-            {
-                $selectedPath = isset( $_POST['SelectedPath'] ) ? $_POST['SelectedPath'] : '';
-                $content = isset( $_POST['TemplateContent'] ) ? $_POST['TemplateContent'] : '';
-                $content = str_replace( "\r\n", "\n", $content );
-                $ok = \expLayoutsTemplateEditor::save( $selectedPath, $content );
-                expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => $ok, 'message' => $ok ? 'Saved' : \ezpI18n::tr( 'design/admin/explayouts_ui/template_editor', 'Save failed' ) ) );
-            }
-
-            expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => false, 'error' => \ezpI18n::tr( 'design/admin/explayouts_ui/template_editor', 'Unknown request' ) ) );
+            \eZDebug::updateSettings( array( 'debug-enabled' => false ) );
+            if ( $method === 'POST' )
+                $this->handlePost();
+            if ( isset( $_GET['file'] ) && is_string( $_GET['file'] ) && $_GET['file'] !== '' )
+                $this->handleRead( $_GET['file'] );
+            expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => false, 'error' => \ezpI18n::tr( self::CONTEXT, 'Unknown request' ) ), 422 );
+        }
+        if ( $method === 'POST' )
+        {
+            // writes go through the page's script only: a plain form post is not a way in
+            expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => false, 'error' => \ezpI18n::tr( self::CONTEXT, 'Unknown request' ) ), 422 );
         }
 
-        $templates = \expLayoutsTemplateEditor::listTemplates();
+        $paths = \expLayoutsTemplateEditor::listTemplates();
+        $rows = \expLayoutsUiTemplateEditor::describe( $paths );
+        $designs = array();
+        $groups = array();
+        foreach ( $rows as $row )
+        {
+            if ( $row['design'] !== '' )
+                $designs[$row['design']] = true;
+            if ( $row['group'] !== '' )
+                $groups[$row['group']] = true;
+        }
+        ksort( $designs );
+        ksort( $groups );
+
+        $selected = isset( $_GET['file'] ) && is_string( $_GET['file'] ) && in_array( $_GET['file'], $paths, true ) ? $_GET['file'] : '';
+
+        $baseUrl = 'explayouts_ui/template_editor';
+        \eZURI::transformURI( $baseUrl );
 
         $jsonFlags = JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT;
-        $filesJson = json_encode( $templates, $jsonFlags );
-        if ( $filesJson === false )
-            $filesJson = '[]';
-        $selectedJson = json_encode( $selectedPath, $jsonFlags );
-        if ( $selectedJson === false )
-            $selectedJson = '""';
-        $initialJson = json_encode( $content, $jsonFlags );
-        if ( $initialJson === false )
-            $initialJson = '""';
+        $data = array(
+            'rows' => $rows,
+            'base_url' => $baseUrl,
+            'selected' => $selected,
+            'selected_meta' => $selected !== '' ? self::meta( $selected ) : null,
+            'csrf_token' => class_exists( 'ezxFormToken' ) ? \ezxFormToken::getToken() : '',
+            'can_edit' => \expLayoutsUiTemplateEditor::currentUserCanEdit(),
+            // an older explayouts without the setting offers no New
+            'allow_new' => method_exists( 'expLayoutsTemplateEditor', 'newTemplatesAllowed' ) && \expLayoutsTemplateEditor::newTemplatesAllowed(),
+        );
+        $dataJson = json_encode( $data, $jsonFlags );
 
-        $baseUrl = \eZSys::indexDir();
-        if ( $baseUrl === '' || $baseUrl === false )
-            $baseUrl = '/';
-        if ( substr( $baseUrl, -1 ) !== '/' )
-            $baseUrl .= '/';
-        $baseUrl .= 'explayouts_ui/template_editor';
-        $baseUrl = '/' . ltrim( $baseUrl, '/' );
-        $baseUrl = json_encode( $baseUrl, $jsonFlags );
-
-        $csrfToken = ( class_exists( 'ezxFormToken' ) ? \ezxFormToken::getToken() : '' );
-        $csrfJson = json_encode( $csrfToken, $jsonFlags );
-
-        $templateFile = \eZSys::rootDir() . '/extension/explayouts_ui/design/admin/templates/explayouts_ui/template_editor.tpl';
-        if ( !file_exists( $templateFile ) )
-        {
-            $Result = array();
-            $Result['pagelayout'] = false;
-            $Result['content'] = \ezpI18n::tr( 'design/admin/explayouts_ui/template_editor', 'Template not found.' );
-            return $this->viewResult( isset( $Result ) ? $Result : null,  $Result );
-        }
-
-        // The page is a template: its texts are translation strings ({'...'|i18n( ... )}) and its script uses
-        // {ldelim}/{rdelim}, so it goes through the template engine. Reading the file and replacing the five
-        // values by hand sent that template code to the browser as it was, and the page's script failed.
         $tpl = \eZTemplate::factory();
-        $tpl->setVariable( 'files_json', $filesJson );
-        $tpl->setVariable( 'selected_json', $selectedJson );
-        $tpl->setVariable( 'initial_content_json', $initialJson );
-        $tpl->setVariable( 'base_url', $baseUrl );
-        $tpl->setVariable( 'csrf_token', $csrfJson );
-        // New is offered only where expLayoutsTemplateEditor::save() would create the file
-        // ([TemplateEditorSettings] AllowNewTemplates=enabled; an older explayouts without the method offers no New).
-        $tpl->setVariable( 'allow_new_templates', method_exists( 'expLayoutsTemplateEditor', 'newTemplatesAllowed' )
-            && \expLayoutsTemplateEditor::newTemplatesAllowed() );
-        $html = $tpl->fetch( 'design:explayouts_ui/template_editor.tpl' );
-
-        $Result = array();
-        $Result['pagelayout'] = false;
-        $Result['content'] = $html;
+        $tpl->setVariable( 'editor_json', $dataJson === false ? '{}' : $dataJson );
+        $tpl->setVariable( 'template_count', count( $rows ) );
+        // an open template (?file=) is drawn open from the start, so the page does not move when the script opens it
+        $tpl->setVariable( 'selected_path', $selected );
+        $tpl->setVariable( 'designs', array_keys( $designs ) );
+        $tpl->setVariable( 'groups', array_keys( $groups ) );
+        $tpl->setVariable( 'can_edit', $data['can_edit'] );
+        $tpl->setVariable( 'allow_new_templates', $data['can_edit'] && $data['allow_new'] );
 
         header( 'Cache-Control: no-store, no-cache, must-revalidate, max-age=0' );
-        header( 'Pragma: no-cache' );
-        header( 'Expires: Thu, 1 Jan 1970 00:00:00 GMT' );
 
-        return $this->viewResult( isset( $Result ) ? $Result : null,  $Result );
+        $Result = array();
+        $Result['content'] = $tpl->fetch( 'design:explayouts_ui/template_editor.tpl' );
+        $Result['left_menu'] = 'design:parts/explayouts_ui/menu.tpl';
+        $Result['path'] = array( array( 'url' => 'explayouts_ui/dashboard', 'text' => \ezpI18n::tr( 'explayouts_ui/layout', 'Layouts' ) ),
+                                 array( 'url' => false, 'text' => \ezpI18n::tr( self::CONTEXT, 'Template editor' ) ) );
+        return $this->viewResult( $Result, $Result );
+    }
 
-        return $this->viewResult( isset( $Result ) ? $Result : null, null );
+    /**
+     * The facts of a template the editor shows beside it.
+     */
+    protected static function meta( $path )
+    {
+        return array(
+            'path' => $path,
+            'has_original' => \expLayoutsUiTemplateEditor::hasOriginal( $path ),
+            'used_by' => \expLayoutsUiTemplateEditor::usedBy( $path ),
+            'overridden_by' => \expLayoutsUiTemplateEditor::overriddenBy( $path ),
+        );
+    }
+
+    protected function handleRead( $path )
+    {
+        $content = \expLayoutsTemplateEditor::read( $path );
+        if ( $content === false )
+            expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => false, 'error' => \ezpI18n::tr( self::CONTEXT, 'Unable to read template: %path', null, array( '%path' => $path ) ) ), 422 );
+        expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => true, 'content' => $content, 'meta' => self::meta( $path ) ) );
+    }
+
+    protected function handlePost()
+    {
+        $posted = isset( $_POST['ezxform_token'] ) ? $_POST['ezxform_token'] : ( isset( $_SERVER['HTTP_X_CSRF_TOKEN'] ) ? $_SERVER['HTTP_X_CSRF_TOKEN'] : '' );
+        $expected = class_exists( 'ezxFormToken' ) ? \ezxFormToken::getToken() : '';
+        $refusal = \expLayoutsUiTemplateEditor::writeRefusal( $_SERVER['REQUEST_METHOD'], \expLayoutsUiTemplateEditor::currentUserCanEdit(),
+                                                              \expLayoutsUiTemplateEditor::tokenMatches( $posted, $expected ) );
+        if ( $refusal !== null )
+        {
+            $messages = array( 'method' => \ezpI18n::tr( self::CONTEXT, 'Changes must be sent with POST.' ),
+                               'policy' => \ezpI18n::tr( self::CONTEXT, 'You are not allowed to change templates.' ),
+                               'token' => \ezpI18n::tr( self::CONTEXT, 'The form has expired. Please reload the page and try again.' ) );
+            expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => false, 'error' => $messages[$refusal] ), $refusal === 'method' ? 405 : 403 );
+        }
+
+        $action = isset( $_POST['Action'] ) ? (string)$_POST['Action'] : ( isset( $_POST['SaveTemplate'] ) ? 'save' : '' );
+        $path = isset( $_POST['SelectedPath'] ) && is_string( $_POST['SelectedPath'] ) ? $_POST['SelectedPath'] : '';
+        $content = isset( $_POST['TemplateContent'] ) && is_string( $_POST['TemplateContent'] ) ? str_replace( "\r\n", "\n", $_POST['TemplateContent'] ) : '';
+        $current = $path !== '' ? \expLayoutsTemplateEditor::read( $path ) : false;
+
+        if ( $action === 'check' )
+        {
+            $compare = isset( $_POST['Compare'] ) && $_POST['Compare'] === 'original' ? 'original' : 'saved';
+            $base = $compare === 'original' ? \expLayoutsUiTemplateEditor::readOriginal( $path ) : $current;
+            if ( $base === false )
+                $base = $compare === 'original' && $current !== false ? $current : '';
+            expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => true, 'compare' => $compare,
+                'validation' => \expLayoutsUiTemplateEditor::validate( $content ),
+                'diff' => \expLayoutsUiTemplateEditor::diff( $base, $content ) ) );
+        }
+
+        if ( $action === 'save' )
+        {
+            $validation = \expLayoutsUiTemplateEditor::validate( $content );
+            if ( !$validation['ok'] )
+                expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => false, 'validation' => $validation,
+                    'error' => \ezpI18n::tr( self::CONTEXT, 'Not saved: the template has syntax errors.' ) ), 422 );
+            $before = $current === false ? null : hash( 'sha256', $current );
+            if ( !\expLayoutsUiTemplateEditor::saveKeepingOriginal( $path, $content ) )
+                expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => false, 'error' => \ezpI18n::tr( self::CONTEXT, 'Save failed' ) ), 422 );
+            self::afterWrite( $path, $current === false ? 'create' : 'change', $before, hash( 'sha256', $content ) );
+            expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => true, 'message' => \ezpI18n::tr( self::CONTEXT, 'Saved' ),
+                'validation' => $validation, 'meta' => self::meta( $path ) ) );
+        }
+
+        if ( $action === 'revert' )
+        {
+            if ( !\expLayoutsUiTemplateEditor::hasOriginal( $path ) )
+                expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => false, 'error' => \ezpI18n::tr( self::CONTEXT, 'This template has no original kept by the editor.' ) ), 422 );
+            $before = $current === false ? null : hash( 'sha256', $current );
+            if ( !\expLayoutsUiTemplateEditor::revertToOriginal( $path ) )
+                expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => false, 'error' => \ezpI18n::tr( self::CONTEXT, 'Revert failed' ) ), 422 );
+            $now = \expLayoutsTemplateEditor::read( $path );
+            self::afterWrite( $path, 'revert', $before, $now === false ? null : hash( 'sha256', $now ) );
+            expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => true, 'message' => \ezpI18n::tr( self::CONTEXT, 'The original is back.' ),
+                'content' => $now === false ? '' : $now, 'meta' => self::meta( $path ) ) );
+        }
+
+        expModuleViewExplayoutsUiTemplateEditorJsonResponse( array( 'success' => false, 'error' => \ezpI18n::tr( self::CONTEXT, 'Unknown request' ) ), 422 );
+    }
+
+    /**
+     * The audit event of a save or revert (never the template's text, only its checksums) and the view caches
+     * that may hold pages drawn with the old template.
+     */
+    protected static function afterWrite( $path, $verb, $before, $after )
+    {
+        if ( class_exists( 'expAuditHook' ) )
+            \expAuditHook::emit( 'system.template.change', array( 'object' => array( 'type' => 'template', 'id' => (string)$path ),
+                'verb' => $verb, 'before' => array( 'sha256' => $before ), 'after' => array( 'sha256' => $after ),
+                'x' => array( 'editor' => 'explayouts_ui/template_editor' ) ) );
+        \eZContentCacheManager::clearAllContentCache();
     }
 }
 

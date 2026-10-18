@@ -1,0 +1,228 @@
+/* The template editor of explayouts_ui (explayouts_ui/template_editor), in every admin design: only what the shared
+   admin components (components.css: .a4-card, .a4-filterbar, .a4-btn, .a4-tag, .a4-notice ...) cannot do. Colors,
+   radius, spacing and fonts from the --a4-* tokens, so light and dark mode follow the design (admin4's
+   html[data-a4-theme]); no token of its own. Loaded with ezcss_require by explayouts_ui/template_editor.tpl.
+   Class prefix: .explayouts-te. */
+
+.explayouts-te .explayouts-te-grid {
+    display: grid;
+    grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+    gap: var(--a4-space-4);
+    align-items: start;
+}
+
+/* ---- the list ---- */
+.explayouts-te .explayouts-te-list { position: sticky; top: var(--a4-space-3); }
+.explayouts-te .explayouts-te-filters {
+    grid-template-columns: 1fr;
+    gap: var(--a4-space-2);
+    margin: 0;
+    padding: var(--a4-space-3) var(--a4-space-4);
+    border: 0;
+    border-bottom: 1px solid var(--a4-line);
+    border-radius: 0;
+}
+.explayouts-te .explayouts-te-files {
+    max-height: calc(100vh - 380px);
+    min-height: 200px;
+    margin: 0;
+    padding: var(--a4-space-2);
+    overflow: auto;
+    list-style: none;
+}
+.explayouts-te .explayouts-te-files > li { margin: 0; padding: 0; }
+.explayouts-te .explayouts-te-file {
+    display: flex;
+    flex-direction: column;
+    gap: var(--a4-space-1);
+    width: 100%;
+    margin: 0;
+    padding: var(--a4-space-2) var(--a4-space-3);
+    border: 1px solid transparent;
+    border-radius: var(--a4-radius-s);
+    background: none;
+    color: var(--a4-ink);
+    font: inherit;
+    text-align: start;
+    cursor: pointer;
+}
+.explayouts-te .explayouts-te-file:hover { background-color: var(--a4-soft); }
+.explayouts-te .explayouts-te-file[aria-current="true"] {
+    border-color: var(--a4-accent);
+    background-color: var(--a4-accent-soft);
+}
+.explayouts-te .explayouts-te-file-name { font-weight: 600; overflow-wrap: anywhere; }
+.explayouts-te .explayouts-te-file-folder {
+    color: var(--a4-muted);
+    font-family: var(--a4-mono);
+    font-size: var(--a4-text-xs);
+    overflow-wrap: anywhere;
+}
+.explayouts-te .explayouts-te-file-tags:empty { display: none; }
+
+/* ---- the editor card ---- */
+.explayouts-te .explayouts-te-filehead { flex: 1 1 260px; min-width: 0; }
+.explayouts-te .explayouts-te-path {
+    margin: var(--a4-space-1) 0 0;
+    color: var(--a4-muted);
+    font-family: var(--a4-mono);
+    font-size: var(--a4-text-s);
+    overflow-wrap: anywhere;
+}
+.explayouts-te .explayouts-te-filehead .a4-badges:not(:empty) { margin-top: var(--a4-space-2); }
+.explayouts-te .explayouts-te-problems { margin: var(--a4-space-3) var(--a4-space-4) 0; }
+.explayouts-te .explayouts-te-problem-list,
+.explayouts-te-dialog .explayouts-te-problem-list { margin: var(--a4-space-1) 0 0; padding-inline-start: var(--a4-space-4); }
+.explayouts-te .explayouts-te-empty { padding: var(--a4-space-7) var(--a4-space-4); text-align: center; }
+
+/* The code: line numbers, then a textarea over its highlighted copy. Both carry the same font, size, line height,
+   padding and white space, so the caret sits on the letters drawn beneath it. */
+.explayouts-te .explayouts-te-code {
+    display: flex;
+    height: max(360px, calc(100vh - 300px));
+    border-top: 1px solid var(--a4-line);
+    border-bottom: 1px solid var(--a4-line);
+    background-color: var(--a4-field);
+    font-family: var(--a4-mono);
+    font-size: var(--a4-text-s);
+    line-height: var(--a4-leading);
+}
+.explayouts-te .explayouts-te-code[hidden] { display: none; }
+.explayouts-te .explayouts-te-gutter {
+    flex: 0 0 auto;
+    min-width: 3.5em;
+    margin: 0;
+    padding: var(--a4-space-3) var(--a4-space-2);
+    overflow: hidden;
+    border-inline-end: 1px solid var(--a4-line);
+    background-color: var(--a4-soft);
+    color: var(--a4-muted);
+    text-align: end;
+    white-space: pre;
+    user-select: none;
+}
+.explayouts-te .explayouts-te-stack { position: relative; flex: 1 1 auto; min-width: 0; }
+.explayouts-te .explayouts-te-highlight,
+.explayouts-te .explayouts-te-text {
+    margin: 0;
+    padding: var(--a4-space-3);
+    border: 0;
+    font: inherit;
+    line-height: inherit;
+    letter-spacing: normal;
+    tab-size: 4;
+    white-space: pre;
+    overflow-wrap: normal;
+}
+.explayouts-te .explayouts-te-highlight {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: none;
+    color: var(--a4-ink);
+    pointer-events: none;
+}
+.explayouts-te .explayouts-te-text {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    overflow: auto;
+    resize: none;
+    background: transparent;
+    color: transparent;
+    caret-color: var(--a4-ink);
+    border-radius: 0;
+    box-shadow: none;
+}
+.explayouts-te .explayouts-te-text::selection { background-color: var(--a4-accent-soft); color: transparent; }
+.explayouts-te .explayouts-te-text:focus-visible { outline: 3px solid var(--a4-ring); outline-offset: -3px; }
+
+/* the highlighted parts */
+.explayouts-te-highlight .te-c { color: var(--a4-muted); font-style: italic; }
+.explayouts-te-highlight .te-b,
+.explayouts-te-highlight .te-k { color: var(--a4-accent-text); font-weight: 700; }
+.explayouts-te-highlight .te-v { color: var(--a4-info); }
+.explayouts-te-highlight .te-o { color: var(--a4-warn); }
+.explayouts-te-highlight .te-s { color: var(--a4-ok); }
+.explayouts-te-highlight .te-t { color: var(--a4-info); font-weight: 700; }
+.explayouts-te-highlight .te-a { color: var(--a4-warn); }
+
+.explayouts-te .explayouts-te-foot { flex-wrap: wrap; gap: var(--a4-space-2) var(--a4-space-4); padding: var(--a4-space-3) var(--a4-space-4); }
+.explayouts-te .explayouts-te-foot[hidden] { display: none; }
+.explayouts-te .explayouts-te-foot .a4-help { flex: 1 1 260px; margin: 0; }
+.explayouts-te .explayouts-te-status:empty { display: none; }
+.explayouts-te .explayouts-te-revert { flex: 1 1 100%; }
+
+/* ---- the dialogs (review and new template) ---- */
+.explayouts-te-dialog {
+    width: min(1100px, calc(100vw - 2 * var(--a4-space-4)));
+    max-height: calc(100vh - 2 * var(--a4-space-5));
+    padding: var(--a4-space-4);
+    border: 1px solid var(--a4-line);
+    border-radius: var(--a4-radius);
+    background-color: var(--a4-card);
+    color: var(--a4-ink);
+    box-shadow: var(--a4-shadow-m);
+    font-family: var(--a4-font);
+}
+.explayouts-te-dialog.is-small { width: min(560px, calc(100vw - 2 * var(--a4-space-4))); }
+.explayouts-te-dialog[open] { display: flex; flex-direction: column; gap: var(--a4-space-3); }
+.explayouts-te-dialog::backdrop { background-color: var(--a4-overlay); }
+.explayouts-te-dialog .a4-card-head > p { color: var(--a4-muted); }
+.explayouts-te-dialog .explayouts-te-compare { max-width: 320px; }
+.explayouts-te-dialog .explayouts-te-dialog-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--a4-space-2); }
+.explayouts-te-dialog .a4-notice { margin: 0; }
+
+.explayouts-te-diff {
+    flex: 1 1 auto;
+    min-height: 120px;
+    overflow: auto;
+    border: 1px solid var(--a4-line);
+    border-radius: var(--a4-radius-s);
+    background-color: var(--a4-field);
+    color: var(--a4-ink);
+}
+.explayouts-te-difftable {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--a4-mono);
+    font-size: var(--a4-text-s);
+    line-height: var(--a4-leading);
+}
+.explayouts-te-difftable td { padding: 0 var(--a4-space-2); vertical-align: top; }
+.explayouts-te-difftable .explayouts-te-diffno {
+    width: 1%;
+    color: var(--a4-muted);
+    text-align: end;
+    white-space: nowrap;
+    user-select: none;
+}
+.explayouts-te-difftable .explayouts-te-diffline { white-space: pre; }
+.explayouts-te-difftable .explayouts-te-diffmark { display: inline-block; width: 1.5ch; user-select: none; }
+.explayouts-te-difftable tr.is-add { background-color: var(--a4-ok-bg); color: var(--a4-ok); }
+.explayouts-te-difftable tr.is-del { background-color: var(--a4-bad-bg); color: var(--a4-bad); }
+.explayouts-te-difftable tr.is-add .explayouts-te-diffno,
+.explayouts-te-difftable tr.is-del .explayouts-te-diffno { color: inherit; }
+.explayouts-te-difftable tr.is-gap td { padding: var(--a4-space-1) var(--a4-space-2); color: var(--a4-muted); text-align: center; }
+
+/* ---- narrow windows (the owner's 200% zoom, phones): the list above the editor ---- */
+@media (max-width: 1100px) {
+    .explayouts-te .explayouts-te-grid { grid-template-columns: minmax(0, 1fr); }
+    .explayouts-te .explayouts-te-list { position: static; }
+    .explayouts-te .explayouts-te-filters { grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); }
+    /* a fixed height, so filling the list does not move the editor below it */
+    .explayouts-te .explayouts-te-files { height: min(40vh, 420px); max-height: none; min-height: 0; }
+    /* with a template open, the editor comes first */
+    .explayouts-te .explayouts-te-grid:has(#te-code:not([hidden])) .explayouts-te-editor { order: -1; }
+    .explayouts-te .explayouts-te-code { height: max(320px, 70vh); }
+    /* one line per template where the width allows: name and folder, the tags at the end */
+    .explayouts-te .explayouts-te-file { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--a4-space-3); row-gap: 0; }
+    .explayouts-te :is(.explayouts-te-file-name, .explayouts-te-file-folder) { grid-column: 1; }
+    .explayouts-te .explayouts-te-file-tags { grid-column: 2; grid-row: 1 / span 2; align-self: center; justify-content: flex-end; }
+}
+@media (max-width: 520px) {
+    .explayouts-te .explayouts-te-file { grid-template-columns: minmax(0, 1fr); }
+    .explayouts-te .explayouts-te-file-tags { grid-column: 1; grid-row: auto; justify-content: flex-start; margin-top: var(--a4-space-1); }
+}

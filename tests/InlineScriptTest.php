@@ -3,7 +3,7 @@
  * 1.3.20: no template of the extension carries an inline script, an on...= handler attribute or a javascript: URL,
  * so the pages run under a Content Security Policy with script-src 'self'. A <script> is either a file (src, empty)
  * or a JSON data block (type="application/json"). Their code is in design/admin/javascript (explayouts_ui_admin.js,
- * explayouts_ui_rule_list.js, explayouts_ui_template_editor.js) and design/admin4/javascript.
+ * explayouts_ui_rule_list.js), design/standard/javascript (explayouts_ui_template_editor.js) and design/admin4/javascript.
  *
  * @license GPL-2.0-or-later
  */
@@ -38,7 +38,8 @@ class InlineScriptTest extends TestCase
     {
         $chain = "|explode( '<' )|implode( '\\u003c' )|explode( '>' )|implode( '\\u003e' )}</script>";
         $dir = dirname( __DIR__ ) . '/design/admin/templates/explayouts_ui/parts/';
+        $standard = dirname( __DIR__ ) . '/design/standard/templates/explayouts_ui/parts/';
         $this->assertStringContainsString( 'id="explayouts-ui-rule-list-data">{$explayouts_ui_rule_list_data' . $chain, file_get_contents( $dir . 'rule_list_script.tpl' ) );
-        $this->assertStringContainsString( 'id="explayouts-ui-te-data">{$explayouts_ui_te_data' . $chain, file_get_contents( $dir . 'template_editor_body.tpl' ) );
+        $this->assertStringContainsString( 'id="explayouts-ui-te-data">{$explayouts_ui_te_data' . $chain, file_get_contents( $standard . 'template_editor_body.tpl' ) );
     }
 }

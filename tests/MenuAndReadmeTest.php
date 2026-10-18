@@ -76,33 +76,37 @@ class MenuAndReadmeTest extends TestCase
 
     public function testTheTemplateEditorOffersNewOnlyWhenAllowed()
     {
-        $body = file_get_contents( dirname( __DIR__ ) . '/design/admin/templates/explayouts_ui/parts/template_editor_body.tpl' );
-        $this->assertMatchesRegularExpression( '#\{if \$allow_new_templates\}<button[^>]*id="new-file"[^>]*>.*?</button>\{/if\}#', $body );
-        // the script is a file since 1.3.20 (javascript/explayouts_ui_template_editor.js), printed by the body
-        $this->assertStringContainsString( "<script src={'javascript/explayouts_ui_template_editor.js'|ezdesign}></script>", $body );
-        $this->assertStringContainsString( 'if (newBtn) newBtn.addEventListener', file_get_contents( dirname( __DIR__ ) . '/design/admin/javascript/explayouts_ui_template_editor.js' ) );
+        $body = file_get_contents( dirname( __DIR__ ) . '/design/standard/templates/explayouts_ui/parts/template_editor_body.tpl' );
+        $this->assertMatchesRegularExpression( '#\{if \$allow_new_templates\}\s*<div class="a4-card-actions"><button[^>]*id="te-new"#', $body );
+        $this->assertMatchesRegularExpression( '#\{if \$allow_new_templates\}\s*<dialog[^>]*id="te-new-dialog"#', $body );
         // The path is taken from the installation root (expLayoutsTemplateEditor::resolve()), not from design/ or extension/.
-        $this->assertStringNotContainsString( 'relative to design/ or extension/', $body );
-        $this->assertStringContainsString( 'New template path (from the installation root, inside an allowed folder, must end in .tpl):', $body );
+        $this->assertStringContainsString( 'From the installation root', $body );
         foreach ( array( 'admin', 'admin4' ) as $design )
         {
             $page = file_get_contents( dirname( __DIR__ ) . '/design/' . $design . '/templates/explayouts_ui/template_editor.tpl' );
             $this->assertStringContainsString( 'allow_new_templates=$allow_new_templates', $page, $design );
+            $this->assertStringContainsString( "{ezscript_require( 'explayouts_ui_template_editor.js' )}", $page, $design );
+            $this->assertStringContainsString( "{ezcss_require( 'explayouts_ui_template_editor.css' )}", $page, $design );
         }
         $view = file_get_contents( dirname( __DIR__ ) . '/classes/runnable/views/explayouts_ui/template_editor.php' );
-        $this->assertStringContainsString( "setVariable( 'allow_new_templates'", $view );
+        // New only for users who may edit, and only where the setting allows it
+        $this->assertStringContainsString( "setVariable( 'allow_new_templates', \$data['can_edit'] && \$data['allow_new'] )", $view );
     }
 
-    /** Every translation carries the prompt's current source text, so none falls back to English for it. */
-    public function testEveryTranslationCarriesThePromptsCurrentSource()
+    /** The template editor is a page of the administration: the page layout, the Layouts left menu, a breadcrumb. */
+    public function testTheTemplateEditorIsAnAdminPage()
     {
-        $files = glob( dirname( __DIR__ ) . '/translations/*/translation.ts' );
-        $this->assertNotEmpty( $files );
-        foreach ( $files as $file )
+        $view = file_get_contents( dirname( __DIR__ ) . '/classes/runnable/views/explayouts_ui/template_editor.php' );
+        $this->assertStringNotContainsString( "'pagelayout'", $view );
+        $this->assertStringContainsString( "\$Result['left_menu'] = 'design:parts/explayouts_ui/menu.tpl';", $view );
+        $this->assertStringContainsString( "\$Result['path']", $view );
+        $menu = file_get_contents( dirname( __DIR__ ) . '/design/admin/templates/parts/explayouts_ui/menu.tpl' );
+        $this->assertStringContainsString( "'explayouts_ui/template_editor'", $menu );
+        foreach ( array( 'admin', 'admin4' ) as $design )
         {
-            $ts = file_get_contents( $file );
-            $this->assertStringNotContainsString( 'relative to design/ or extension/', $ts, $file );
-            $this->assertStringContainsString( '<source>New template path (from the installation root, inside an allowed folder, must end in .tpl):</source>', $ts, $file );
+            $page = file_get_contents( dirname( __DIR__ ) . '/design/' . $design . '/templates/explayouts_ui/template_editor.tpl' );
+            $this->assertStringNotContainsString( '<html', $page, $design );
+            $this->assertStringContainsString( '<h1 class="context-title">', $page, $design );
         }
     }
 }

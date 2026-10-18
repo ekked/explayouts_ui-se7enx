@@ -15,6 +15,10 @@
         <i class="material-icons">extension</i>
         <span>{'Components'|i18n( 'design/admin/parts/explayouts_ui/menu' )}</span>
     </a>
+    <a href={concat('explayouts_ui/template_editor')|ezurl} class="{if $module_result.uri|extract(1)|begins_with('explayouts_ui/template_editor')}active{/if}">
+        <i class="material-icons">code</i>
+        <span>{'Template editor'|i18n( 'design/admin/parts/explayouts_ui/menu' )}</span>
+    </a>
     {if fetch( 'user', 'has_access_to', hash( 'module', 'explayouts_ui', 'function', 'transfer_export' ) )}
     <a href={concat('explayouts_ui/transfer_export')|ezurl} class="{if $module_result.uri|extract(1)|eq('explayouts_ui/transfer_export')}active{/if}">
         <i class="material-icons">file_download</i>
