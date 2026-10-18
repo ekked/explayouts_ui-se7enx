@@ -1188,6 +1188,421 @@
     </message>
 </context>
 <context>
+    <name>design/admin/explayouts_ui/transfer</name>
+    <message>
+        <source>%count differences</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%count warnings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%written items written, %entries resolver cache entries of the affected layouts removed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A .zip made by Export or by ./console exp:layouts export, up to 64 MB.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A draft of this layout is open on this installation.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All mappings (their layouts are included)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>As chosen below</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose another file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Compared with this installation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create a copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create a copy: a new layout with the content of the file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Created</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Done</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export everything</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export layouts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export layouts, shared layouts and their mappings into a layouts transfer file (.zip) that another installation can import. The shared layouts the chosen layouts link to are always included.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export the selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exported from</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Format version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ID in the file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Identifier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import another file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import layouts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import layouts, shared layouts and their mappings from a layouts transfer file (.zip). Nothing is written before you have seen the preview.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Include open drafts (only published layouts otherwise)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Keep the IDs of the file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kind</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Layout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Layout mappings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Layouts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Layouts transfer file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Leave them out (and the mappings that need them)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Links to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mappings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No change</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nothing was written: the import was rolled back.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Overwrite</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Overwrite it: a new draft with the content of the file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please choose a layouts transfer file (.zip).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please choose at least one layout or shared layout.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Publish overwritten layouts and copies (otherwise they stay drafts)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>References without a match here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remote ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shared layouts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shared layouts that are only in the file because a layout links to them keep their version here unless you choose a strategy for them above. Mappings are not copied with their layouts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Skip</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Skip it: keep what is here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop the import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Strategy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Strategy for %item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Strategy for a mapping of %item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Targets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The file could not be uploaded.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The file is larger than 64 MB.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The import was written.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The import will</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The layout type differs.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The mappings of the chosen layouts, with their targets and conditions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The same targets map to the layout &quot;%layout&quot; on this installation.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The shared flag differs.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>There are none.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>These nodes and objects have no content with the same remote ID on this installation. Choose below what happens to them.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update the preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>What was written</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When a layout or mapping exists here already</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>conflicting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>draft</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>draft only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>identical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>linked to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>node</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>object</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>open draft</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>overwrite</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>published</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shared</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>skip</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Drafts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Zones</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Linked zones</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blocks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Collections</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Collection items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Queries</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Conditions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Node references</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Object references</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>design/admin/parts/explayouts_ui/menu</name>
     <message>
         <source>Layout mappings</source>
@@ -1203,6 +1618,10 @@
     </message>
     <message>
         <source>Components</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

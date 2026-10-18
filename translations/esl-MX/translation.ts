@@ -1188,6 +1188,421 @@
     </message>
 </context>
 <context>
+    <name>design/admin/explayouts_ui/transfer</name>
+    <message>
+        <source>%count differences</source>
+        <translation>%count diferencias</translation>
+    </message>
+    <message>
+        <source>%count warnings</source>
+        <translation>%count advertencias</translation>
+    </message>
+    <message>
+        <source>%written items written, %entries resolver cache entries of the affected layouts removed.</source>
+        <translation>Se escribieron %written elementos y se eliminaron %entries entradas de la caché del resolvedor de las disposiciones afectadas.</translation>
+    </message>
+    <message>
+        <source>A .zip made by Export or by ./console exp:layouts export, up to 64 MB.</source>
+        <translation>Un .zip creado con Exportar o con ./console exp:layouts export, de hasta 64 MB.</translation>
+    </message>
+    <message>
+        <source>A draft of this layout is open on this installation.</source>
+        <translation>Hay un borrador de esta disposición abierto en esta instalación.</translation>
+    </message>
+    <message>
+        <source>All mappings (their layouts are included)</source>
+        <translation>Todas las asignaciones (se incluyen sus disposiciones)</translation>
+    </message>
+    <message>
+        <source>As chosen below</source>
+        <translation>Según lo elegido abajo</translation>
+    </message>
+    <message>
+        <source>Choose another file</source>
+        <translation>Elegir otro archivo</translation>
+    </message>
+    <message>
+        <source>Compared with this installation</source>
+        <translation>Comparado con esta instalación</translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation>Crear</translation>
+    </message>
+    <message>
+        <source>Create a copy</source>
+        <translation>Crear una copia</translation>
+    </message>
+    <message>
+        <source>Create a copy: a new layout with the content of the file</source>
+        <translation>Crear una copia: una disposición nueva con el contenido del archivo</translation>
+    </message>
+    <message>
+        <source>Created</source>
+        <translation>Creado</translation>
+    </message>
+    <message>
+        <source>Done</source>
+        <translation>Listo</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation>Exportar</translation>
+    </message>
+    <message>
+        <source>Export everything</source>
+        <translation>Exportar todo</translation>
+    </message>
+    <message>
+        <source>Export layouts</source>
+        <translation>Exportar disposiciones</translation>
+    </message>
+    <message>
+        <source>Export layouts, shared layouts and their mappings into a layouts transfer file (.zip) that another installation can import. The shared layouts the chosen layouts link to are always included.</source>
+        <translation>Exporta disposiciones, disposiciones compartidas y sus asignaciones a un archivo de transferencia de disposiciones (.zip) que otra instalación puede importar. Las disposiciones compartidas con las que enlazan las disposiciones elegidas se incluyen siempre.</translation>
+    </message>
+    <message>
+        <source>Export the selection</source>
+        <translation>Exportar la selección</translation>
+    </message>
+    <message>
+        <source>Exported from</source>
+        <translation>Exportado desde</translation>
+    </message>
+    <message>
+        <source>Format version</source>
+        <translation>Versión del formato</translation>
+    </message>
+    <message>
+        <source>ID</source>
+        <translation>ID</translation>
+    </message>
+    <message>
+        <source>ID in the file</source>
+        <translation>ID en el archivo</translation>
+    </message>
+    <message>
+        <source>Identifier</source>
+        <translation>Identificador</translation>
+    </message>
+    <message>
+        <source>Import</source>
+        <translation>Importar</translation>
+    </message>
+    <message>
+        <source>Import another file</source>
+        <translation>Importar otro archivo</translation>
+    </message>
+    <message>
+        <source>Import layouts</source>
+        <translation>Importar disposiciones</translation>
+    </message>
+    <message>
+        <source>Import layouts, shared layouts and their mappings from a layouts transfer file (.zip). Nothing is written before you have seen the preview.</source>
+        <translation>Importa disposiciones, disposiciones compartidas y sus asignaciones desde un archivo de transferencia de disposiciones (.zip). No se escribe nada antes de que hayas visto la vista previa.</translation>
+    </message>
+    <message>
+        <source>Include open drafts (only published layouts otherwise)</source>
+        <translation>Incluir los borradores abiertos (si no, solo las disposiciones publicadas)</translation>
+    </message>
+    <message>
+        <source>Item</source>
+        <translation>Elemento</translation>
+    </message>
+    <message>
+        <source>Keep the IDs of the file</source>
+        <translation>Conservar los ID del archivo</translation>
+    </message>
+    <message>
+        <source>Kind</source>
+        <translation>Tipo</translation>
+    </message>
+    <message>
+        <source>Layout</source>
+        <translation>Disposición</translation>
+    </message>
+    <message>
+        <source>Layout mappings</source>
+        <translation>Asignaciones de disposición</translation>
+    </message>
+    <message>
+        <source>Layouts</source>
+        <translation>Disposiciones</translation>
+    </message>
+    <message>
+        <source>Layouts transfer file</source>
+        <translation>Archivo de transferencia de disposiciones</translation>
+    </message>
+    <message>
+        <source>Leave them out (and the mappings that need them)</source>
+        <translation>Omitirlos (junto con las asignaciones que los necesitan)</translation>
+    </message>
+    <message>
+        <source>Links to</source>
+        <translation>Enlaza con</translation>
+    </message>
+    <message>
+        <source>Mappings</source>
+        <translation>Asignaciones</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nombre</translation>
+    </message>
+    <message>
+        <source>No change</source>
+        <translation>Sin cambios</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>Ninguno</translation>
+    </message>
+    <message>
+        <source>Nothing was written: the import was rolled back.</source>
+        <translation>No se escribió nada: la importación se revirtió.</translation>
+    </message>
+    <message>
+        <source>Overwrite</source>
+        <translation>Sobreescribir</translation>
+    </message>
+    <message>
+        <source>Overwrite it: a new draft with the content of the file</source>
+        <translation>Sobreescribirla: un borrador nuevo con el contenido del archivo</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>Ruta</translation>
+    </message>
+    <message>
+        <source>Please choose a layouts transfer file (.zip).</source>
+        <translation>Elige un archivo de transferencia de disposiciones (.zip).</translation>
+    </message>
+    <message>
+        <source>Please choose at least one layout or shared layout.</source>
+        <translation>Elige al menos una disposición o disposición compartida.</translation>
+    </message>
+    <message>
+        <source>Preview</source>
+        <translation>Vista previa</translation>
+    </message>
+    <message>
+        <source>Publish overwritten layouts and copies (otherwise they stay drafts)</source>
+        <translation>Publicar las disposiciones sobreescritas y las copias (si no, se quedan como borradores)</translation>
+    </message>
+    <message>
+        <source>References without a match here</source>
+        <translation>Referencias sin coincidencia aquí</translation>
+    </message>
+    <message>
+        <source>Remote ID</source>
+        <translation>ID remoto</translation>
+    </message>
+    <message>
+        <source>Shared layouts</source>
+        <translation>Disposiciones compartidas</translation>
+    </message>
+    <message>
+        <source>Shared layouts that are only in the file because a layout links to them keep their version here unless you choose a strategy for them above. Mappings are not copied with their layouts.</source>
+        <translation>Las disposiciones compartidas que solo están en el archivo porque una disposición enlaza con ellas conservan aquí su versión, salvo que elijas arriba una estrategia para ellas. Las asignaciones no se copian con sus disposiciones.</translation>
+    </message>
+    <message>
+        <source>Skip</source>
+        <translation>Omitir</translation>
+    </message>
+    <message>
+        <source>Skip it: keep what is here</source>
+        <translation>Omitirla: conservar lo que hay aquí</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Estado</translation>
+    </message>
+    <message>
+        <source>Stop the import</source>
+        <translation>Detener la importación</translation>
+    </message>
+    <message>
+        <source>Strategy</source>
+        <translation>Estrategia</translation>
+    </message>
+    <message>
+        <source>Strategy for %item</source>
+        <translation>Estrategia para %item</translation>
+    </message>
+    <message>
+        <source>Strategy for a mapping of %item</source>
+        <translation>Estrategia para una asignación de %item</translation>
+    </message>
+    <message>
+        <source>Targets</source>
+        <translation>Destinos</translation>
+    </message>
+    <message>
+        <source>The file</source>
+        <translation>El archivo</translation>
+    </message>
+    <message>
+        <source>The file could not be uploaded.</source>
+        <translation>No se pudo cargar el archivo.</translation>
+    </message>
+    <message>
+        <source>The file is larger than 64 MB.</source>
+        <translation>El archivo supera los 64 MB.</translation>
+    </message>
+    <message>
+        <source>The import was written.</source>
+        <translation>Se escribió la importación.</translation>
+    </message>
+    <message>
+        <source>The import will</source>
+        <translation>La importación va a</translation>
+    </message>
+    <message>
+        <source>The layout type differs.</source>
+        <translation>El tipo de disposición es distinto.</translation>
+    </message>
+    <message>
+        <source>The mappings of the chosen layouts, with their targets and conditions</source>
+        <translation>Las asignaciones de las disposiciones elegidas, con sus destinos y condiciones</translation>
+    </message>
+    <message>
+        <source>The same targets map to the layout &quot;%layout&quot; on this installation.</source>
+        <translation>Los mismos destinos están asignados a la disposición &quot;%layout&quot; en esta instalación.</translation>
+    </message>
+    <message>
+        <source>The shared flag differs.</source>
+        <translation>El indicador de compartida es distinto.</translation>
+    </message>
+    <message>
+        <source>There are none.</source>
+        <translation>No hay ninguna.</translation>
+    </message>
+    <message>
+        <source>These nodes and objects have no content with the same remote ID on this installation. Choose below what happens to them.</source>
+        <translation>Estos nudos y objetos no tienen ningún contenido con el mismo ID remoto en esta instalación. Elige abajo qué pasa con ellos.</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Tipo</translation>
+    </message>
+    <message>
+        <source>Update the preview</source>
+        <translation>Actualizar la vista previa</translation>
+    </message>
+    <message>
+        <source>What was written</source>
+        <translation>Lo que se escribió</translation>
+    </message>
+    <message>
+        <source>When a layout or mapping exists here already</source>
+        <translation>Cuando ya existe aquí una disposición o una asignación</translation>
+    </message>
+    <message>
+        <source>changed</source>
+        <translation>con cambios</translation>
+    </message>
+    <message>
+        <source>conflicting</source>
+        <translation>en conflicto</translation>
+    </message>
+    <message>
+        <source>copy</source>
+        <translation>copiar</translation>
+    </message>
+    <message>
+        <source>draft</source>
+        <translation>borrador</translation>
+    </message>
+    <message>
+        <source>draft only</source>
+        <translation>solo borrador</translation>
+    </message>
+    <message>
+        <source>identical</source>
+        <translation>idéntica</translation>
+    </message>
+    <message>
+        <source>linked to</source>
+        <translation>enlazada con</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>nueva</translation>
+    </message>
+    <message>
+        <source>node</source>
+        <translation>nudo</translation>
+    </message>
+    <message>
+        <source>object</source>
+        <translation>objeto</translation>
+    </message>
+    <message>
+        <source>open draft</source>
+        <translation>borrador abierto</translation>
+    </message>
+    <message>
+        <source>overwrite</source>
+        <translation>sobreescribir</translation>
+    </message>
+    <message>
+        <source>published</source>
+        <translation>publicada</translation>
+    </message>
+    <message>
+        <source>shared</source>
+        <translation>compartida</translation>
+    </message>
+    <message>
+        <source>skip</source>
+        <translation>omitir</translation>
+    </message>
+    <message>
+        <source>Drafts</source>
+        <translation>Borradores</translation>
+    </message>
+    <message>
+        <source>Zones</source>
+        <translation>Zonas</translation>
+    </message>
+    <message>
+        <source>Linked zones</source>
+        <translation>Zonas enlazadas</translation>
+    </message>
+    <message>
+        <source>Blocks</source>
+        <translation>Bloques</translation>
+    </message>
+    <message>
+        <source>Parameters</source>
+        <translation>Parámetros</translation>
+    </message>
+    <message>
+        <source>Collections</source>
+        <translation>Colecciones</translation>
+    </message>
+    <message>
+        <source>Collection items</source>
+        <translation>Elementos de colección</translation>
+    </message>
+    <message>
+        <source>Queries</source>
+        <translation>Consultas</translation>
+    </message>
+    <message>
+        <source>Conditions</source>
+        <translation>Condiciones</translation>
+    </message>
+    <message>
+        <source>Node references</source>
+        <translation>Referencias a nudos</translation>
+    </message>
+    <message>
+        <source>Object references</source>
+        <translation>Referencias a objetos</translation>
+    </message>
+</context>
+<context>
     <name>design/admin/parts/explayouts_ui/menu</name>
     <message>
         <source>Layout mappings</source>
@@ -1204,6 +1619,10 @@
     <message>
         <source>Components</source>
         <translation>Componentes</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation>Exportar</translation>
     </message>
     <message>
         <source>Import</source>

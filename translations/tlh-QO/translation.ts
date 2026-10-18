@@ -1191,6 +1191,421 @@
     </message>
 </context>
 <context>
+    <name>design/admin/explayouts_ui/transfer</name>
+    <message>
+        <source>%count differences</source>
+        <translation>%count pImghachmey</translation>
+    </message>
+    <message>
+        <source>%count warnings</source>
+        <translation>%count ghuHmoHghachmey</translation>
+    </message>
+    <message>
+        <source>%written items written, %entries resolver cache entries of the affected layouts removed.</source>
+        <translation>%written Dochmey ghItlhlu&apos;pu&apos;, %entries De&apos; polwI&apos; Dochmey teqlu&apos;pu&apos; (ghoSlu&apos;pu&apos;bogh mIch mIwmey).</translation>
+    </message>
+    <message>
+        <source>A .zip made by Export or by ./console exp:layouts export, up to 64 MB.</source>
+        <translation>.zip ghItlh, lel pagh ./console exp:layouts export chenmoHbogh; 64 MB tlhoy tInbe&apos;nIS.</translation>
+    </message>
+    <message>
+        <source>A draft of this layout is open on this installation.</source>
+        <translation>jomghachvamDaq mIch mIwvam nab poS.</translation>
+    </message>
+    <message>
+        <source>All mappings (their layouts are included)</source>
+        <translation>Hoch rarghachmey (mIch mIwchaj lutlhej)</translation>
+    </message>
+    <message>
+        <source>As chosen below</source>
+        <translation>bIngDaq wIvlu&apos;bogh rur</translation>
+    </message>
+    <message>
+        <source>Choose another file</source>
+        <translation>latlh ghItlh yIwIv</translation>
+    </message>
+    <message>
+        <source>Compared with this installation</source>
+        <translation>jomghachvam rurmoHlu&apos;</translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation>yIchenmoH</translation>
+    </message>
+    <message>
+        <source>Create a copy</source>
+        <translation>qonqa&apos; yIchenmoH</translation>
+    </message>
+    <message>
+        <source>Create a copy: a new layout with the content of the file</source>
+        <translation>qonqa&apos; yIchenmoH: ghItlh De&apos; ngaSbogh mIch mIw chu&apos;</translation>
+    </message>
+    <message>
+        <source>Created</source>
+        <translation>chenmoHlu&apos;ta&apos;</translation>
+    </message>
+    <message>
+        <source>Done</source>
+        <translation>rIn</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation>yIlel</translation>
+    </message>
+    <message>
+        <source>Export everything</source>
+        <translation>Hoch yIlel</translation>
+    </message>
+    <message>
+        <source>Export layouts</source>
+        <translation>mIch mIwmey tIlel</translation>
+    </message>
+    <message>
+        <source>Export layouts, shared layouts and their mappings into a layouts transfer file (.zip) that another installation can import. The shared layouts the chosen layouts link to are always included.</source>
+        <translation>mIch mIwmey, Hoch lo&apos;bogh mIch mIwmey, rarghachmeychaj je tIlel; mIch mIwmey lupmeH ghItlh (.zip) chenmoH, &apos;ej latlh jomghach qemlaH. mIch mIwmey wIvlu&apos;pu&apos;bogh lurarbogh Hoch lo&apos;bogh mIch mIwmey lutlhej reH.</translation>
+    </message>
+    <message>
+        <source>Export the selection</source>
+        <translation>wIvlu&apos;pu&apos;bogh Dochmey tIlel</translation>
+    </message>
+    <message>
+        <source>Exported from</source>
+        <translation>lellu&apos;pu&apos;bogh jomghach</translation>
+    </message>
+    <message>
+        <source>Format version</source>
+        <translation>ghItlh Segh chovnatlh</translation>
+    </message>
+    <message>
+        <source>ID</source>
+        <translation>ngu&apos;meH mI&apos;</translation>
+    </message>
+    <message>
+        <source>ID in the file</source>
+        <translation>ghItlhDaq ngu&apos;meH mI&apos;</translation>
+    </message>
+    <message>
+        <source>Identifier</source>
+        <translation>ngu&apos;wI&apos;</translation>
+    </message>
+    <message>
+        <source>Import</source>
+        <translation>yIqem</translation>
+    </message>
+    <message>
+        <source>Import another file</source>
+        <translation>latlh ghItlh yIqem</translation>
+    </message>
+    <message>
+        <source>Import layouts</source>
+        <translation>mIch mIwmey tIqem</translation>
+    </message>
+    <message>
+        <source>Import layouts, shared layouts and their mappings from a layouts transfer file (.zip). Nothing is written before you have seen the preview.</source>
+        <translation>mIch mIwmey, Hoch lo&apos;bogh mIch mIwmey, rarghachmeychaj je tIqem; mIch mIwmey lupmeH ghItlh (.zip) yIlo&apos;. nungbogh mIllogh Dalegh pa&apos; pagh ghItlhlu&apos;.</translation>
+    </message>
+    <message>
+        <source>Include open drafts (only published layouts otherwise)</source>
+        <translation>nabmey poS tIlel je (pagh mIch mIwmey &apos;anglu&apos;pu&apos;bogh neH)</translation>
+    </message>
+    <message>
+        <source>Item</source>
+        <translation>Doch</translation>
+    </message>
+    <message>
+        <source>Keep the IDs of the file</source>
+        <translation>ghItlh ngu&apos;meH mI&apos;mey yIpol</translation>
+    </message>
+    <message>
+        <source>Kind</source>
+        <translation>Segh</translation>
+    </message>
+    <message>
+        <source>Layout</source>
+        <translation>mIch mIw</translation>
+    </message>
+    <message>
+        <source>Layout mappings</source>
+        <translation>mIch mIw rarghachmey</translation>
+    </message>
+    <message>
+        <source>Layouts</source>
+        <translation>mIch mIwmey</translation>
+    </message>
+    <message>
+        <source>Layouts transfer file</source>
+        <translation>mIch mIwmey lupmeH ghItlh</translation>
+    </message>
+    <message>
+        <source>Leave them out (and the mappings that need them)</source>
+        <translation>tIbuSHa&apos; (chaH poQbogh rarghachmey je)</translation>
+    </message>
+    <message>
+        <source>Links to</source>
+        <translation>rarbogh</translation>
+    </message>
+    <message>
+        <source>Mappings</source>
+        <translation>rarghachmey</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>pong</translation>
+    </message>
+    <message>
+        <source>No change</source>
+        <translation>choHbe&apos;</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>pagh</translation>
+    </message>
+    <message>
+        <source>Nothing was written: the import was rolled back.</source>
+        <translation>pagh ghItlhlu&apos;pu&apos;: qemghach DoHmoHlu&apos;pu&apos;.</translation>
+    </message>
+    <message>
+        <source>Overwrite</source>
+        <translation>yIghItlhqa&apos;</translation>
+    </message>
+    <message>
+        <source>Overwrite it: a new draft with the content of the file</source>
+        <translation>yIghItlhqa&apos;: ghItlh De&apos; ngaSbogh nab chu&apos;</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>He</translation>
+    </message>
+    <message>
+        <source>Please choose a layouts transfer file (.zip).</source>
+        <translation>mIch mIwmey lupmeH ghItlh (.zip) yIwIv.</translation>
+    </message>
+    <message>
+        <source>Please choose at least one layout or shared layout.</source>
+        <translation>wa&apos; mIch mIw pagh wa&apos; Hoch lo&apos;bogh mIch mIw yIwIv, puS.</translation>
+    </message>
+    <message>
+        <source>Preview</source>
+        <translation>nungbogh mIllogh</translation>
+    </message>
+    <message>
+        <source>Publish overwritten layouts and copies (otherwise they stay drafts)</source>
+        <translation>mIch mIwmey ghItlhqa&apos;lu&apos;pu&apos;bogh qonqa&apos;mey je tI&apos;ang (pagh nabmey ratlh)</translation>
+    </message>
+    <message>
+        <source>References without a match here</source>
+        <translation>naDev rapbe&apos;bogh rarwI&apos;mey</translation>
+    </message>
+    <message>
+        <source>Remote ID</source>
+        <translation>Hop ngu&apos;meH mI&apos;</translation>
+    </message>
+    <message>
+        <source>Shared layouts</source>
+        <translation>Hoch lo&apos;bogh mIch mIwmey</translation>
+    </message>
+    <message>
+        <source>Shared layouts that are only in the file because a layout links to them keep their version here unless you choose a strategy for them above. Mappings are not copied with their layouts.</source>
+        <translation>ghItlhDaq Hoch lo&apos;bogh mIch mIwmey tu&apos;lu&apos; neH, mIch mIw rarmo&apos;; chaHvaD Dup DawIvbe&apos;chugh Dung, naDev chovnatlhchaj lupol. rarghachmey qonqa&apos;lu&apos;be&apos; mIch mIwchaj tlhej.</translation>
+    </message>
+    <message>
+        <source>Skip</source>
+        <translation>yIbuSHa&apos;</translation>
+    </message>
+    <message>
+        <source>Skip it: keep what is here</source>
+        <translation>yIbuSHa&apos;: naDev Dochvetlh yIpol</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Dotlh</translation>
+    </message>
+    <message>
+        <source>Stop the import</source>
+        <translation>qemghach yImev</translation>
+    </message>
+    <message>
+        <source>Strategy</source>
+        <translation>Dup</translation>
+    </message>
+    <message>
+        <source>Strategy for %item</source>
+        <translation>%item Dup</translation>
+    </message>
+    <message>
+        <source>Strategy for a mapping of %item</source>
+        <translation>%item rarghach Dup</translation>
+    </message>
+    <message>
+        <source>Targets</source>
+        <translation>ghochmey</translation>
+    </message>
+    <message>
+        <source>The file</source>
+        <translation>ghItlh</translation>
+    </message>
+    <message>
+        <source>The file could not be uploaded.</source>
+        <translation>ghItlh lablaHlu&apos;be&apos;.</translation>
+    </message>
+    <message>
+        <source>The file is larger than 64 MB.</source>
+        <translation>tIn law&apos; ghItlh, tIn puS 64 MB.</translation>
+    </message>
+    <message>
+        <source>The import was written.</source>
+        <translation>qemghach ghItlhlu&apos;pu&apos;.</translation>
+    </message>
+    <message>
+        <source>The import will</source>
+        <translation>qemghach Qu&apos;</translation>
+    </message>
+    <message>
+        <source>The layout type differs.</source>
+        <translation>mIch mIw Segh pIm.</translation>
+    </message>
+    <message>
+        <source>The mappings of the chosen layouts, with their targets and conditions</source>
+        <translation>mIch mIwmey wIvlu&apos;pu&apos;bogh rarghachmey, ghochmeychaj poQwI&apos;meychaj je</translation>
+    </message>
+    <message>
+        <source>The same targets map to the layout &quot;%layout&quot; on this installation.</source>
+        <translation>jomghachvamDaq mIch mIw &quot;%layout&quot; lurar ghochmey rap.</translation>
+    </message>
+    <message>
+        <source>The shared flag differs.</source>
+        <translation>Hoch lo&apos;bogh Degh pIm.</translation>
+    </message>
+    <message>
+        <source>There are none.</source>
+        <translation>pagh tu&apos;lu&apos;.</translation>
+    </message>
+    <message>
+        <source>These nodes and objects have no content with the same remote ID on this installation. Choose below what happens to them.</source>
+        <translation>jomghachvamDaq Hop ngu&apos;meH mI&apos; rap ghajbogh De&apos; ghajbe&apos; Sor Daqmeyvam Dochmeyvam je. chaHvaD qaSbogh bIngDaq yIwIv.</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Segh</translation>
+    </message>
+    <message>
+        <source>Update the preview</source>
+        <translation>nungbogh mIllogh yIchu&apos;moH</translation>
+    </message>
+    <message>
+        <source>What was written</source>
+        <translation>ghItlhlu&apos;pu&apos;bogh</translation>
+    </message>
+    <message>
+        <source>When a layout or mapping exists here already</source>
+        <translation>naDev mIch mIw pagh rarghach tu&apos;lu&apos;taHvIS</translation>
+    </message>
+    <message>
+        <source>changed</source>
+        <translation>choHlu&apos;ta&apos;</translation>
+    </message>
+    <message>
+        <source>conflicting</source>
+        <translation>ghoH</translation>
+    </message>
+    <message>
+        <source>copy</source>
+        <translation>qonqa&apos;</translation>
+    </message>
+    <message>
+        <source>draft</source>
+        <translation>nab</translation>
+    </message>
+    <message>
+        <source>draft only</source>
+        <translation>nab neH</translation>
+    </message>
+    <message>
+        <source>identical</source>
+        <translation>rap</translation>
+    </message>
+    <message>
+        <source>linked to</source>
+        <translation>rarlu&apos;</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>chu&apos;</translation>
+    </message>
+    <message>
+        <source>node</source>
+        <translation>Sor Daq</translation>
+    </message>
+    <message>
+        <source>object</source>
+        <translation>Doch</translation>
+    </message>
+    <message>
+        <source>open draft</source>
+        <translation>nab poS</translation>
+    </message>
+    <message>
+        <source>overwrite</source>
+        <translation>ghItlhqa&apos;</translation>
+    </message>
+    <message>
+        <source>published</source>
+        <translation>&apos;anglu&apos;ta&apos;</translation>
+    </message>
+    <message>
+        <source>shared</source>
+        <translation>Hoch lo&apos;bogh</translation>
+    </message>
+    <message>
+        <source>skip</source>
+        <translation>buSHa&apos;</translation>
+    </message>
+    <message>
+        <source>Drafts</source>
+        <translation>nabmey</translation>
+    </message>
+    <message>
+        <source>Zones</source>
+        <translation>mIchmey</translation>
+    </message>
+    <message>
+        <source>Linked zones</source>
+        <translation>mIchmey rarlu&apos;pu&apos;bogh</translation>
+    </message>
+    <message>
+        <source>Blocks</source>
+        <translation>ngoghmey</translation>
+    </message>
+    <message>
+        <source>Parameters</source>
+        <translation>ngoDmey</translation>
+    </message>
+    <message>
+        <source>Collections</source>
+        <translation>boSghachmey</translation>
+    </message>
+    <message>
+        <source>Collection items</source>
+        <translation>boSghach Dochmey</translation>
+    </message>
+    <message>
+        <source>Queries</source>
+        <translation>tlhobghachmey</translation>
+    </message>
+    <message>
+        <source>Conditions</source>
+        <translation>poQwI&apos;mey</translation>
+    </message>
+    <message>
+        <source>Node references</source>
+        <translation>Sor Daq rarwI&apos;mey</translation>
+    </message>
+    <message>
+        <source>Object references</source>
+        <translation>Doch rarwI&apos;mey</translation>
+    </message>
+</context>
+<context>
     <name>design/admin/parts/explayouts_ui/menu</name>
     <message>
         <source>Layout mappings</source>
@@ -1207,6 +1622,10 @@
     <message>
         <source>Components</source>
         <translation>&apos;ay&apos;mey</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation>yIlel</translation>
     </message>
     <message>
         <source>Import</source>

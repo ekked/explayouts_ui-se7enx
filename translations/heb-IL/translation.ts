@@ -1190,6 +1190,421 @@
     </message>
 </context>
 <context>
+    <name>design/admin/explayouts_ui/transfer</name>
+    <message>
+        <source>%count differences</source>
+        <translation>%count הבדלים</translation>
+    </message>
+    <message>
+        <source>%count warnings</source>
+        <translation>%count אזהרות</translation>
+    </message>
+    <message>
+        <source>%written items written, %entries resolver cache entries of the affected layouts removed.</source>
+        <translation>נכתבו %written פריטים, והוסרו %entries רשומות ממטמון המפענח של הפריסות המושפעות.</translation>
+    </message>
+    <message>
+        <source>A .zip made by Export or by ./console exp:layouts export, up to 64 MB.</source>
+        <translation>קובץ .zip שנוצר באמצעות ייצוא או באמצעות ./console exp:layouts export, עד 64 MB.</translation>
+    </message>
+    <message>
+        <source>A draft of this layout is open on this installation.</source>
+        <translation>טיוטה של פריסה זו פתוחה בהתקנה זו.</translation>
+    </message>
+    <message>
+        <source>All mappings (their layouts are included)</source>
+        <translation>כל המיפויים (כולל הפריסות שלהם)</translation>
+    </message>
+    <message>
+        <source>As chosen below</source>
+        <translation>לפי הבחירה למטה</translation>
+    </message>
+    <message>
+        <source>Choose another file</source>
+        <translation>בחירת קובץ אחר</translation>
+    </message>
+    <message>
+        <source>Compared with this installation</source>
+        <translation>בהשוואה להתקנה זו</translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation>יצירה</translation>
+    </message>
+    <message>
+        <source>Create a copy</source>
+        <translation>יצירת עותק</translation>
+    </message>
+    <message>
+        <source>Create a copy: a new layout with the content of the file</source>
+        <translation>יצירת עותק: פריסה חדשה עם תוכן הקובץ</translation>
+    </message>
+    <message>
+        <source>Created</source>
+        <translation>נוצר</translation>
+    </message>
+    <message>
+        <source>Done</source>
+        <translation>בוצע</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation>ייצוא</translation>
+    </message>
+    <message>
+        <source>Export everything</source>
+        <translation>ייצוא הכול</translation>
+    </message>
+    <message>
+        <source>Export layouts</source>
+        <translation>ייצוא פריסות</translation>
+    </message>
+    <message>
+        <source>Export layouts, shared layouts and their mappings into a layouts transfer file (.zip) that another installation can import. The shared layouts the chosen layouts link to are always included.</source>
+        <translation>ייצוא פריסות, פריסות משותפות והמיפויים שלהן לקובץ העברת פריסות (.zip) שהתקנה אחרת יכולה לייבא. הפריסות המשותפות שהפריסות שנבחרו מקושרות אליהן נכללות תמיד.</translation>
+    </message>
+    <message>
+        <source>Export the selection</source>
+        <translation>ייצוא הבחירה</translation>
+    </message>
+    <message>
+        <source>Exported from</source>
+        <translation>יוצא מתוך</translation>
+    </message>
+    <message>
+        <source>Format version</source>
+        <translation>גרסת הפורמט</translation>
+    </message>
+    <message>
+        <source>ID</source>
+        <translation>מס׳ זיהוי</translation>
+    </message>
+    <message>
+        <source>ID in the file</source>
+        <translation>מס׳ זיהוי בקובץ</translation>
+    </message>
+    <message>
+        <source>Identifier</source>
+        <translation>מזהה</translation>
+    </message>
+    <message>
+        <source>Import</source>
+        <translation>ייבוא</translation>
+    </message>
+    <message>
+        <source>Import another file</source>
+        <translation>ייבוא קובץ אחר</translation>
+    </message>
+    <message>
+        <source>Import layouts</source>
+        <translation>ייבוא פריסות</translation>
+    </message>
+    <message>
+        <source>Import layouts, shared layouts and their mappings from a layouts transfer file (.zip). Nothing is written before you have seen the preview.</source>
+        <translation>ייבוא פריסות, פריסות משותפות והמיפויים שלהן מקובץ העברת פריסות (.zip). דבר אינו נכתב לפני הצגת התצוגה המקדימה.</translation>
+    </message>
+    <message>
+        <source>Include open drafts (only published layouts otherwise)</source>
+        <translation>הכללת טיוטות פתוחות (אחרת רק פריסות שפורסמו)</translation>
+    </message>
+    <message>
+        <source>Item</source>
+        <translation>פריט</translation>
+    </message>
+    <message>
+        <source>Keep the IDs of the file</source>
+        <translation>שמירת מספרי הזיהוי מהקובץ</translation>
+    </message>
+    <message>
+        <source>Kind</source>
+        <translation>סוג</translation>
+    </message>
+    <message>
+        <source>Layout</source>
+        <translation>פריסה</translation>
+    </message>
+    <message>
+        <source>Layout mappings</source>
+        <translation>מיפויי פריסה</translation>
+    </message>
+    <message>
+        <source>Layouts</source>
+        <translation>פריסות</translation>
+    </message>
+    <message>
+        <source>Layouts transfer file</source>
+        <translation>קובץ העברת פריסות</translation>
+    </message>
+    <message>
+        <source>Leave them out (and the mappings that need them)</source>
+        <translation>השמטתם (יחד עם המיפויים שזקוקים להם)</translation>
+    </message>
+    <message>
+        <source>Links to</source>
+        <translation>מקושרת אל</translation>
+    </message>
+    <message>
+        <source>Mappings</source>
+        <translation>מיפויים</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>שם</translation>
+    </message>
+    <message>
+        <source>No change</source>
+        <translation>ללא שינוי</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>ללא</translation>
+    </message>
+    <message>
+        <source>Nothing was written: the import was rolled back.</source>
+        <translation>דבר לא נכתב: הייבוא בוטל.</translation>
+    </message>
+    <message>
+        <source>Overwrite</source>
+        <translation>דריסה</translation>
+    </message>
+    <message>
+        <source>Overwrite it: a new draft with the content of the file</source>
+        <translation>דריסה: טיוטה חדשה עם תוכן הקובץ</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>נתיב</translation>
+    </message>
+    <message>
+        <source>Please choose a layouts transfer file (.zip).</source>
+        <translation>נא לבחור קובץ העברת פריסות (.zip).</translation>
+    </message>
+    <message>
+        <source>Please choose at least one layout or shared layout.</source>
+        <translation>נא לבחור לפחות פריסה אחת או פריסה משותפת אחת.</translation>
+    </message>
+    <message>
+        <source>Preview</source>
+        <translation>תצוגה מקדימה</translation>
+    </message>
+    <message>
+        <source>Publish overwritten layouts and copies (otherwise they stay drafts)</source>
+        <translation>פרסום פריסות שנדרסו ועותקים (אחרת הם נשארים טיוטות)</translation>
+    </message>
+    <message>
+        <source>References without a match here</source>
+        <translation>הפניות ללא התאמה כאן</translation>
+    </message>
+    <message>
+        <source>Remote ID</source>
+        <translation>מזהה מרוחק</translation>
+    </message>
+    <message>
+        <source>Shared layouts</source>
+        <translation>פריסות משותפות</translation>
+    </message>
+    <message>
+        <source>Shared layouts that are only in the file because a layout links to them keep their version here unless you choose a strategy for them above. Mappings are not copied with their layouts.</source>
+        <translation>פריסות משותפות שנמצאות בקובץ רק משום שפריסה מקושרת אליהן שומרות כאן על הגרסה שלהן, אלא אם נבחרה עבורן אסטרטגיה למעלה. מיפויים אינם מועתקים יחד עם הפריסות שלהם.</translation>
+    </message>
+    <message>
+        <source>Skip</source>
+        <translation>דילוג</translation>
+    </message>
+    <message>
+        <source>Skip it: keep what is here</source>
+        <translation>דילוג: שמירה על מה שקיים כאן</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>מצב</translation>
+    </message>
+    <message>
+        <source>Stop the import</source>
+        <translation>עצירת הייבוא</translation>
+    </message>
+    <message>
+        <source>Strategy</source>
+        <translation>אסטרטגיה</translation>
+    </message>
+    <message>
+        <source>Strategy for %item</source>
+        <translation>אסטרטגיה עבור %item</translation>
+    </message>
+    <message>
+        <source>Strategy for a mapping of %item</source>
+        <translation>אסטרטגיה עבור מיפוי של %item</translation>
+    </message>
+    <message>
+        <source>Targets</source>
+        <translation>יעדים</translation>
+    </message>
+    <message>
+        <source>The file</source>
+        <translation>הקובץ</translation>
+    </message>
+    <message>
+        <source>The file could not be uploaded.</source>
+        <translation>לא ניתן היה להעלות את הקובץ.</translation>
+    </message>
+    <message>
+        <source>The file is larger than 64 MB.</source>
+        <translation>הקובץ גדול מ־64 MB.</translation>
+    </message>
+    <message>
+        <source>The import was written.</source>
+        <translation>הייבוא נכתב.</translation>
+    </message>
+    <message>
+        <source>The import will</source>
+        <translation>פעולת הייבוא</translation>
+    </message>
+    <message>
+        <source>The layout type differs.</source>
+        <translation>סוג הפריסה שונה.</translation>
+    </message>
+    <message>
+        <source>The mappings of the chosen layouts, with their targets and conditions</source>
+        <translation>המיפויים של הפריסות שנבחרו, כולל היעדים והתנאים שלהם</translation>
+    </message>
+    <message>
+        <source>The same targets map to the layout &quot;%layout&quot; on this installation.</source>
+        <translation>אותם יעדים ממופים לפריסה &quot;%layout&quot; בהתקנה זו.</translation>
+    </message>
+    <message>
+        <source>The shared flag differs.</source>
+        <translation>סימון השיתוף שונה.</translation>
+    </message>
+    <message>
+        <source>There are none.</source>
+        <translation>אין כאלה.</translation>
+    </message>
+    <message>
+        <source>These nodes and objects have no content with the same remote ID on this installation. Choose below what happens to them.</source>
+        <translation>לצמתים ולאובייקטים האלה אין תוכן עם אותו מזהה מרוחק בהתקנה זו. יש לבחור למטה מה ייעשה בהם.</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>סוג</translation>
+    </message>
+    <message>
+        <source>Update the preview</source>
+        <translation>עדכון התצוגה המקדימה</translation>
+    </message>
+    <message>
+        <source>What was written</source>
+        <translation>מה נכתב</translation>
+    </message>
+    <message>
+        <source>When a layout or mapping exists here already</source>
+        <translation>כאשר פריסה או מיפוי כבר קיימים כאן</translation>
+    </message>
+    <message>
+        <source>changed</source>
+        <translation>שונה</translation>
+    </message>
+    <message>
+        <source>conflicting</source>
+        <translation>מתנגש</translation>
+    </message>
+    <message>
+        <source>copy</source>
+        <translation>העתקה</translation>
+    </message>
+    <message>
+        <source>draft</source>
+        <translation>טיוטה</translation>
+    </message>
+    <message>
+        <source>draft only</source>
+        <translation>טיוטה בלבד</translation>
+    </message>
+    <message>
+        <source>identical</source>
+        <translation>זהה</translation>
+    </message>
+    <message>
+        <source>linked to</source>
+        <translation>מקושרת אל</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>חדש</translation>
+    </message>
+    <message>
+        <source>node</source>
+        <translation>צומת</translation>
+    </message>
+    <message>
+        <source>object</source>
+        <translation>אובייקט</translation>
+    </message>
+    <message>
+        <source>open draft</source>
+        <translation>טיוטה פתוחה</translation>
+    </message>
+    <message>
+        <source>overwrite</source>
+        <translation>דריסה</translation>
+    </message>
+    <message>
+        <source>published</source>
+        <translation>פורסם</translation>
+    </message>
+    <message>
+        <source>shared</source>
+        <translation>משותפת</translation>
+    </message>
+    <message>
+        <source>skip</source>
+        <translation>דילוג</translation>
+    </message>
+    <message>
+        <source>Drafts</source>
+        <translation>טיוטות</translation>
+    </message>
+    <message>
+        <source>Zones</source>
+        <translation>אזורים</translation>
+    </message>
+    <message>
+        <source>Linked zones</source>
+        <translation>אזורים מקושרים</translation>
+    </message>
+    <message>
+        <source>Blocks</source>
+        <translation>בלוקים</translation>
+    </message>
+    <message>
+        <source>Parameters</source>
+        <translation>פרמטרים</translation>
+    </message>
+    <message>
+        <source>Collections</source>
+        <translation>אוספים</translation>
+    </message>
+    <message>
+        <source>Collection items</source>
+        <translation>פריטי אוסף</translation>
+    </message>
+    <message>
+        <source>Queries</source>
+        <translation>שאילתות</translation>
+    </message>
+    <message>
+        <source>Conditions</source>
+        <translation>תנאים</translation>
+    </message>
+    <message>
+        <source>Node references</source>
+        <translation>הפניות לצמתים</translation>
+    </message>
+    <message>
+        <source>Object references</source>
+        <translation>הפניות לאובייקטים</translation>
+    </message>
+</context>
+<context>
     <name>design/admin/parts/explayouts_ui/menu</name>
     <message>
         <source>Layout mappings</source>
@@ -1206,6 +1621,10 @@
     <message>
         <source>Components</source>
         <translation>רכיבים</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation>ייצוא</translation>
     </message>
     <message>
         <source>Import</source>

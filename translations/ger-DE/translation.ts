@@ -1188,6 +1188,421 @@
     </message>
 </context>
 <context>
+    <name>design/admin/explayouts_ui/transfer</name>
+    <message>
+        <source>%count differences</source>
+        <translation>%count Unterschiede</translation>
+    </message>
+    <message>
+        <source>%count warnings</source>
+        <translation>%count Warnungen</translation>
+    </message>
+    <message>
+        <source>%written items written, %entries resolver cache entries of the affected layouts removed.</source>
+        <translation>%written Einträge geschrieben, %entries Einträge des Resolver-Caches der betroffenen Layouts entfernt.</translation>
+    </message>
+    <message>
+        <source>A .zip made by Export or by ./console exp:layouts export, up to 64 MB.</source>
+        <translation>Eine .zip-Datei, erstellt mit „Exportieren“ oder mit ./console exp:layouts export, bis zu 64 MB.</translation>
+    </message>
+    <message>
+        <source>A draft of this layout is open on this installation.</source>
+        <translation>Auf dieser Installation ist ein Entwurf dieses Layouts geöffnet.</translation>
+    </message>
+    <message>
+        <source>All mappings (their layouts are included)</source>
+        <translation>Alle Zuordnungen (ihre Layouts werden mit exportiert)</translation>
+    </message>
+    <message>
+        <source>As chosen below</source>
+        <translation>Wie unten ausgewählt</translation>
+    </message>
+    <message>
+        <source>Choose another file</source>
+        <translation>Andere Datei auswählen</translation>
+    </message>
+    <message>
+        <source>Compared with this installation</source>
+        <translation>Verglichen mit dieser Installation</translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation>Erstellen</translation>
+    </message>
+    <message>
+        <source>Create a copy</source>
+        <translation>Kopie erstellen</translation>
+    </message>
+    <message>
+        <source>Create a copy: a new layout with the content of the file</source>
+        <translation>Kopie erstellen: ein neues Layout mit dem Inhalt der Datei</translation>
+    </message>
+    <message>
+        <source>Created</source>
+        <translation>Erstellt</translation>
+    </message>
+    <message>
+        <source>Done</source>
+        <translation>Fertig</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation>Exportieren</translation>
+    </message>
+    <message>
+        <source>Export everything</source>
+        <translation>Alles exportieren</translation>
+    </message>
+    <message>
+        <source>Export layouts</source>
+        <translation>Layouts exportieren</translation>
+    </message>
+    <message>
+        <source>Export layouts, shared layouts and their mappings into a layouts transfer file (.zip) that another installation can import. The shared layouts the chosen layouts link to are always included.</source>
+        <translation>Exportieren Sie Layouts, gemeinsame Layouts und ihre Zuordnungen in eine Layout-Transferdatei (.zip), die eine andere Installation importieren kann. Die gemeinsamen Layouts, mit denen die ausgewählten Layouts verknüpft sind, werden immer mit exportiert.</translation>
+    </message>
+    <message>
+        <source>Export the selection</source>
+        <translation>Auswahl exportieren</translation>
+    </message>
+    <message>
+        <source>Exported from</source>
+        <translation>Exportiert aus</translation>
+    </message>
+    <message>
+        <source>Format version</source>
+        <translation>Formatversion</translation>
+    </message>
+    <message>
+        <source>ID</source>
+        <translation>ID</translation>
+    </message>
+    <message>
+        <source>ID in the file</source>
+        <translation>ID in der Datei</translation>
+    </message>
+    <message>
+        <source>Identifier</source>
+        <translation>Bezeichner</translation>
+    </message>
+    <message>
+        <source>Import</source>
+        <translation>Importieren</translation>
+    </message>
+    <message>
+        <source>Import another file</source>
+        <translation>Weitere Datei importieren</translation>
+    </message>
+    <message>
+        <source>Import layouts</source>
+        <translation>Layouts importieren</translation>
+    </message>
+    <message>
+        <source>Import layouts, shared layouts and their mappings from a layouts transfer file (.zip). Nothing is written before you have seen the preview.</source>
+        <translation>Importieren Sie Layouts, gemeinsame Layouts und ihre Zuordnungen aus einer Layout-Transferdatei (.zip). Es wird nichts geschrieben, bevor Sie die Vorschau gesehen haben.</translation>
+    </message>
+    <message>
+        <source>Include open drafts (only published layouts otherwise)</source>
+        <translation>Geöffnete Entwürfe einbeziehen (sonst nur veröffentlichte Layouts)</translation>
+    </message>
+    <message>
+        <source>Item</source>
+        <translation>Eintrag</translation>
+    </message>
+    <message>
+        <source>Keep the IDs of the file</source>
+        <translation>IDs aus der Datei beibehalten</translation>
+    </message>
+    <message>
+        <source>Kind</source>
+        <translation>Art</translation>
+    </message>
+    <message>
+        <source>Layout</source>
+        <translation>Layout</translation>
+    </message>
+    <message>
+        <source>Layout mappings</source>
+        <translation>Layout-Zuordnungen</translation>
+    </message>
+    <message>
+        <source>Layouts</source>
+        <translation>Layouts</translation>
+    </message>
+    <message>
+        <source>Layouts transfer file</source>
+        <translation>Layout-Transferdatei</translation>
+    </message>
+    <message>
+        <source>Leave them out (and the mappings that need them)</source>
+        <translation>Weglassen (samt den Zuordnungen, die sie benötigen)</translation>
+    </message>
+    <message>
+        <source>Links to</source>
+        <translation>Verknüpft mit</translation>
+    </message>
+    <message>
+        <source>Mappings</source>
+        <translation>Zuordnungen</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Name</translation>
+    </message>
+    <message>
+        <source>No change</source>
+        <translation>Keine Änderung</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>Keine</translation>
+    </message>
+    <message>
+        <source>Nothing was written: the import was rolled back.</source>
+        <translation>Es wurde nichts geschrieben: Der Import wurde rückgängig gemacht.</translation>
+    </message>
+    <message>
+        <source>Overwrite</source>
+        <translation>Überschreiben</translation>
+    </message>
+    <message>
+        <source>Overwrite it: a new draft with the content of the file</source>
+        <translation>Überschreiben: ein neuer Entwurf mit dem Inhalt der Datei</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>Pfad</translation>
+    </message>
+    <message>
+        <source>Please choose a layouts transfer file (.zip).</source>
+        <translation>Bitte wählen Sie eine Layout-Transferdatei (.zip) aus.</translation>
+    </message>
+    <message>
+        <source>Please choose at least one layout or shared layout.</source>
+        <translation>Bitte wählen Sie mindestens ein Layout oder gemeinsames Layout aus.</translation>
+    </message>
+    <message>
+        <source>Preview</source>
+        <translation>Vorschau</translation>
+    </message>
+    <message>
+        <source>Publish overwritten layouts and copies (otherwise they stay drafts)</source>
+        <translation>Überschriebene Layouts und Kopien veröffentlichen (sonst bleiben sie Entwürfe)</translation>
+    </message>
+    <message>
+        <source>References without a match here</source>
+        <translation>Verweise ohne Entsprechung hier</translation>
+    </message>
+    <message>
+        <source>Remote ID</source>
+        <translation>Remote-ID</translation>
+    </message>
+    <message>
+        <source>Shared layouts</source>
+        <translation>Gemeinsame Layouts</translation>
+    </message>
+    <message>
+        <source>Shared layouts that are only in the file because a layout links to them keep their version here unless you choose a strategy for them above. Mappings are not copied with their layouts.</source>
+        <translation>Gemeinsame Layouts, die nur in der Datei sind, weil ein Layout mit ihnen verknüpft ist, behalten hier ihre Version, sofern Sie oben keine Strategie für sie auswählen. Zuordnungen werden nicht mit ihren Layouts kopiert.</translation>
+    </message>
+    <message>
+        <source>Skip</source>
+        <translation>Überspringen</translation>
+    </message>
+    <message>
+        <source>Skip it: keep what is here</source>
+        <translation>Überspringen: das Vorhandene hier behalten</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Status</translation>
+    </message>
+    <message>
+        <source>Stop the import</source>
+        <translation>Import abbrechen</translation>
+    </message>
+    <message>
+        <source>Strategy</source>
+        <translation>Strategie</translation>
+    </message>
+    <message>
+        <source>Strategy for %item</source>
+        <translation>Strategie für %item</translation>
+    </message>
+    <message>
+        <source>Strategy for a mapping of %item</source>
+        <translation>Strategie für eine Zuordnung von %item</translation>
+    </message>
+    <message>
+        <source>Targets</source>
+        <translation>Ziele</translation>
+    </message>
+    <message>
+        <source>The file</source>
+        <translation>Die Datei</translation>
+    </message>
+    <message>
+        <source>The file could not be uploaded.</source>
+        <translation>Die Datei konnte nicht hochgeladen werden.</translation>
+    </message>
+    <message>
+        <source>The file is larger than 64 MB.</source>
+        <translation>Die Datei ist größer als 64 MB.</translation>
+    </message>
+    <message>
+        <source>The import was written.</source>
+        <translation>Der Import wurde geschrieben.</translation>
+    </message>
+    <message>
+        <source>The import will</source>
+        <translation>Der Import wird</translation>
+    </message>
+    <message>
+        <source>The layout type differs.</source>
+        <translation>Der Layouttyp unterscheidet sich.</translation>
+    </message>
+    <message>
+        <source>The mappings of the chosen layouts, with their targets and conditions</source>
+        <translation>Die Zuordnungen der ausgewählten Layouts mit ihren Zielen und Bedingungen</translation>
+    </message>
+    <message>
+        <source>The same targets map to the layout &quot;%layout&quot; on this installation.</source>
+        <translation>Dieselben Ziele sind auf dieser Installation dem Layout „%layout“ zugeordnet.</translation>
+    </message>
+    <message>
+        <source>The shared flag differs.</source>
+        <translation>Die Kennzeichnung „gemeinsam“ unterscheidet sich.</translation>
+    </message>
+    <message>
+        <source>There are none.</source>
+        <translation>Es gibt keine.</translation>
+    </message>
+    <message>
+        <source>These nodes and objects have no content with the same remote ID on this installation. Choose below what happens to them.</source>
+        <translation>Zu diesen Knoten und Objekten gibt es auf dieser Installation keinen Inhalt mit derselben Remote-ID. Wählen Sie unten aus, was mit ihnen geschieht.</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Typ</translation>
+    </message>
+    <message>
+        <source>Update the preview</source>
+        <translation>Vorschau aktualisieren</translation>
+    </message>
+    <message>
+        <source>What was written</source>
+        <translation>Was geschrieben wurde</translation>
+    </message>
+    <message>
+        <source>When a layout or mapping exists here already</source>
+        <translation>Wenn ein Layout oder eine Zuordnung hier bereits existiert</translation>
+    </message>
+    <message>
+        <source>changed</source>
+        <translation>geändert</translation>
+    </message>
+    <message>
+        <source>conflicting</source>
+        <translation>im Konflikt</translation>
+    </message>
+    <message>
+        <source>copy</source>
+        <translation>kopieren</translation>
+    </message>
+    <message>
+        <source>draft</source>
+        <translation>Entwurf</translation>
+    </message>
+    <message>
+        <source>draft only</source>
+        <translation>nur Entwurf</translation>
+    </message>
+    <message>
+        <source>identical</source>
+        <translation>identisch</translation>
+    </message>
+    <message>
+        <source>linked to</source>
+        <translation>verknüpft mit</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>neu</translation>
+    </message>
+    <message>
+        <source>node</source>
+        <translation>Knoten</translation>
+    </message>
+    <message>
+        <source>object</source>
+        <translation>Objekt</translation>
+    </message>
+    <message>
+        <source>open draft</source>
+        <translation>geöffneter Entwurf</translation>
+    </message>
+    <message>
+        <source>overwrite</source>
+        <translation>überschreiben</translation>
+    </message>
+    <message>
+        <source>published</source>
+        <translation>veröffentlicht</translation>
+    </message>
+    <message>
+        <source>shared</source>
+        <translation>gemeinsam</translation>
+    </message>
+    <message>
+        <source>skip</source>
+        <translation>überspringen</translation>
+    </message>
+    <message>
+        <source>Drafts</source>
+        <translation>Entwürfe</translation>
+    </message>
+    <message>
+        <source>Zones</source>
+        <translation>Zonen</translation>
+    </message>
+    <message>
+        <source>Linked zones</source>
+        <translation>Verknüpfte Zonen</translation>
+    </message>
+    <message>
+        <source>Blocks</source>
+        <translation>Blöcke</translation>
+    </message>
+    <message>
+        <source>Parameters</source>
+        <translation>Parameter</translation>
+    </message>
+    <message>
+        <source>Collections</source>
+        <translation>Sammlungen</translation>
+    </message>
+    <message>
+        <source>Collection items</source>
+        <translation>Sammlungselemente</translation>
+    </message>
+    <message>
+        <source>Queries</source>
+        <translation>Abfragen</translation>
+    </message>
+    <message>
+        <source>Conditions</source>
+        <translation>Bedingungen</translation>
+    </message>
+    <message>
+        <source>Node references</source>
+        <translation>Knotenverweise</translation>
+    </message>
+    <message>
+        <source>Object references</source>
+        <translation>Objektverweise</translation>
+    </message>
+</context>
+<context>
     <name>design/admin/parts/explayouts_ui/menu</name>
     <message>
         <source>Layout mappings</source>
@@ -1204,6 +1619,10 @@
     <message>
         <source>Components</source>
         <translation>Komponenten</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation>Exportieren</translation>
     </message>
     <message>
         <source>Import</source>

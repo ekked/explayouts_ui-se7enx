@@ -1191,6 +1191,421 @@
     </message>
 </context>
 <context>
+    <name>design/admin/explayouts_ui/transfer</name>
+    <message>
+        <source>%count differences</source>
+        <translation>%count differentiae</translation>
+    </message>
+    <message>
+        <source>%count warnings</source>
+        <translation>%count monita</translation>
+    </message>
+    <message>
+        <source>%written items written, %entries resolver cache entries of the affected layouts removed.</source>
+        <translation>%written res scriptae sunt, %entries inscriptiones promptuarii resolventis dispositionum affectarum remotae sunt.</translation>
+    </message>
+    <message>
+        <source>A .zip made by Export or by ./console exp:layouts export, up to 64 MB.</source>
+        <translation>Fasciculus .zip per Exportare vel per ./console exp:layouts export factus, usque ad 64 MB.</translation>
+    </message>
+    <message>
+        <source>A draft of this layout is open on this installation.</source>
+        <translation>Adumbratio huius dispositionis in hac institutione aperta est.</translation>
+    </message>
+    <message>
+        <source>All mappings (their layouts are included)</source>
+        <translation>Omnes attributiones (dispositiones earum includuntur)</translation>
+    </message>
+    <message>
+        <source>As chosen below</source>
+        <translation>Ut infra electum est</translation>
+    </message>
+    <message>
+        <source>Choose another file</source>
+        <translation>Alium fasciculum eligere</translation>
+    </message>
+    <message>
+        <source>Compared with this installation</source>
+        <translation>Cum hac institutione comparatum</translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation>Creare</translation>
+    </message>
+    <message>
+        <source>Create a copy</source>
+        <translation>Exemplar creare</translation>
+    </message>
+    <message>
+        <source>Create a copy: a new layout with the content of the file</source>
+        <translation>Exemplar creare: nova dispositio cum argumento fasciculi</translation>
+    </message>
+    <message>
+        <source>Created</source>
+        <translation>Creatum</translation>
+    </message>
+    <message>
+        <source>Done</source>
+        <translation>Perfectum</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation>Exportare</translation>
+    </message>
+    <message>
+        <source>Export everything</source>
+        <translation>Omnia exportare</translation>
+    </message>
+    <message>
+        <source>Export layouts</source>
+        <translation>Dispositiones exportare</translation>
+    </message>
+    <message>
+        <source>Export layouts, shared layouts and their mappings into a layouts transfer file (.zip) that another installation can import. The shared layouts the chosen layouts link to are always included.</source>
+        <translation>Dispositiones, dispositiones communes earumque attributiones in fasciculum translationis dispositionum (.zip) exporta, quem alia institutio importare potest. Dispositiones communes, ad quas dispositiones electae nectuntur, semper includuntur.</translation>
+    </message>
+    <message>
+        <source>Export the selection</source>
+        <translation>Selecta exportare</translation>
+    </message>
+    <message>
+        <source>Exported from</source>
+        <translation>Exportatum ex</translation>
+    </message>
+    <message>
+        <source>Format version</source>
+        <translation>Versio formae</translation>
+    </message>
+    <message>
+        <source>ID</source>
+        <translation>ID</translation>
+    </message>
+    <message>
+        <source>ID in the file</source>
+        <translation>ID in fasciculo</translation>
+    </message>
+    <message>
+        <source>Identifier</source>
+        <translation>Identificator</translation>
+    </message>
+    <message>
+        <source>Import</source>
+        <translation>Importare</translation>
+    </message>
+    <message>
+        <source>Import another file</source>
+        <translation>Alium fasciculum importare</translation>
+    </message>
+    <message>
+        <source>Import layouts</source>
+        <translation>Dispositiones importare</translation>
+    </message>
+    <message>
+        <source>Import layouts, shared layouts and their mappings from a layouts transfer file (.zip). Nothing is written before you have seen the preview.</source>
+        <translation>Dispositiones, dispositiones communes earumque attributiones ex fasciculo translationis dispositionum (.zip) importa. Nihil scribitur priusquam praevisionem videris.</translation>
+    </message>
+    <message>
+        <source>Include open drafts (only published layouts otherwise)</source>
+        <translation>Adumbrationes apertas includere (aliter solae dispositiones publicatae)</translation>
+    </message>
+    <message>
+        <source>Item</source>
+        <translation>Res</translation>
+    </message>
+    <message>
+        <source>Keep the IDs of the file</source>
+        <translation>ID fasciculi servare</translation>
+    </message>
+    <message>
+        <source>Kind</source>
+        <translation>Genus</translation>
+    </message>
+    <message>
+        <source>Layout</source>
+        <translation>Dispositio</translation>
+    </message>
+    <message>
+        <source>Layout mappings</source>
+        <translation>Attributiones dispositionum</translation>
+    </message>
+    <message>
+        <source>Layouts</source>
+        <translation>Dispositiones</translation>
+    </message>
+    <message>
+        <source>Layouts transfer file</source>
+        <translation>Fasciculus translationis dispositionum</translation>
+    </message>
+    <message>
+        <source>Leave them out (and the mappings that need them)</source>
+        <translation>Ea omittere (et attributiones quae eis egent)</translation>
+    </message>
+    <message>
+        <source>Links to</source>
+        <translation>Nectitur ad</translation>
+    </message>
+    <message>
+        <source>Mappings</source>
+        <translation>Attributiones</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nomen</translation>
+    </message>
+    <message>
+        <source>No change</source>
+        <translation>Nulla mutatio</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>Nulla</translation>
+    </message>
+    <message>
+        <source>Nothing was written: the import was rolled back.</source>
+        <translation>Nihil scriptum est: importatio revocata est.</translation>
+    </message>
+    <message>
+        <source>Overwrite</source>
+        <translation>Superscribere</translation>
+    </message>
+    <message>
+        <source>Overwrite it: a new draft with the content of the file</source>
+        <translation>Superscribere: nova adumbratio cum argumento fasciculi</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>Via</translation>
+    </message>
+    <message>
+        <source>Please choose a layouts transfer file (.zip).</source>
+        <translation>Fasciculum translationis dispositionum (.zip) elige.</translation>
+    </message>
+    <message>
+        <source>Please choose at least one layout or shared layout.</source>
+        <translation>Saltem unam dispositionem vel dispositionem communem elige.</translation>
+    </message>
+    <message>
+        <source>Preview</source>
+        <translation>Praevisio</translation>
+    </message>
+    <message>
+        <source>Publish overwritten layouts and copies (otherwise they stay drafts)</source>
+        <translation>Dispositiones superscriptas et exemplaria publicare (aliter adumbrationes manent)</translation>
+    </message>
+    <message>
+        <source>References without a match here</source>
+        <translation>Relationes sine pari hic</translation>
+    </message>
+    <message>
+        <source>Remote ID</source>
+        <translation>ID remotum</translation>
+    </message>
+    <message>
+        <source>Shared layouts</source>
+        <translation>Dispositiones communes</translation>
+    </message>
+    <message>
+        <source>Shared layouts that are only in the file because a layout links to them keep their version here unless you choose a strategy for them above. Mappings are not copied with their layouts.</source>
+        <translation>Dispositiones communes, quae tantum in fasciculo sunt quia dispositio ad eas nectitur, versionem suam hic servant, nisi supra rationem eis eligis. Attributiones cum dispositionibus suis non exscribuntur.</translation>
+    </message>
+    <message>
+        <source>Skip</source>
+        <translation>Omittere</translation>
+    </message>
+    <message>
+        <source>Skip it: keep what is here</source>
+        <translation>Omittere: quod hic est servare</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Status</translation>
+    </message>
+    <message>
+        <source>Stop the import</source>
+        <translation>Importationem sistere</translation>
+    </message>
+    <message>
+        <source>Strategy</source>
+        <translation>Ratio</translation>
+    </message>
+    <message>
+        <source>Strategy for %item</source>
+        <translation>Ratio pro %item</translation>
+    </message>
+    <message>
+        <source>Strategy for a mapping of %item</source>
+        <translation>Ratio pro attributione ad %item pertinente</translation>
+    </message>
+    <message>
+        <source>Targets</source>
+        <translation>Scopi</translation>
+    </message>
+    <message>
+        <source>The file</source>
+        <translation>Fasciculus</translation>
+    </message>
+    <message>
+        <source>The file could not be uploaded.</source>
+        <translation>Fasciculus imponi non potuit.</translation>
+    </message>
+    <message>
+        <source>The file is larger than 64 MB.</source>
+        <translation>Fasciculus maior est quam 64 MB.</translation>
+    </message>
+    <message>
+        <source>The import was written.</source>
+        <translation>Importatio scripta est.</translation>
+    </message>
+    <message>
+        <source>The import will</source>
+        <translation>Actio importationis</translation>
+    </message>
+    <message>
+        <source>The layout type differs.</source>
+        <translation>Genus dispositionis differt.</translation>
+    </message>
+    <message>
+        <source>The mappings of the chosen layouts, with their targets and conditions</source>
+        <translation>Attributiones dispositionum electarum cum scopis et condicionibus suis</translation>
+    </message>
+    <message>
+        <source>The same targets map to the layout &quot;%layout&quot; on this installation.</source>
+        <translation>Idem scopi in hac institutione dispositioni &quot;%layout&quot; attribuuntur.</translation>
+    </message>
+    <message>
+        <source>The shared flag differs.</source>
+        <translation>Nota &quot;communis&quot; differt.</translation>
+    </message>
+    <message>
+        <source>There are none.</source>
+        <translation>Nullae sunt.</translation>
+    </message>
+    <message>
+        <source>These nodes and objects have no content with the same remote ID on this installation. Choose below what happens to them.</source>
+        <translation>His nodis et rebus nullum argumentum cum eodem ID remoto in hac institutione est. Infra elige quid eis fiat.</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Genus</translation>
+    </message>
+    <message>
+        <source>Update the preview</source>
+        <translation>Praevisionem renovare</translation>
+    </message>
+    <message>
+        <source>What was written</source>
+        <translation>Quae scripta sunt</translation>
+    </message>
+    <message>
+        <source>When a layout or mapping exists here already</source>
+        <translation>Si dispositio vel attributio hic iam exstat</translation>
+    </message>
+    <message>
+        <source>changed</source>
+        <translation>mutatum</translation>
+    </message>
+    <message>
+        <source>conflicting</source>
+        <translation>repugnans</translation>
+    </message>
+    <message>
+        <source>copy</source>
+        <translation>exscribere</translation>
+    </message>
+    <message>
+        <source>draft</source>
+        <translation>adumbratio</translation>
+    </message>
+    <message>
+        <source>draft only</source>
+        <translation>adumbratio tantum</translation>
+    </message>
+    <message>
+        <source>identical</source>
+        <translation>idem</translation>
+    </message>
+    <message>
+        <source>linked to</source>
+        <translation>nexa ad</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>novum</translation>
+    </message>
+    <message>
+        <source>node</source>
+        <translation>nodus</translation>
+    </message>
+    <message>
+        <source>object</source>
+        <translation>res</translation>
+    </message>
+    <message>
+        <source>open draft</source>
+        <translation>adumbratio aperta</translation>
+    </message>
+    <message>
+        <source>overwrite</source>
+        <translation>superscribere</translation>
+    </message>
+    <message>
+        <source>published</source>
+        <translation>publicatum</translation>
+    </message>
+    <message>
+        <source>shared</source>
+        <translation>communis</translation>
+    </message>
+    <message>
+        <source>skip</source>
+        <translation>omittere</translation>
+    </message>
+    <message>
+        <source>Drafts</source>
+        <translation>Adumbrationes</translation>
+    </message>
+    <message>
+        <source>Zones</source>
+        <translation>Zonae</translation>
+    </message>
+    <message>
+        <source>Linked zones</source>
+        <translation>Zonae nexae</translation>
+    </message>
+    <message>
+        <source>Blocks</source>
+        <translation>Segmenta</translation>
+    </message>
+    <message>
+        <source>Parameters</source>
+        <translation>Parametra</translation>
+    </message>
+    <message>
+        <source>Collections</source>
+        <translation>Collectiones</translation>
+    </message>
+    <message>
+        <source>Collection items</source>
+        <translation>Res collectionum</translation>
+    </message>
+    <message>
+        <source>Queries</source>
+        <translation>Quaestiones</translation>
+    </message>
+    <message>
+        <source>Conditions</source>
+        <translation>Condiciones</translation>
+    </message>
+    <message>
+        <source>Node references</source>
+        <translation>Relationes ad nodos</translation>
+    </message>
+    <message>
+        <source>Object references</source>
+        <translation>Relationes ad res</translation>
+    </message>
+</context>
+<context>
     <name>design/admin/parts/explayouts_ui/menu</name>
     <message>
         <source>Layout mappings</source>
@@ -1207,6 +1622,10 @@
     <message>
         <source>Components</source>
         <translation>Partes</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation>Exportare</translation>
     </message>
     <message>
         <source>Import</source>
