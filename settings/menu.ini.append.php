@@ -10,6 +10,9 @@ Tabs[]=explayouts_ui_dashboard
 NavigationPartIdentifier=ezexplayoutsuinavigationpart
 Name=Layouts
 Tooltip=Layouts dashboard
+# admin4's tab icon (design.ini [AdminDesignSettings] IconList[]), the one of
+# the dashboard's Layouts action
+Icon=layout-sidebar-inset
 URL[]
 URL[default]=explayouts_ui/dashboard
 Enabled[]
