@@ -26,9 +26,10 @@ class expLayoutsUiRuleInput
     /**
      * Condition types that may be saved: every type the resolver knows (expLayoutsResolver::CONDITION_TYPES, see
      * storableConditionTypes()); this list for an explayouts without that constant. The offered ones plus
-     * content_type and ibexa_content_type, older names of class.
+     * content_type, the older name of class. Not ibexa_content_type: only a resolver that lists its types matches
+     * it, so an older one would keep a condition that never applies.
      */
-    const STORABLE_CONDITION_TYPES = array( 'siteaccess', 'class', 'content_type', 'ibexa_content_type', 'query_parameter',
+    const STORABLE_CONDITION_TYPES = array( 'siteaccess', 'class', 'content_type', 'query_parameter',
                                             'route_parameter', 'time' );
 
     /** The target types that may be saved, from the resolver when it lists them */

@@ -72,11 +72,12 @@ class RuleInputTest extends TestCase
                 $this->assertStringContainsString( "'" . $type . "'", $source, $type );
             return;
         }
-        // the storable types are the resolver's, and the fallback lists name the same
+        // the storable types are the resolver's, and the fallback lists name only types it knows (the target list
+        // all of them; the condition list leaves out ibexa_content_type, which older resolvers do not match)
         $this->assertSame( expLayoutsResolver::TARGET_TYPES, expLayoutsUiRuleInput::storableTargetTypes() );
         $this->assertSame( expLayoutsResolver::CONDITION_TYPES, expLayoutsUiRuleInput::storableConditionTypes() );
         $this->assertEqualsCanonicalizing( expLayoutsResolver::TARGET_TYPES, expLayoutsUiRuleInput::STORABLE_TARGET_TYPES );
-        $this->assertEqualsCanonicalizing( expLayoutsResolver::CONDITION_TYPES, expLayoutsUiRuleInput::STORABLE_CONDITION_TYPES );
+        $this->assertSame( array(), array_values( array_diff( expLayoutsUiRuleInput::STORABLE_CONDITION_TYPES, expLayoutsResolver::CONDITION_TYPES ) ) );
     }
 
     public function testAModuleTargetOfAnAdminLayoutRuleIsKept()
