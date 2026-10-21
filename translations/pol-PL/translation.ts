@@ -1855,6 +1855,10 @@
         <source>Preview layout</source>
         <translation>Podgląd układu</translation>
     </message>
+    <message>
+        <source>No public siteaccess to preview this layout in. Set explayouts.ini [PreviewSettings] SiteAccess for this administration.</source>
+        <translation>Brak publicznego dostępu do witryny, w którym można wyświetlić podgląd tego układu. Należy ustawić explayouts.ini [PreviewSettings] SiteAccess dla tej administracji.</translation>
+    </message>
 </context>
 <context>
     <name>explayouts_ui/rule</name>

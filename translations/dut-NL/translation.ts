@@ -1855,6 +1855,10 @@
         <source>Preview layout</source>
         <translation>Layoutvoorbeeld</translation>
     </message>
+    <message>
+        <source>No public siteaccess to preview this layout in. Set explayouts.ini [PreviewSettings] SiteAccess for this administration.</source>
+        <translation>Er is geen openbare siteaccess om een voorbeeld van deze layout in te tonen. Stel explayouts.ini [PreviewSettings] SiteAccess in voor dit beheer.</translation>
+    </message>
 </context>
 <context>
     <name>explayouts_ui/rule</name>

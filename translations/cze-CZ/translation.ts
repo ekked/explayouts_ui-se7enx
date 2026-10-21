@@ -1855,6 +1855,10 @@
         <source>Preview layout</source>
         <translation>Náhled rozvržení</translation>
     </message>
+    <message>
+        <source>No public siteaccess to preview this layout in. Set explayouts.ini [PreviewSettings] SiteAccess for this administration.</source>
+        <translation>Neexistuje veřejný přístup k webu pro náhled tohoto rozvržení. Pro tuto administraci nastavte explayouts.ini [PreviewSettings] SiteAccess.</translation>
+    </message>
 </context>
 <context>
     <name>explayouts_ui/rule</name>

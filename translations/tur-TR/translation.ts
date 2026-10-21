@@ -1855,6 +1855,10 @@
         <source>Preview layout</source>
         <translation>Düzeni önizle</translation>
     </message>
+    <message>
+        <source>No public siteaccess to preview this layout in. Set explayouts.ini [PreviewSettings] SiteAccess for this administration.</source>
+        <translation>Bu düzeni önizlemek için genel site erişimi yok. Bu yönetim paneli için explayouts.ini [PreviewSettings] SiteAccess ayarını yapın.</translation>
+    </message>
 </context>
 <context>
     <name>explayouts_ui/rule</name>

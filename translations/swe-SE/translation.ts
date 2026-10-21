@@ -1855,6 +1855,10 @@
         <source>Preview layout</source>
         <translation>Förhandsgranska layout</translation>
     </message>
+    <message>
+        <source>No public siteaccess to preview this layout in. Set explayouts.ini [PreviewSettings] SiteAccess for this administration.</source>
+        <translation>Det finns ingen publik webbplatsingång att förhandsgranska den här layouten i. Ange explayouts.ini [PreviewSettings] SiteAccess för den här administrationen.</translation>
+    </message>
 </context>
 <context>
     <name>explayouts_ui/rule</name>

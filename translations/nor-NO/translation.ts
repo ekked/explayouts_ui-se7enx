@@ -1855,6 +1855,10 @@
         <source>Preview layout</source>
         <translation>Forhåndsvis layout</translation>
     </message>
+    <message>
+        <source>No public siteaccess to preview this layout in. Set explayouts.ini [PreviewSettings] SiteAccess for this administration.</source>
+        <translation>Ingen offentlig nettstedstilgang å forhåndsvise denne layouten i. Angi explayouts.ini [PreviewSettings] SiteAccess for denne administrasjonen.</translation>
+    </message>
 </context>
 <context>
     <name>explayouts_ui/rule</name>
