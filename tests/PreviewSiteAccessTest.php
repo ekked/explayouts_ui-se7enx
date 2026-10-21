@@ -3,7 +3,8 @@
  * The layout preview renders in the public siteaccess of the administration in use (expLayoutsPreviewSiteAccess of
  * explayouts), not in site.ini [SiteSettings] DefaultAccess: in an installation serving several sites that is the
  * default of the whole installation, another site's, whose settings and design then ran on this site's database.
- * Where no siteaccess qualifies, or explayouts is too old to say, the preview says so instead of switching.
+ * Where no siteaccess qualifies the preview says so instead of switching. An explayouts too old to say keeps the
+ * preview it had, in DefaultAccess.
  *
  * The view runs on stand-ins; eZSiteAccess::load() records the siteaccess and stops the view there.
  *
@@ -26,7 +27,7 @@ class PreviewSiteAccessTest extends TestCase
         if ( !class_exists( 'eZUser', false ) )
             eval( 'class eZUser { public static function currentUser() { return new self(); } public function hasAccessTo( $m, $f = false ) { return true; } }' );
         if ( !class_exists( 'eZDebug', false ) )
-            eval( 'class eZDebug { public static $warnings = array(); public static function writeWarning( $m, $l = "" ) { self::$warnings[] = $m; } public static function checkDebugByUser() {} }' );
+            eval( 'class eZDebug { public static $warnings = array(); public static $notices = array(); public static function writeWarning( $m, $l = "" ) { self::$warnings[] = $m; } public static function writeNotice( $m, $l = "" ) { self::$notices[] = $m; } public static function checkDebugByUser() {} }' );
         if ( !class_exists( 'expLayoutsLayout', false ) )
             eval( 'class expLayoutsLayout { public static function fetch( $id, $status = 2 ) { return new self(); } }' );
         if ( !class_exists( 'expLayoutsRenderer', false ) )
@@ -75,7 +76,7 @@ class PreviewSiteAccessTest extends TestCase
         $this->assertStringContainsString( 'another database than &#039;site_admin&#039;', $result['content'] );
     }
 
-    public function testAnExplayoutsWithoutThePreviewClassSaysSoAndDoesNotSwitch()
+    public function testAnExplayoutsWithoutThePreviewClassKeepsThePreviewInDefaultAccess()
     {
         // without the class: the kernel's autoloader (pulled in by vendor/autoload.php) would find explayouts' one
         foreach ( spl_autoload_functions() as $loader )
@@ -85,8 +86,9 @@ class PreviewSiteAccessTest extends TestCase
                 spl_autoload_unregister( $loader );
         }
         self::standIns( null );
-        $result = self::preview();
-        $this->assertSame( array(), eZSiteAccess::$loaded );
-        $this->assertStringContainsString( 'update explayouts', $result['content'] );
+        $loaded = null;
+        self::preview( $loaded );
+        $this->assertSame( 'other_site', $loaded );
+        $this->assertStringContainsString( 'Update explayouts', implode( "\n", eZDebug::$notices ) );
     }
 }

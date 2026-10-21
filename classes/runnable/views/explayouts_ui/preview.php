@@ -137,12 +137,20 @@ class Preview extends \Exponential\Runnable\ModuleView
         // scripts and pagelayout. Not DefaultAccess: that is the default of the whole installation, in a tree that
         // serves several sites another site's, whose settings and design then ran on this site's database.
         // expLayoutsPreviewSiteAccess finds none with this database: say so instead of mixing two installations.
-        // expLayoutsPreviewSiteAccess comes with a newer explayouts: without it nothing is switched either
-        $previewAvailable = class_exists( 'expLayoutsPreviewSiteAccess' );
-        $siteAccess = $previewAvailable ? \expLayoutsPreviewSiteAccess::resolve() : false;
-        $reason = $previewAvailable ? \expLayoutsPreviewSiteAccess::$lastError
-            : 'The installed explayouts has no expLayoutsPreviewSiteAccess; update explayouts to preview layouts.';
-        if ( $siteAccess === false )
+        // expLayoutsPreviewSiteAccess comes with a newer explayouts: an older one keeps the preview it had, in
+        // DefaultAccess, so updating explayouts_ui alone takes nothing away.
+        if ( class_exists( 'expLayoutsPreviewSiteAccess' ) )
+        {
+            $siteAccess = \expLayoutsPreviewSiteAccess::resolve();
+            $reason = \expLayoutsPreviewSiteAccess::$lastError;
+        }
+        else
+        {
+            $siteAccess = \eZINI::instance( 'site.ini' )->variable( 'SiteSettings', 'DefaultAccess' );
+            $reason = 'The installed explayouts has no expLayoutsPreviewSiteAccess; previewing in DefaultAccess. Update explayouts to preview in the public siteaccess of this administration.';
+            \eZDebug::writeNotice( $reason, 'explayouts_ui/layout_preview' );
+        }
+        if ( $siteAccess === false || $siteAccess === '' || $siteAccess === null )
         {
             \eZDebug::writeWarning( $reason, 'explayouts_ui/layout_preview' );
             $Result = array();
