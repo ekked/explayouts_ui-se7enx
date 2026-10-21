@@ -133,8 +133,25 @@ class Preview extends \Exponential\Runnable\ModuleView
         // the public site.ini rather than the admin one.
         $previewNode = false;
 
-        // Render preview in the default/public siteaccess so it uses the real site styles, scripts and pagelayout.
-        $siteAccess = \eZINI::instance( 'site.ini' )->variable( 'SiteSettings', 'DefaultAccess' );
+        // Render the preview in the public siteaccess of this administration, so it uses the real site styles,
+        // scripts and pagelayout. Not DefaultAccess: that is the default of the whole installation, in a tree that
+        // serves several sites another site's, whose settings and design then ran on this site's database.
+        // expLayoutsPreviewSiteAccess finds none with this database: say so instead of mixing two installations.
+        // expLayoutsPreviewSiteAccess comes with a newer explayouts: without it nothing is switched either
+        $previewAvailable = class_exists( 'expLayoutsPreviewSiteAccess' );
+        $siteAccess = $previewAvailable ? \expLayoutsPreviewSiteAccess::resolve() : false;
+        $reason = $previewAvailable ? \expLayoutsPreviewSiteAccess::$lastError
+            : 'The installed explayouts has no expLayoutsPreviewSiteAccess; update explayouts to preview layouts.';
+        if ( $siteAccess === false )
+        {
+            \eZDebug::writeWarning( $reason, 'explayouts_ui/layout_preview' );
+            $Result = array();
+            $Result['content'] = '<p class="message-error">' . htmlspecialchars( \ezpI18n::tr( 'explayouts_ui/preview',
+                'No public siteaccess to preview this layout in. Set explayouts.ini [PreviewSettings] SiteAccess for this administration.' ) )
+                . '</p><p>' . htmlspecialchars( $reason ) . '</p>';
+            $Result['path'] = array( array( 'url' => false, 'text' => \ezpI18n::tr( 'explayouts_ui/preview', 'Preview layout' ) ) );
+            return $this->viewResult( isset( $Result ) ? $Result : null, $Result );
+        }
 
         $access = $GLOBALS['eZCurrentAccess'];
         $access['name'] = $siteAccess;

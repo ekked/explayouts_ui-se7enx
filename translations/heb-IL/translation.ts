@@ -1857,6 +1857,10 @@
         <source>Preview layout</source>
         <translation>תצוגה מקדימה של הפריסה</translation>
     </message>
+    <message>
+        <source>No public siteaccess to preview this layout in. Set explayouts.ini [PreviewSettings] SiteAccess for this administration.</source>
+        <translation>אין siteaccess ציבורי לתצוגה מקדימה של פריסה זו. הגדירו explayouts.ini [PreviewSettings] SiteAccess עבור ממשק ניהול זה.</translation>
+    </message>
 </context>
 <context>
     <name>explayouts_ui/rule</name>
